@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPilotChat.Web", "src\PowerPilotChat.Web\PowerPilotChat.Web.csproj", "{6281FE20-0FD3-424B-B616-2ED27AE89FC5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{0F70C572-AADB-4DCA-8A9E-269687D73FCA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{9F7CA864-8D8E-4107-A495-EBF200B9DC4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPilotChat.Infrastructure.Azure", "src\PowerPilotChat.Infrastructure.Azure\PowerPilotChat.Infrastructure.Azure.csproj", "{FAEC75AA-9A40-431E-B217-5B3F825AF862}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{1280BA7A-E6F6-435C-8BED-109EE5808A40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPilotChat.Data", "src\PowerPilotChat.Data\PowerPilotChat.Data.csproj", "{74ED66C8-B795-49A6-A51F-C14AD9089C87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPilotChat.Application", "src\PowerPilotChat.Application\PowerPilotChat.Application.csproj", "{ACF79746-ADD4-40DC-AFD7-04084A898D62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPilotChat.Common", "src\PowerPilotChat.Common\PowerPilotChat.Common.csproj", "{D97FE7E8-58A6-4612-8A2A-FB7D9E508E44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6281FE20-0FD3-424B-B616-2ED27AE89FC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6281FE20-0FD3-424B-B616-2ED27AE89FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6281FE20-0FD3-424B-B616-2ED27AE89FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6281FE20-0FD3-424B-B616-2ED27AE89FC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAEC75AA-9A40-431E-B217-5B3F825AF862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAEC75AA-9A40-431E-B217-5B3F825AF862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAEC75AA-9A40-431E-B217-5B3F825AF862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAEC75AA-9A40-431E-B217-5B3F825AF862}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74ED66C8-B795-49A6-A51F-C14AD9089C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74ED66C8-B795-49A6-A51F-C14AD9089C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74ED66C8-B795-49A6-A51F-C14AD9089C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74ED66C8-B795-49A6-A51F-C14AD9089C87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACF79746-ADD4-40DC-AFD7-04084A898D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACF79746-ADD4-40DC-AFD7-04084A898D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACF79746-ADD4-40DC-AFD7-04084A898D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACF79746-ADD4-40DC-AFD7-04084A898D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D97FE7E8-58A6-4612-8A2A-FB7D9E508E44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D97FE7E8-58A6-4612-8A2A-FB7D9E508E44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D97FE7E8-58A6-4612-8A2A-FB7D9E508E44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D97FE7E8-58A6-4612-8A2A-FB7D9E508E44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9F7CA864-8D8E-4107-A495-EBF200B9DC4A} = {0F70C572-AADB-4DCA-8A9E-269687D73FCA}
+		{FAEC75AA-9A40-431E-B217-5B3F825AF862} = {9F7CA864-8D8E-4107-A495-EBF200B9DC4A}
+		{6281FE20-0FD3-424B-B616-2ED27AE89FC5} = {1280BA7A-E6F6-435C-8BED-109EE5808A40}
+		{74ED66C8-B795-49A6-A51F-C14AD9089C87} = {0F70C572-AADB-4DCA-8A9E-269687D73FCA}
+		{ACF79746-ADD4-40DC-AFD7-04084A898D62} = {0F70C572-AADB-4DCA-8A9E-269687D73FCA}
+		{D97FE7E8-58A6-4612-8A2A-FB7D9E508E44} = {0F70C572-AADB-4DCA-8A9E-269687D73FCA}
+		{0F70C572-AADB-4DCA-8A9E-269687D73FCA} = {1280BA7A-E6F6-435C-8BED-109EE5808A40}
+	EndGlobalSection
+EndGlobal

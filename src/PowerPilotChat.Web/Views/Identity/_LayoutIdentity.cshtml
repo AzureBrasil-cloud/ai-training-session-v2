@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Power GPT - Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/@@webpixels/css/dist/index.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="position-relative d-flex justify-content-center px-5 py-5 p-lg-0 bg-body" data-x-type="page">
+        <div class="col-lg-5 col-xl-5 p-12 p-xl-10 position-absolute start-0 top-0 min-vh-100 overflow-y-hidden d-none d-lg-flex flex-column gradient-bottom-right start-indigo-500 middle-indigo-700 end-gray-950">
+
+            <a class="d-block" href="#">
+                <img src="https://assets.webpixels.io/img/logos/clever-light.svg" class="logo-dark h-rem-8 w-rem-auto" alt="..." />
+            </a>
+
+            <div class="mt-auto mb-8 w-lg-75">
+                <h1 class="ls-tight text-white mb-4">
+                    Build something amazing today.
+                </h1>
+                <p class="text-white text-opacity-75 pe-xl-32">
+                    Maybe some text here will help me see it better.
+                </p>
+            </div>
+
+            <div class="w-rem-56 h-rem-56 bg-white bg-opacity-10 rounded-circle position-absolute bottom-0 end-0 me-10 transform translate-y-50"></div>
+            <div class="w-rem-32 h-rem-32 bg-white bg-opacity-10 rounded-circle position-absolute top-0 end-0 mt-20 me-32 transform translate-y-50"></div>
+        </div>
+        <div class="col-12 col-md-9 col-lg-7 offset-xl-7 offset-lg-5 vh-lg-100 d-flex flex-column justify-content-center py-lg-16 px-lg-20 position-relative">
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
