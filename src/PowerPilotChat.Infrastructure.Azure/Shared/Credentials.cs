@@ -1,3 +1,7 @@
-namespace PowerPilotChat.Infrastructure.Azure.Shared;
+namespace ContosoAcai.Infrastructure.Azure.Shared;
 
-public record Credentials(string TenantId, string ClientId, string ClientSecret);
+public record Credentials(
+    string TenantId, 
+    string ClientId, 
+    string ClientSecret,
+    string ProjectConnectionString);

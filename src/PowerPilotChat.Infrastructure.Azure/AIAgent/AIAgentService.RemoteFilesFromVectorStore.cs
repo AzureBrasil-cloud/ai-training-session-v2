@@ -1,16 +1,15 @@
-using PowerPilotChat.Infrastructure.Azure.Shared;
+using ContosoAcai.Infrastructure.Azure.Shared;
 
-namespace PowerPilotChat.Infrastructure.Azure.AIAgent;
+namespace ContosoAcai.Infrastructure.Azure.AIAgent;
 
 public partial class AiAgentService
 {
     public virtual async Task RemoveFilesFromVectorStoreAsync(
         Credentials credentials, 
-        string connectionString, 
         string vectorStoreId, 
         IEnumerable<string> fileIds)
     {
-        var client = CreateAgentsClient(credentials, connectionString);
+        var client = CreateAgentsClient(credentials);
 
         foreach (var fileId in fileIds)
         {

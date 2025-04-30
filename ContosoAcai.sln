@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{1280BA7A-E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPilotChat.Data", "src\PowerPilotChat.Data\PowerPilotChat.Data.csproj", "{74ED66C8-B795-49A6-A51F-C14AD9089C87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPilotChat.Application", "src\PowerPilotChat.Application\PowerPilotChat.Application.csproj", "{ACF79746-ADD4-40DC-AFD7-04084A898D62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoAcai.Application", "src\ContosoAcai.Application\ContosoAcai.Application.csproj", "{ACF79746-ADD4-40DC-AFD7-04084A898D62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPilotChat.Common", "src\PowerPilotChat.Common\PowerPilotChat.Common.csproj", "{D97FE7E8-58A6-4612-8A2A-FB7D9E508E44}"
 EndProject

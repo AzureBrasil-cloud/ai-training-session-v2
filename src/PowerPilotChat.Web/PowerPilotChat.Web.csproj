@@ -4,6 +4,8 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>ContosoAcai.Web</AssemblyName>
+    <RootNamespace>ContosoAcai.Web</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PowerPilotChat.Application\PowerPilotChat.Application.csproj" />
+    <ProjectReference Include="..\ContosoAcai.Application\ContosoAcai.Application.csproj" />
   </ItemGroup>
 
 </Project>

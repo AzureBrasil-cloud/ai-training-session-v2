@@ -1,18 +1,15 @@
 using System.Text;
 using Azure.AI.Projects;
-using PowerPilotChat.Infrastructure.Azure.AIAgent.Models;
-using PowerPilotChat.Infrastructure.Azure.Shared;
+using ContosoAcai.Infrastructure.Azure.AIAgent.Models;
+using ContosoAcai.Infrastructure.Azure.Shared;
 
-namespace PowerPilotChat.Infrastructure.Azure.AIAgent;
+namespace ContosoAcai.Infrastructure.Azure.AIAgent;
 
 public partial class AiAgentService
 {
-    public virtual async Task<IEnumerable<Message>> ListMessageAsync(
-        Credentials credentials,
-        string connectionString,
-        string threadId)
+    public virtual async Task<IEnumerable<Message>> ListMessageAsync(Credentials credentials, string threadId)
     {
-        var client = CreateAgentsClient(credentials, connectionString);
+        var client = CreateAgentsClient(credentials);
         var messages = (await client.GetMessagesAsync(threadId, order: ListSortOrder.Ascending)).Value.Data;
 
         return messages.Select(threadMessage =>

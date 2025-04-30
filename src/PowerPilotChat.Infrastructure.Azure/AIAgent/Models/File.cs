@@ -1,3 +1,3 @@
-namespace PowerPilotChat.Infrastructure.Azure.AIAgent.Models;
+namespace ContosoAcai.Infrastructure.Azure.AIAgent.Models;
 
 public record File(string Id);

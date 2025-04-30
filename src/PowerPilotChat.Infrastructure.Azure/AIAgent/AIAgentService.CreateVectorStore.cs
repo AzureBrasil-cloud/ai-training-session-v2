@@ -1,17 +1,17 @@
 using Azure.AI.Projects;
-using PowerPilotChat.Infrastructure.Azure.Shared;
+using ContosoAcai.Infrastructure.Azure.Shared;
+using VectorStore = ContosoAcai.Infrastructure.Azure.AIAgent.Models.VectorStore;
 
-namespace PowerPilotChat.Infrastructure.Azure.AIAgent;
+namespace ContosoAcai.Infrastructure.Azure.AIAgent;
 
 public partial class AiAgentService
 {
-    public virtual async Task<Models.VectorStore> CreateVectorStoreAsync(
+    public virtual async Task<VectorStore> CreateVectorStoreAsync(
         Credentials credentials, 
-        string connectionString,
         string name,
         IEnumerable<string> files)
     {
-        var client = CreateAgentsClient(credentials, connectionString);
+        var client = CreateAgentsClient(credentials);
 
         var vectorStore = await client.CreateVectorStoreAsync(
             fileIds:  files,
@@ -19,6 +19,6 @@ public partial class AiAgentService
             //todo: implement expiration policy
             expiresAfter: new VectorStoreExpirationPolicy(VectorStoreExpirationPolicyAnchor.LastActiveAt, 999));
 
-        return new Models.VectorStore(vectorStore.Value.Id, vectorStore.Value.Name);
+        return new VectorStore(vectorStore.Value.Id, vectorStore.Value.Name);
     }
 }

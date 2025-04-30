@@ -1,18 +1,18 @@
 using Azure.AI.Projects;
 using Azure.Identity;
-using PowerPilotChat.Infrastructure.Azure.Shared;
+using ContosoAcai.Infrastructure.Azure.Shared;
 
-namespace PowerPilotChat.Infrastructure.Azure.AIAgent;
+namespace ContosoAcai.Infrastructure.Azure.AIAgent;
 
 public partial class AiAgentService
 {
-    private AgentsClient CreateAgentsClient(Credentials credentials, string connectionString)
+    private AgentsClient CreateAgentsClient(Credentials credentials)
     {
         var credential = new ClientSecretCredential(
             credentials.TenantId, 
             credentials.ClientId, 
             credentials.ClientSecret);
         
-        return new AgentsClient(connectionString, credential);
+        return new AgentsClient(credentials.ProjectConnectionString, credential);
     }
 }

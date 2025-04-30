@@ -1,18 +1,14 @@
 using Azure.AI.Projects;
-using PowerPilotChat.Infrastructure.Azure.AIAgent.Models;
-using PowerPilotChat.Infrastructure.Azure.Shared;
+using ContosoAcai.Infrastructure.Azure.AIAgent.Models;
+using ContosoAcai.Infrastructure.Azure.Shared;
 
-namespace PowerPilotChat.Infrastructure.Azure.AIAgent;
+namespace ContosoAcai.Infrastructure.Azure.AIAgent;
 
 public partial class AiAgentService
 {
-    public virtual async Task AddAgentToolsAsync(
-        Credentials credentials, 
-        string connectionString, 
-        string agentId,
-        IEnumerable<ITool> tools)
+    public virtual async Task AddAgentToolsAsync(Credentials credentials, string agentId, IEnumerable<ITool> tools)
     {
-        var client = CreateAgentsClient(credentials, connectionString);
+        var client = CreateAgentsClient(credentials);
         
         var toolDefinitions = new List<ToolDefinition>();
         var toolResources = new ToolResources();
@@ -49,7 +45,7 @@ public partial class AiAgentService
 
         var  documentTool = documentTools.First();
         
-        FileSearchToolResource fileSearchToolResource = new FileSearchToolResource();
+        var fileSearchToolResource = new FileSearchToolResource();
         fileSearchToolResource.VectorStoreIds.Add(documentTool.VectorStoreId);
 
         toolDefinitions.Add(new FileSearchToolDefinition());

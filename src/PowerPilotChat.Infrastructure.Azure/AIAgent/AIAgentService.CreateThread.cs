@@ -1,15 +1,16 @@
-using PowerPilotChat.Infrastructure.Azure.Shared;
+using ContosoAcai.Infrastructure.Azure.Shared;
+using Thread = ContosoAcai.Infrastructure.Azure.AIAgent.Models.Thread;
 
-namespace PowerPilotChat.Infrastructure.Azure.AIAgent;
+namespace ContosoAcai.Infrastructure.Azure.AIAgent;
 
 public partial class AiAgentService
 {
-    public virtual async Task<Models.Thread> CreateThreadAsync(Credentials credentials, string connectionString)
+    public virtual async Task<Thread> CreateThreadAsync(Credentials credentials)
     {
-        var client = CreateAgentsClient(credentials, connectionString);
+        var client = CreateAgentsClient(credentials);
 
         var threadResponse = await client.CreateThreadAsync();
 
-        return new Models.Thread(threadResponse.Value.Id);
+        return new Thread(threadResponse.Value.Id);
     }
 }

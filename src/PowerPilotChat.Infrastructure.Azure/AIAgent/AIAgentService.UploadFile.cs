@@ -1,20 +1,20 @@
 using Azure.AI.Projects;
-using PowerPilotChat.Infrastructure.Azure.Shared;
+using ContosoAcai.Infrastructure.Azure.Shared;
+using File = ContosoAcai.Infrastructure.Azure.AIAgent.Models.File;
 
-namespace PowerPilotChat.Infrastructure.Azure.AIAgent;
+namespace ContosoAcai.Infrastructure.Azure.AIAgent;
 
 public partial class AiAgentService
 {
-    public virtual async Task<Models.File> UploadFile(
+    public virtual async Task<File> UploadFile(
         Credentials credentials, 
-        string connectionString,
         Stream content,
         string fileName)
     {
-        var client = CreateAgentsClient(credentials, connectionString);
+        var client = CreateAgentsClient(credentials);
 
         var fileResponse = await client.UploadFileAsync(content, AgentFilePurpose.Agents, fileName);
 
-        return new Models.File(fileResponse.Value.Id);
+        return new File(fileResponse.Value.Id);
     }
 }

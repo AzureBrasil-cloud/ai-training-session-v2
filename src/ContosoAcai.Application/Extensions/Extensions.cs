@@ -1,8 +1,8 @@
+using ContosoAcai.Infrastructure.Azure.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PowerPilotChat.Application.Organizations;
 using PowerPilotChat.Data.Extensions;
-using PowerPilotChat.Infrastructure.Azure.Extensions;
 
 namespace PowerPilotChat.Application.Extensions;
 

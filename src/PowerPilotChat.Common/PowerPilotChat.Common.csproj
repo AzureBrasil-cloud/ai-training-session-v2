@@ -4,6 +4,8 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <AssemblyName>ContosoAcai.Common</AssemblyName>
+        <RootNamespace>ContosoAcai.Common</RootNamespace>
     </PropertyGroup>
 
 </Project>
