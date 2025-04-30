@@ -1,6 +1,7 @@
 using FluentValidation.Results;
+using PowerPilotChat.Application;
 
-namespace PowerPilotChat.Application;
+namespace ContosoAcai.Application;
 
 public static class ErrorHandler
 {

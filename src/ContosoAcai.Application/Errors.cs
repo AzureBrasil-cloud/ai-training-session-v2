@@ -1,4 +1,6 @@
-namespace PowerPilotChat.Application;
+using PowerPilotChat.Application;
+
+namespace ContosoAcai.Application;
 
 public static class Errors
 {
@@ -12,6 +14,7 @@ public static class Errors
             {
                 {"property", property}
             });
+    
     public static Error EntityExists(string entityName, string id) => 
         new(
             ErrorCodes.EntityExists.Code, 
@@ -115,9 +118,12 @@ public static class Errors
             ErrorCodes.UnableAddFileFromDocumentConnector.Message,
             new Dictionary<string, object>());
     
-    public static Error UnableToUpdateRemoteAgentConnectors() =>
+    public static Error InvalidEnum(string enumValue) =>
         new(
-            ErrorCodes.UnableToUpdateRemoteAgentConnectors.Code,
-            ErrorCodes.UnableToUpdateRemoteAgentConnectors.Message,
-            new Dictionary<string, object>());
+            ErrorCodes.InvalidEnum.Code,
+            ErrorCodes.InvalidEnum.Message,
+            new Dictionary<string, object>
+            {
+                {"enum", enumValue}
+            });
 }

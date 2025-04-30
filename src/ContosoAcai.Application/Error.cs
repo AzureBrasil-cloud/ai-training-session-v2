@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using ContosoAcai.Application;
 
 namespace PowerPilotChat.Application;
 

@@ -1,11 +1,11 @@
+using ContosoAcai.Data.Entities;
 using Microsoft.EntityFrameworkCore;
-using PowerPilotChat.Data.Entities;
 
-namespace PowerPilotChat.Data;
+namespace ContosoAcai.Data;
 
 public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
-    public DbSet<Organization> Organizations { get; set; } = null!;
+    public DbSet<Order> Orders { get; set; } = null!;
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -1,7 +1,7 @@
-using PowerPilotChat.Application.Extensions;
+using ContosoAcai.Application.Extensions;
 using PowerPilotChat.Web.Middlewares;
 
-namespace PowerPilotChat.Web.Extensions;
+namespace ContosoAcai.Web.Extensions;
 
 public static class ConfigurationExtensions
 {
@@ -42,6 +42,8 @@ public static class ConfigurationExtensions
 
         app.UseDefaultFiles();
         app.MapStaticAssets();
+        
+        app.MapControllers();
         
         app.MapControllerRoute(
                 name: "default",

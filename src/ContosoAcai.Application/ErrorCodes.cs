@@ -19,5 +19,5 @@ public class ErrorCodes
     public static (Guid Code, string Message) UnableToDeleteRemoteFile = (Guid.Parse("D66245DC-3EA1-45A1-BCAD-327FC646D8D0"), "Unable to delete the remote file");
     public static (Guid Code, string Message) UnableRemoveFileFromDocumentConnector = (Guid.Parse("C2A531D9-FC34-417F-9AAC-7EA9E9610AAA"), "Unable to remove the file from the document connector");
     public static (Guid Code, string Message) UnableAddFileFromDocumentConnector = (Guid.Parse("12298596-0EE6-4225-BC30-7D3D8AAB9EAC"), "Unable to add the file from the document connector");
-    public static (Guid Code, string Message) UnableToUpdateRemoteAgentConnectors = (Guid.Parse("E4073D2A-F88C-4003-BD4B-3E0BAA9795EA"), "Unable to update remote agent connectors");
+    public static (Guid Code, string Message) InvalidEnum = (Guid.Parse("E4073D2A-F88C-4003-BD4B-3E0BAA9795EA"), "'{enum}' is invalid");
 }
