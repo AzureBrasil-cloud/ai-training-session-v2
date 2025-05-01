@@ -1,5 +1,5 @@
 using ContosoAcai.Common;
-using PowerPilotChat.Data.Entities.Interfaces;
+using ContosoAcai.Data.Entities.Interfaces;
 
 namespace ContosoAcai.Data.Entities;
 

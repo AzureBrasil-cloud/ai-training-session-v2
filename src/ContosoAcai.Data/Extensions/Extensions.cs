@@ -1,9 +1,8 @@
-using ContosoAcai.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace PowerPilotChat.Data.Extensions;
+namespace ContosoAcai.Data.Extensions;
 
 public static class Extensions
 {

@@ -1,4 +1,4 @@
-namespace PowerPilotChat.Data.Entities.Interfaces;
+namespace ContosoAcai.Data.Entities.Interfaces;
 
 public interface IEntity
 {

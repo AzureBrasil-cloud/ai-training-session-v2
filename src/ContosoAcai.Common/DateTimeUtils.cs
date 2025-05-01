@@ -1,4 +1,4 @@
-namespace PowerPilotChat.Common;
+namespace ContosoAcai.Common;
 
 public static class DateTimeUtils
 {

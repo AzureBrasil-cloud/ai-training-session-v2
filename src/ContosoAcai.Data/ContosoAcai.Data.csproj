@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\PowerPilotChat.Common\PowerPilotChat.Common.csproj" />
+      <ProjectReference Include="..\ContosoAcai.Common\ContosoAcai.Common.csproj" />
     </ItemGroup>
 
 </Project>
