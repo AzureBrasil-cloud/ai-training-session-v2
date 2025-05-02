@@ -1,4 +1,5 @@
 using ContosoAcai.Infrastructure.Azure.AIAgent;
+using ContosoAcai.Infrastructure.Azure.AiInference;
 using ContosoAcai.Infrastructure.Azure.DocumentIntelligence;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +12,7 @@ public static class Extensions
     {
         services.AddScoped<AiAgentService>();
         services.AddScoped<DocumentIntelligenceService>();
+        services.AddScoped<AiInferenceService>();
         return services;
     }
 }
