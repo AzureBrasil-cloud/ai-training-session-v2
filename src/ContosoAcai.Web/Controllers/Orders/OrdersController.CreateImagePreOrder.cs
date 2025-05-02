@@ -1,0 +1,27 @@
+using ContosoAcai.Application.Orders;
+using ContosoAcai.Application.Orders.Models.Requests;
+using Microsoft.AspNetCore.Mvc;
+using PowerPilotChat.Web.Extensions;
+
+namespace ContosoAcai.Web.Controllers.Orders;
+
+public partial class OrdersController
+{
+    [HttpPost("/api/pre-order/image")]
+    public async Task<IActionResult> Create(
+        [FromForm] IFormFile file,
+        [FromForm] string userEmail,
+        [FromServices] OrderService service)
+    {
+        var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file.FileName);
+        var extension = Path.GetExtension(file.FileName);
+        await using var stream = file.OpenReadStream();
+        
+        return (await service.CreateAsync(new CreateImagePreOrdersRequest(
+                userEmail,
+                fileNameWithoutExtension,
+                extension,
+                stream)))
+            .ToApiResponse();
+    }
+}

@@ -2,6 +2,12 @@ namespace ContosoAcai.Common;
 
 public static class StringUtils
 {
+    private static readonly HashSet<string> AllowedExtensions = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ".png",
+        ".jpg"
+    };
+    
     public static string NormalizeEmail(this string email)
     {
         if (string.IsNullOrEmpty(email))
@@ -33,5 +39,10 @@ public static class StringUtils
             .Replace(" ", String.Empty)
             .ToLower()
             .Trim();
+    }
+    
+    public static bool IsValidFileExtension(this string extension)
+    {
+        return !string.IsNullOrWhiteSpace(extension) && AllowedExtensions.Contains(extension);
     }
 }
