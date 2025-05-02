@@ -10,6 +10,7 @@ public record ImagePreOrderResult(
     string[] KeyValuePairs,
     DateTime CreatedAt)
 {
+    public AiTransformedOrderResult? AiTransformedOrder  { get; set; }
     public static implicit operator ImagePreOrderResult(ImagePreOrder order)
     {
         return new ImagePreOrderResult(
