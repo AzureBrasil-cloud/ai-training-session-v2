@@ -6,7 +6,7 @@ namespace ContosoAcai.Infrastructure.Azure.DocumentIntelligence;
 
 public partial class DocumentIntelligenceService
 {
-    public async Task<List<string>> AnalyseAsync(
+    public async Task<string[]> AnalyseAsync(
         ApiKeyCredentials credentials,
         Stream document)
     {
@@ -22,7 +22,7 @@ public partial class DocumentIntelligenceService
         var values = operation.Value.KeyValuePairs
             .Where(kvp => kvp.Key != null)
             .Select(kvp => $"{kvp.Key.Content}: {kvp.Value?.Content ?? string.Empty}")
-            .ToList();
+            .ToArray();
         
         return values;
     }

@@ -28,12 +28,15 @@ public partial class OrderService
                 configuration["AI:DocumentIntelligence:Key"]!),
             request.Content);
 
-        return Result<ImagePreOrderResult>.Success(new ImagePreOrderResult(
-            Guid.NewGuid(),
-            request.UserEmail,
-            request.Name,
-            request.Extension,
+        var imagePreOder = new ImagePreOrder(
+            request.UserEmail, 
             keyValuePairs,
-            DateTime.UtcNow));
+            request.Name,
+            request.Extension);
+        
+        await context.ImagePreOrders.AddAsync(imagePreOder);
+        await context.SaveChangesAsync();
+
+        return Result<ImagePreOrderResult>.Success((ImagePreOrderResult)imagePreOder);
     }
 }

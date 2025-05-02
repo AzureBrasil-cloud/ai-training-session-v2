@@ -6,6 +6,7 @@ namespace ContosoAcai.Data;
 public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
     public DbSet<Order> Orders { get; set; } = null!;
+    public DbSet<ImagePreOrder> ImagePreOrders { get; set; } = null!;
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
