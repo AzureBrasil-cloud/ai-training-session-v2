@@ -6,7 +6,7 @@ namespace ContosoAcai.Infrastructure.Azure.AIAgent;
 
 public partial class AiAgentService
 {
-    public virtual async Task<File> UploadFile(
+    public virtual async Task<File> UploadFileAsync(
         Credentials credentials, 
         Stream content,
         string fileName)

@@ -16,8 +16,7 @@ public partial class AiAgentService
         var vectorStore = await client.CreateVectorStoreAsync(
             fileIds:  files,
             name: name,
-            //todo: implement expiration policy
-            expiresAfter: new VectorStoreExpirationPolicy(VectorStoreExpirationPolicyAnchor.LastActiveAt, 999));
+            expiresAfter: new VectorStoreExpirationPolicy(VectorStoreExpirationPolicyAnchor.LastActiveAt, 2));
 
         return new VectorStore(vectorStore.Value.Id, vectorStore.Value.Name);
     }

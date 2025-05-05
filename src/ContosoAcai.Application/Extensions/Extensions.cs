@@ -1,3 +1,4 @@
+using ContosoAcai.Application.Agents;
 using ContosoAcai.Application.Orders;
 using ContosoAcai.Data.Extensions;
 using ContosoAcai.Infrastructure.Azure.Extensions;
@@ -12,6 +13,7 @@ public static class Extensions
     {
         // Services
         services.AddScoped<OrderService>();
+        services.AddScoped<AgentService>();
         
         // Domain
         services.AddData(configuration);

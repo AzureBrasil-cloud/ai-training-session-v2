@@ -16,4 +16,8 @@
       <ProjectReference Include="..\ContosoAcai.Data\ContosoAcai.Data.csproj" />
       <ProjectReference Include="..\ContosoAcai.Infrastructure.Azure\ContosoAcai.Infrastructure.Azure.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Agents\Models\Requests\Validators\" />
+    </ItemGroup>
 </Project>
