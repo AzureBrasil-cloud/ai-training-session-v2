@@ -19,7 +19,7 @@ public partial class AiAgentService
                 .Aggregate(new StringBuilder(), (builder, item) => builder.AppendLine(item.Text))
                 .ToString();
 
-            return new Message(content, threadMessage.Role == MessageRole.User);
+            return new Message(threadMessage.Id, MessageRole.User.ToString(), content);
         }).ToList();
     }
 }
