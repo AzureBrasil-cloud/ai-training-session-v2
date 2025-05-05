@@ -1,6 +1,5 @@
 using ContosoAcai.Application.Orders;
 using ContosoAcai.Application.Orders.Models.Query;
-using ContosoAcai.Application.Orders.Models.Requests;
 using Microsoft.AspNetCore.Mvc;
 using PowerPilotChat.Web.Extensions;
 
