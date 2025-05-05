@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PowerPilotChat.Application;
 
-namespace PowerPilotChat.Web.Extensions;
+namespace ContosoAcai.Web.Extensions;
 
 public static class ActionResultExtensions
 {

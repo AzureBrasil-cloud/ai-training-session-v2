@@ -1,3 +1,3 @@
 namespace ContosoAcai.Application.Agents.Models.Results;
 
-public record AgentResult(string Id);
+public record MessageResult(string Role, string Content);

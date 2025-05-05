@@ -1,6 +1,6 @@
 using ContosoAcai.Application.Threads;
+using ContosoAcai.Web.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using PowerPilotChat.Web.Extensions;
 
 namespace ContosoAcai.Web.Controllers.Threads;
 

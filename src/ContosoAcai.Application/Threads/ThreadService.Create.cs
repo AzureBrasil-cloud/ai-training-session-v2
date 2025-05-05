@@ -9,8 +9,7 @@ public partial class ThreadService
     public async Task<Result<ThreadResult>> CreateAsync()
     {
         var thread = await aiAgentService.CreateThreadAsync(CreateCredentials());
-        
-        return new ThreadResult(thread.Id);
+        return Result<ThreadResult>.Success(new ThreadResult(thread.Id));
     }
     
     private Credentials CreateCredentials()

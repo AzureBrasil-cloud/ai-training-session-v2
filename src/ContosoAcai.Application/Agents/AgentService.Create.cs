@@ -70,13 +70,4 @@ public partial class AgentService
             request.Type == AgentType.Guide ? Constants.GuideAgentInstructions : Constants.SalesAgentInstructions,
             configuration["AI:Agent:Model"]!);
     }
-
-    private Credentials CreateCredentials()
-    {
-        return new Credentials(
-            configuration["AI:Agent:TenantId"]!,
-            configuration["AI:Agent:ClientId"]!,
-            configuration["AI:Agent:ClientSecret"]!,
-            configuration["AI:Agent:ConnectionString"]!);
-    }
 }

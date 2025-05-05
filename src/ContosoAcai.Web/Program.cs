@@ -1,5 +1,4 @@
 using ContosoAcai.Web.Extensions;
-using PowerPilotChat.Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

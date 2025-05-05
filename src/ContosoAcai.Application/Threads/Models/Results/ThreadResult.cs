@@ -1,3 +1,3 @@
 namespace ContosoAcai.Application.Threads.Models.Results;
 
-public class ThreadResult(string Id);
+public record ThreadResult(string Id);
