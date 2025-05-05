@@ -1,6 +1,7 @@
 using ContosoAcai.Data;
 using ContosoAcai.Infrastructure.Azure.AiInference;
 using ContosoAcai.Infrastructure.Azure.DocumentIntelligence;
+using ContosoAcai.Infrastructure.Azure.Speech;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
@@ -11,4 +12,5 @@ public partial class OrderService(
     IConfiguration configuration,
     DocumentIntelligenceService documentIntelligenceService,
     ILogger<OrderService> logger,
-    AiInferenceService aiInferenceService);
+    AiInferenceService aiInferenceService,
+    SpeechService speechService);

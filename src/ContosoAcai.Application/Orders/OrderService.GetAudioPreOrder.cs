@@ -9,21 +9,21 @@ namespace ContosoAcai.Application.Orders;
 
 public partial class OrderService
 {
-    private string InstructionsImage => """
+    private string InstructionsAudio => """
                                    Extract the order information;
                                    """;
     
-    public async Task<ImagePreOrderResult?> GetByIdAsync(GetImagePreOrderQuery query)
+    public async Task<AudioPreOrderResult?> GetByIdAsync(GetAudioPreOrderQuery query)
     {
-        var imagePreOrder = await context.ImagePreOrders
+        var audioPreOrder = await context.AudioPreOrders
             .FirstOrDefaultAsync(x => x.Id == query.Id);
 
-        if (imagePreOrder is null)
+        if (audioPreOrder is null)
         {
             return null;
         }
         
-        var result = (ImagePreOrderResult)imagePreOrder;
+        var result = (AudioPreOrderResult)audioPreOrder;
 
         if (!query.ApplyAiTransformation) return result;
         
@@ -32,8 +32,8 @@ public partial class OrderService
                 configuration["AI:Inference:Endpoint"]!,
                 configuration["AI:Inference:Key"]!),
             configuration["AI:Inference:Model"]!,
-            InstructionsImage,
-            string.Join("\n", imagePreOrder.KeyValuePairs));
+            InstructionsAudio,
+            audioPreOrder.Content);
             
         result.AiTransformedOrder = inferenceResult;
 

@@ -7,8 +7,8 @@ namespace ContosoAcai.Web.Controllers.Orders;
 
 public partial class OrdersController
 {
-    [HttpPost("/api/pre-order/image")]
-    public async Task<IActionResult> CreateImagePreOrder(
+    [HttpPost("/api/pre-order/audio")]
+    public async Task<IActionResult> CreateAudioPreOrder(
         [FromForm] IFormFile file,
         [FromForm] string userEmail,
         [FromServices] OrderService service)
@@ -17,7 +17,7 @@ public partial class OrdersController
         var extension = Path.GetExtension(file.FileName);
         await using var stream = file.OpenReadStream();
         
-        return (await service.CreateAsync(new CreateImagePreOrdersRequest(
+        return (await service.CreateAsync(new CreateAudioPreOrdersRequest(
                 userEmail,
                 fileNameWithoutExtension,
                 extension,

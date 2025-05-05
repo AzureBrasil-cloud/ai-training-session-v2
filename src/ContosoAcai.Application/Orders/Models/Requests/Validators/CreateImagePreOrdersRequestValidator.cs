@@ -9,9 +9,9 @@ public class CreateImagePreOrdersRequestValidator : AbstractValidator<CreateImag
     {
         RuleFor(x => x.UserEmail)
             .Must(x => !string.IsNullOrWhiteSpace(x))
-            .WithErrorCode(Errors.NotBeNullOrEmpty(nameof(CreateOrdersRequest.UserEmail)).Code.ToString())
-            .WithMessage(Errors.NotBeNullOrEmpty(nameof(CreateOrdersRequest.UserEmail)).RawMessage)
-            .WithState(x => Errors.NotBeNullOrEmpty(nameof(CreateOrdersRequest.UserEmail)).Args);
+            .WithErrorCode(Errors.NotBeNullOrEmpty(nameof(CreateImagePreOrdersRequest.UserEmail)).Code.ToString())
+            .WithMessage(Errors.NotBeNullOrEmpty(nameof(CreateImagePreOrdersRequest.UserEmail)).RawMessage)
+            .WithState(x => Errors.NotBeNullOrEmpty(nameof(CreateImagePreOrdersRequest.UserEmail)).Args);
         
         RuleFor(x => x.Name)
             .Must(x => !string.IsNullOrWhiteSpace(x))

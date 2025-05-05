@@ -8,12 +8,12 @@ namespace ContosoAcai.Web.Controllers.Orders;
 
 public partial class OrdersController
 {
-    [HttpGet("/api/pre-order/image/{id}")]
-    public async Task<IActionResult> GetImagePreOrder(
+    [HttpGet("/api/pre-order/audio/{id}")]
+    public async Task<IActionResult> GetAudioPreOrder(
         Guid id,
         bool applyAiTransformation,
         [FromServices] OrderService service)
     {
-        return (await service.GetByIdAsync(new GetImagePreOrderQuery(id, applyAiTransformation))).ToApiResponse();
+        return (await service.GetByIdAsync(new GetAudioPreOrderQuery(id, applyAiTransformation))).ToApiResponse();
     }
 }

@@ -2,10 +2,15 @@ namespace ContosoAcai.Common;
 
 public static class StringUtils
 {
-    private static readonly HashSet<string> AllowedExtensions = new(StringComparer.OrdinalIgnoreCase)
+    private static readonly HashSet<string> AllowedImageExtensions = new(StringComparer.OrdinalIgnoreCase)
     {
         ".png",
         ".jpg"
+    };
+    
+    private static readonly HashSet<string> AllowedAudioExtensions = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ".mp3"
     };
     
     public static string NormalizeEmail(this string email)
@@ -43,6 +48,11 @@ public static class StringUtils
     
     public static bool IsValidFileExtension(this string extension)
     {
-        return !string.IsNullOrWhiteSpace(extension) && AllowedExtensions.Contains(extension);
+        return !string.IsNullOrWhiteSpace(extension) && AllowedImageExtensions.Contains(extension);
+    }
+    
+    public static bool IsValidAudioExtension(this string extension)
+    {
+        return !string.IsNullOrWhiteSpace(extension) && AllowedAudioExtensions.Contains(extension);
     }
 }
