@@ -23,6 +23,8 @@ public partial class AiAgentService
             MessageRole.User,
             userMessage);
 
+        var agent = await client.GetAgentAsync(agentId);
+
         Response<ThreadRun> runResponse = await client.CreateRunAsync(
             threadId,
             agentId,
@@ -32,6 +34,18 @@ public partial class AiAgentService
         {
             await Task.Delay(TimeSpan.FromMilliseconds(500));
             runResponse = await client.GetRunAsync(threadId, runResponse.Value.Id);
+            
+            if (runResponse.Value.Status == RunStatus.RequiresAction
+                && runResponse.Value.RequiredAction is SubmitToolOutputsAction submitToolOutputsAction)
+            {
+                List<ToolOutput> toolOutputs = new();
+                foreach (RequiredToolCall toolCall in submitToolOutputsAction.ToolCalls)
+                {
+                    toolOutputs.Add(await GetResolvedToolOutputAsync(toolCall));
+                }
+                runResponse = await client.SubmitToolOutputsToRunAsync(runResponse.Value, toolOutputs);
+            }
+            
         } while (runResponse.Value.Status == RunStatus.Queued || runResponse.Value.Status == RunStatus.InProgress);
 
         if (runResponse.Value.Status == RunStatus.Failed)

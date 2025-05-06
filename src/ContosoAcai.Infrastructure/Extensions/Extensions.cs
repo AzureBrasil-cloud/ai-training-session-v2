@@ -18,7 +18,8 @@ public static class Extensions
         services.AddScoped<DocumentIntelligenceService>();
         services.AddScoped<AiInferenceService>();
         services.AddScoped<SpeechService>();
-        services.AddScoped<EmailService>();
+        services.AddSingleton<EmailService>(x => new EmailService(configuration["Email:Secret"]!, configuration["Email:SenderEmail"]!));
+        
         return services;
     }
 }

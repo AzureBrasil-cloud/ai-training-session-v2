@@ -3,19 +3,17 @@ using SendGrid.Helpers.Mail;
 
 namespace ContosoAcai.Infrastructure.Email;
 
-public class EmailService()
+public class EmailService(string secret, string senderEmail)
 {
-    public async Task SendAsync(
-        string secret,
-        string senderEmail,
-        string receiverEmail,
+    public async Task<string> SendAsync(
+        string receiver,
         string subject, 
         string body)
     {
         var client = new SendGridClient(secret);
         var from = new EmailAddress(senderEmail, senderEmail);
         
-        var to = new EmailAddress(receiverEmail, receiverEmail);
+        var to = new EmailAddress(receiver, receiver);
 
         var msg = MailHelper.CreateSingleEmailToMultipleRecipients(
             from, 
@@ -29,7 +27,9 @@ public class EmailService()
 
         if (!result.IsSuccessStatusCode)
         {
-            throw new Exception($"Unable to send a email. Status: {result.StatusCode}. Content: {bodyContent}");
+            return $"Unable to send a email. Status: {result.StatusCode}. Content: {bodyContent}";
         }
+        
+        return $"Email sent successfully to {receiver}. Status: {result.StatusCode}. Content: {bodyContent}";
     }
 }

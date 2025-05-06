@@ -32,10 +32,7 @@ public partial class AgentService
         
         if (agentType == AgentType.Sales)
         {
-            // var salesFile = await UploadFileAsync("Sales.txt", Constants.ConstosoAcaiDocument);
-            // var vectorStore = await CreateVectorStoreAsync(salesFile.Id);
-            //
-            // tools.Add(new DocumentTool(vectorStore.Id));
+            tools.Add(new EmailTool());
         }
         
         await aiAgentService.AddAgentToolsAsync(

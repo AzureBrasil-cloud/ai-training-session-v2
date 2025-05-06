@@ -19,7 +19,7 @@ public partial class AiAgentService
             toolDefinitions,
             toolResources);
         
-        (toolDefinitions, toolResources) = AddAzureFunctionsTools(
+        (toolDefinitions, toolResources) = AddEmailTools(
             tools,
             toolDefinitions,
             toolResources);
@@ -30,42 +30,40 @@ public partial class AiAgentService
             toolResources: toolResources);
     }
 
-    private (List<ToolDefinition> toolDefinitions, ToolResources toolResources) AddAzureFunctionsTools(
+    private (List<ToolDefinition> toolDefinitions, ToolResources toolResources) AddEmailTools(
         IList<ITool> tools, 
         List<ToolDefinition> toolDefinitions, 
         ToolResources toolResources)
     {
-        var azureFunctionTools = tools
-            .OfType<AzureFunctionTool>()
+        var emailTools = tools
+            .OfType<EmailTool>()
             .ToList();
         
-        if (azureFunctionTools.Count == 0)
+        if (emailTools.Count == 0)
         {
             return (toolDefinitions, toolResources);
         }
         
-        if (azureFunctionTools.Count > 1)
+        if (emailTools.Count > 1)
         {
-            throw new ArgumentException("Only one azure function tool is allowed.");
+            throw new ArgumentException("Only one email tool is allowed.");
         }
 
-        var azureFunctionTool = azureFunctionTools.First();
+        var emailTool = emailTools.First();
         
-        var azureFunctionToolDefinition = new AzureFunctionToolDefinition(
-            "SendEmail",
-            "Send an email",
-            new AzureFunctionBinding(new AzureFunctionStorageQueue(azureFunctionTool.StorageAccountConnectionString, azureFunctionTool.InputQueueName)),
-            new AzureFunctionBinding(new AzureFunctionStorageQueue(azureFunctionTool.StorageAccountConnectionString, azureFunctionTool.OutputQueueName)),
-            BinaryData.FromObjectAsJson(
+        FunctionToolDefinition emailToolDefinition = new(
+            name: nameof(EmailTool),
+            description: "Send email to a user",
+            parameters: BinaryData.FromObjectAsJson(
                 new
                 {
                     Type = "object",
                     Properties = new
                     {
-                        Email = new
+                        receiver = new
                         {
                             Type = "string",
-                            Description = "The sender email address",
+                            Description = "The email of the receiver",
                         },
                         Subject = new
                         {
@@ -78,12 +76,11 @@ public partial class AiAgentService
                             Description = "The body of the email",
                         },
                     },
-                    Required = new[] { "email", "subject", "body" },
+                    Required = new[] { "receiver", "Subject", "body"},
                 },
-                new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase })
-            );
+                new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }));
         
-        toolDefinitions.Add(azureFunctionToolDefinition);
+        toolDefinitions.Add(emailToolDefinition);
         
         return (toolDefinitions, toolResources);
     }
