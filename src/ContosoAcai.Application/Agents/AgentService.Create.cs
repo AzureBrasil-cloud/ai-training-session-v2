@@ -1,7 +1,6 @@
 using ContosoAcai.Application.Agents.Models.Requests;
 using ContosoAcai.Application.Agents.Models.Results;
 using ContosoAcai.Infrastructure.Azure.AIAgent.Models;
-using ContosoAcai.Infrastructure.Azure.Shared;
 using PowerPilotChat.Application;
 using File = ContosoAcai.Infrastructure.Azure.AIAgent.Models.File;
 
@@ -20,24 +19,27 @@ public partial class AgentService
 
     private async Task AddToolsAsync(string agentId, AgentType agentType)
     {
-        IList<ITool> tools = new List<ITool>();
+        var tools = new List<ITool>();
         
-        if (agentType == AgentType.Guide)
+        switch (agentType)
         {
-            var guideFile = await UploadFileAsync("Guide.txt", Constants.ConstosoAcaiDocument);
-            var vectorStore = await CreateVectorStoreAsync(guideFile.Id);
+            case AgentType.Guide:
+            {
+                var guideFile = await UploadFileAsync("Guide.txt", Constants.ConstosoAcaiDocument);
+                var vectorStore = await CreateVectorStoreAsync(guideFile.Id);
         
-            tools.Add(new DocumentTool(vectorStore.Id));
+                tools.Add(new DocumentTool(vectorStore.Id));
+                break;
+            }
+            case AgentType.Sales:
+                
+                tools.Add(new AzureFunctionTool(
+                    configuration["AI:Agent:StorageConnectionString"]!,
+                    configuration["AI:Agent:InputQueueName"]!,
+                    configuration["AI:Agent:OutputQueueName"]!));
+                break;
         }
-        
-        if (agentType == AgentType.Sales)
-        {
-            // var salesFile = await UploadFileAsync("Sales.txt", Constants.ConstosoAcaiDocument);
-            // var vectorStore = await CreateVectorStoreAsync(salesFile.Id);
-            //
-            // tools.Add(new DocumentTool(vectorStore.Id));
-        }
-        
+
         await aiAgentService.AddAgentToolsAsync(
             CreateCredentials(),
             agentId, 

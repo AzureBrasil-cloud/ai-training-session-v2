@@ -9,6 +9,7 @@ public partial class AiAgentService
 {
     public virtual async Task AddAgentToolsAsync(Credentials credentials, string agentId, IList<ITool> tools)
     {
+        return;
         var client = CreateAgentsClient(credentials);
         
         var toolDefinitions = new List<ToolDefinition>();

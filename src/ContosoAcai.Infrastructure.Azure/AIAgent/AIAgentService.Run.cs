@@ -30,9 +30,18 @@ public partial class AiAgentService
 
         do
         {
-            await Task.Delay(TimeSpan.FromMilliseconds(500));
-            runResponse = await client.GetRunAsync(threadId, runResponse.Value.Id);
-        } while (runResponse.Value.Status == RunStatus.Queued || runResponse.Value.Status == RunStatus.InProgress);
+            try
+            {
+                await Task.Delay(TimeSpan.FromMilliseconds(500));
+                runResponse = await client.GetRunAsync(threadId, runResponse.Value.Id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        } while (runResponse.Value.Status == RunStatus.Queued || 
+                 runResponse.Value.Status == RunStatus.InProgress ||
+                 runResponse.Value.Status == RunStatus.RequiresAction);
 
         if (runResponse.Value.Status == RunStatus.Failed)
         {

@@ -13,7 +13,7 @@ public static class Constants
                                                 """;
 
     public const string SalesAgentInstructions = """
-
+                                                You are a helpful assistant
                                                 """;
     
     public const string ConstosoAcaiDocument = """
