@@ -1,9 +1,9 @@
 using ContosoAcai.Application.Agents.Models.Requests;
 using ContosoAcai.Application.Agents.Models.Results;
-using ContosoAcai.Infrastructure.Azure.AIAgent.Models;
+using ContosoAcai.Infrastructure.AIAgent.Models;
 using ContosoAcai.Infrastructure.Azure.Shared;
 using PowerPilotChat.Application;
-using File = ContosoAcai.Infrastructure.Azure.AIAgent.Models.File;
+using File = ContosoAcai.Infrastructure.AIAgent.Models.File;
 
 namespace ContosoAcai.Application.Agents;
 

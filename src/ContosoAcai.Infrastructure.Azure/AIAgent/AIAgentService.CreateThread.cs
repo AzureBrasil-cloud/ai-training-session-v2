@@ -1,7 +1,7 @@
 using ContosoAcai.Infrastructure.Azure.Shared;
-using Thread = ContosoAcai.Infrastructure.Azure.AIAgent.Models.Thread;
+using Thread = ContosoAcai.Infrastructure.AIAgent.Models.Thread;
 
-namespace ContosoAcai.Infrastructure.Azure.AIAgent;
+namespace ContosoAcai.Infrastructure.AIAgent;
 
 public partial class AiAgentService
 {

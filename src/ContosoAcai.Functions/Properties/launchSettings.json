@@ -1,9 +1,0 @@
-{
-  "profiles": {
-    "EscritorioVirtual.Apps.Functions": {
-      "commandName": "Project",
-      "commandLineArgs": "--port 7129",
-      "launchBrowser": false
-    }
-  }
-}

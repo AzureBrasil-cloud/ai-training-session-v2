@@ -1,6 +1,6 @@
 using ContosoAcai.Infrastructure.Azure.Shared;
 
-namespace ContosoAcai.Infrastructure.Azure.AIAgent;
+namespace ContosoAcai.Infrastructure.AIAgent;
 
 public partial class AiAgentService
 {

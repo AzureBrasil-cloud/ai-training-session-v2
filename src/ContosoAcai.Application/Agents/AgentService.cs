@@ -1,8 +1,8 @@
 using ContosoAcai.Data;
-using ContosoAcai.Infrastructure.Azure.AIAgent;
 using ContosoAcai.Infrastructure.Azure.Shared;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using AiAgentService = ContosoAcai.Infrastructure.AIAgent.AiAgentService;
 
 namespace ContosoAcai.Application.Agents;
 

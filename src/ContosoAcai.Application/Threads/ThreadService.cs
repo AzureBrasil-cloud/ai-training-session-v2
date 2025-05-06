@@ -1,6 +1,6 @@
 using ContosoAcai.Data;
-using ContosoAcai.Infrastructure.Azure.AIAgent;
 using Microsoft.Extensions.Configuration;
+using AiAgentService = ContosoAcai.Infrastructure.AIAgent.AiAgentService;
 
 namespace ContosoAcai.Application.Threads;
 

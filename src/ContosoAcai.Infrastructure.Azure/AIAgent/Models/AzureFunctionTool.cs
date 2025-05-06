@@ -1,4 +1,4 @@
-namespace ContosoAcai.Infrastructure.Azure.AIAgent.Models;
+namespace ContosoAcai.Infrastructure.AIAgent.Models;
 
 public record AzureFunctionTool(
     string StorageAccountConnectionString,

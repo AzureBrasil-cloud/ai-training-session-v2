@@ -1,3 +1,3 @@
-namespace ContosoAcai.Infrastructure.Azure.AIAgent.Models;
+namespace ContosoAcai.Infrastructure.AIAgent.Models;
 
 public record Message(string Id, string Role,  string Content);

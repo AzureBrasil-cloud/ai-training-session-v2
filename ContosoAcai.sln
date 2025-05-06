@@ -19,8 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoAcai.Application", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoAcai.Common", "src\ContosoAcai.Common\ContosoAcai.Common.csproj", "{D97FE7E8-58A6-4612-8A2A-FB7D9E508E44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoAcai.Functions", "src\ContosoAcai.Functions\ContosoAcai.Functions.csproj", "{0ED2AD18-C6EC-48D7-85E1-0BFF97418BF8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,10 +45,6 @@ Global
 		{D97FE7E8-58A6-4612-8A2A-FB7D9E508E44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D97FE7E8-58A6-4612-8A2A-FB7D9E508E44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D97FE7E8-58A6-4612-8A2A-FB7D9E508E44}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0ED2AD18-C6EC-48D7-85E1-0BFF97418BF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0ED2AD18-C6EC-48D7-85E1-0BFF97418BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0ED2AD18-C6EC-48D7-85E1-0BFF97418BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0ED2AD18-C6EC-48D7-85E1-0BFF97418BF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +57,5 @@ Global
 		{ACF79746-ADD4-40DC-AFD7-04084A898D62} = {0F70C572-AADB-4DCA-8A9E-269687D73FCA}
 		{D97FE7E8-58A6-4612-8A2A-FB7D9E508E44} = {0F70C572-AADB-4DCA-8A9E-269687D73FCA}
 		{0F70C572-AADB-4DCA-8A9E-269687D73FCA} = {1280BA7A-E6F6-435C-8BED-109EE5808A40}
-		{0ED2AD18-C6EC-48D7-85E1-0BFF97418BF8} = {1280BA7A-E6F6-435C-8BED-109EE5808A40}
 	EndGlobalSection
 EndGlobal

@@ -1,8 +1,8 @@
 using Azure.AI.Projects;
 using ContosoAcai.Infrastructure.Azure.Shared;
-using File = ContosoAcai.Infrastructure.Azure.AIAgent.Models.File;
+using File = ContosoAcai.Infrastructure.AIAgent.Models.File;
 
-namespace ContosoAcai.Infrastructure.Azure.AIAgent;
+namespace ContosoAcai.Infrastructure.AIAgent;
 
 public partial class AiAgentService
 {

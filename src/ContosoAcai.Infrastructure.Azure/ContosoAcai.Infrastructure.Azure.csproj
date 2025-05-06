@@ -4,8 +4,8 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AssemblyName>ContosoAcai.Infrastructure.Azure</AssemblyName>
-        <RootNamespace>ContosoAcai.Infrastructure.Azure</RootNamespace>
+        <AssemblyName>ContosoAcai.Infrastructure</AssemblyName>
+        <RootNamespace>ContosoAcai.Infrastructure</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

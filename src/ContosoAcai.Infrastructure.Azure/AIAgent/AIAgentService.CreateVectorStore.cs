@@ -1,8 +1,8 @@
 using Azure.AI.Projects;
 using ContosoAcai.Infrastructure.Azure.Shared;
-using VectorStore = ContosoAcai.Infrastructure.Azure.AIAgent.Models.VectorStore;
+using VectorStore = ContosoAcai.Infrastructure.AIAgent.Models.VectorStore;
 
-namespace ContosoAcai.Infrastructure.Azure.AIAgent;
+namespace ContosoAcai.Infrastructure.AIAgent;
 
 public partial class AiAgentService
 {
