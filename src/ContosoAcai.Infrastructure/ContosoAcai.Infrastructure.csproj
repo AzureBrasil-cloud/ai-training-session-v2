@@ -21,6 +21,7 @@
       <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.4" />
       <PackageReference Include="Newtonsoft.Json.Schema" Version="4.0.1" />
       <PackageReference Include="NSubstitute" Version="5.3.0" />
+      <PackageReference Include="SendGrid" Version="9.29.3" />
     </ItemGroup>
 
     <ItemGroup>

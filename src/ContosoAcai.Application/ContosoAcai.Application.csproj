@@ -14,6 +14,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ContosoAcai.Data\ContosoAcai.Data.csproj" />
-      <ProjectReference Include="..\ContosoAcai.Infrastructure.Azure\ContosoAcai.Infrastructure.Azure.csproj" />
+      <ProjectReference Include="..\ContosoAcai.Infrastructure\ContosoAcai.Infrastructure.csproj" />
     </ItemGroup>
 </Project>

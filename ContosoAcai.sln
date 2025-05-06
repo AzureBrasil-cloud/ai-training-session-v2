@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{0F70C5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{9F7CA864-8D8E-4107-A495-EBF200B9DC4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoAcai.Infrastructure.Azure", "src\ContosoAcai.Infrastructure.Azure\ContosoAcai.Infrastructure.Azure.csproj", "{FAEC75AA-9A40-431E-B217-5B3F825AF862}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoAcai.Infrastructure", "src\ContosoAcai.Infrastructure\ContosoAcai.Infrastructure.csproj", "{FAEC75AA-9A40-431E-B217-5B3F825AF862}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{1280BA7A-E6F6-435C-8BED-109EE5808A40}"
 EndProject

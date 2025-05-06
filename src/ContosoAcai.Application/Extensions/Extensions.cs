@@ -2,7 +2,7 @@ using ContosoAcai.Application.Agents;
 using ContosoAcai.Application.Orders;
 using ContosoAcai.Application.Threads;
 using ContosoAcai.Data.Extensions;
-using ContosoAcai.Infrastructure.Azure.Extensions;
+using ContosoAcai.Infrastructure.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
