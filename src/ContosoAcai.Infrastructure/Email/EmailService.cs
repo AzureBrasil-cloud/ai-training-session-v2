@@ -27,9 +27,9 @@ public class EmailService(string secret, string senderEmail)
 
         if (!result.IsSuccessStatusCode)
         {
-            return $"Unable to send a email. Status: {result.StatusCode}. Content: {bodyContent}";
+            return $"Unable to send a email. Status: {result.StatusCode}";
         }
         
-        return $"Email sent successfully to {receiver}. Status: {result.StatusCode}. Content: {bodyContent}";
+        return $"Email sent successfully to {receiver}. Status: {result.StatusCode}";
     }
 }

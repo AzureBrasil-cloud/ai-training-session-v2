@@ -1,7 +1,10 @@
+using System.Globalization;
+using System.Text;
 using ContosoAcai.Application.Agents.Models.Requests;
 using ContosoAcai.Application.Agents.Models.Results;
 using ContosoAcai.Infrastructure.AIAgent.Models;
 using ContosoAcai.Infrastructure.Azure.Shared;
+using Microsoft.EntityFrameworkCore;
 using PowerPilotChat.Application;
 using File = ContosoAcai.Infrastructure.AIAgent.Models.File;
 
@@ -64,7 +67,27 @@ public partial class AgentService
         return await aiAgentService.CreateAgentAsync(
             CreateCredentials(),
             $"agent-{Guid.NewGuid()}",
-            request.Type == AgentType.Guide ? Constants.GuideAgentInstructions : Constants.SalesAgentInstructions,
+            request.Type == AgentType.Guide ? 
+                Constants.GuideAgentInstructions : 
+                await GetSalesInstructionsAsync(),
             configuration["AI:Agent:Model"]!);
+    }
+
+    private async Task<string> GetSalesInstructionsAsync()
+    {
+        var instructions = Constants.SalesAgentInstructions;
+
+        var orders = await context.Orders.ToListAsync();
+
+        var data = new StringBuilder();
+        foreach (var order in orders)
+        {
+            var extras = string.Join(',', order.Extras);
+            data.AppendLine($"{order.Id};{order.CreatedAt.ToString(CultureInfo.InvariantCulture)};{order.UserEmail};{order.Size.ToString()};{extras};{order.TotalValue};");
+        }
+
+        return instructions
+            .Replace("{data}", data.ToString())
+            .Replace("{date}", DateTime.UtcNow.Date.ToString(CultureInfo.InvariantCulture));
     }
 }
