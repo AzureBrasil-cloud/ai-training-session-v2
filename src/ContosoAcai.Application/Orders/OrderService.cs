@@ -1,9 +1,9 @@
 using ContosoAcai.Data;
-using ContosoAcai.Infrastructure.Azure.AiInference;
 using ContosoAcai.Infrastructure.Azure.DocumentIntelligence;
 using ContosoAcai.Infrastructure.Azure.Speech;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using AiInferenceService = ContosoAcai.Infrastructure.AiInference.AiInferenceService;
 
 namespace ContosoAcai.Application.Orders;
 

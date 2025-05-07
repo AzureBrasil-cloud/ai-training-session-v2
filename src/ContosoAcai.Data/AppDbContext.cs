@@ -7,8 +7,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 {
     public DbSet<Order> Orders { get; set; } = null!;
     public DbSet<ImagePreOrder> ImagePreOrders { get; set; } = null!;
-    
     public DbSet<AudioPreOrder> AudioPreOrders { get; set; } = null!;
+    public DbSet<Review> Reviews { get; set; } = null!;
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

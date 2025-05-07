@@ -1,10 +1,10 @@
-using ContosoAcai.Infrastructure.Azure.AiInference;
 using ContosoAcai.Infrastructure.Azure.DocumentIntelligence;
 using ContosoAcai.Infrastructure.Azure.Speech;
 using ContosoAcai.Infrastructure.Email;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AiAgentService = ContosoAcai.Infrastructure.AIAgent.AiAgentService;
+using AiInferenceService = ContosoAcai.Infrastructure.AiInference.AiInferenceService;
 
 namespace ContosoAcai.Infrastructure.Extensions;
 

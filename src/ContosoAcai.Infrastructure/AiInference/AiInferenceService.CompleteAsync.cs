@@ -3,10 +3,31 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Schema.Generation;
 using OpenAI.Chat;
 
-namespace ContosoAcai.Infrastructure.Azure.AiInference;
+namespace ContosoAcai.Infrastructure.AiInference;
 
 public partial class AiInferenceService
 {
+    public virtual async Task<string> CompleteAsync(
+        ApiKeyCredentials credentials,
+        string model,
+        string instructions,
+        string content)
+    {
+        var openAiClient = CreateClient(credentials);
+      
+        var client = openAiClient.GetChatClient(model);
+        
+        var chat = new List<ChatMessage>()
+        {
+            new SystemChatMessage(instructions),
+            new UserChatMessage(content)
+        };
+                
+        var result = await client.CompleteChatAsync(chat);
+
+        return result.Value.Content[0].Text;
+    }
+
     public virtual async Task<T> CompleteAsync<T>(
         ApiKeyCredentials credentials,
         string model,

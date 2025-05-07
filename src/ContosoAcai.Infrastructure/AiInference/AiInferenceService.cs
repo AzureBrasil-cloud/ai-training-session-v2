@@ -1,9 +1,8 @@
 using Azure;
-using Azure.AI.Inference;
 using Azure.AI.OpenAI;
 using ContosoAcai.Infrastructure.Azure.Shared;
 
-namespace ContosoAcai.Infrastructure.Azure.AiInference;
+namespace ContosoAcai.Infrastructure.AiInference;
 
 public partial class AiInferenceService
 {
