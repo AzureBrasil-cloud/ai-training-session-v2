@@ -63,6 +63,12 @@ public partial class ReviewService
                                         User: Melhor açaí que já experimentei, super cremoso.
                                         Assistant: 5
                                         
+                                        User: Eu não gostei
+                                        Assistant: 2
+                                        
+                                        User: Achei muito ruim!
+                                        Assistant: 1
+                                        
                                         User: Gostou do jogo ontem?
                                         Assistant: 6
                                         """;
