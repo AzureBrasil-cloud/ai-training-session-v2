@@ -47,7 +47,7 @@ function getSizeLabel(size: number): string {
 }
 
 async function fetchData(page: number = 1) {
-  const response = await axios.get<Order[]>(`/api/orders/${email}`);
+  const response = await axios.get<Order[]>(`/api/orders?userEmail=${email}`);
   _data.value = response.data;
 }
 

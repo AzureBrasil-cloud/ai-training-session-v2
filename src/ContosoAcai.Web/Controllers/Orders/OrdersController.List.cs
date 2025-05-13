@@ -8,7 +8,7 @@ namespace ContosoAcai.Web.Controllers.Orders;
 
 public partial class OrdersController
 {
-    [HttpGet("/api/orders/{userEmail}")]
+    [HttpGet("/api/orders")]
     public async Task<IActionResult> Create(
         string userEmail,
         [FromServices] OrderService service)
