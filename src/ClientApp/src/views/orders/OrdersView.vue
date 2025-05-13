@@ -78,14 +78,14 @@ async function save() {
 </script>
 
 <template>
-  <div class="row g-6 align-items-end justify-content-between">
+  <div class="row g-6 p-4 align-items-end justify-content-between">
     <div class="col">
       <h4 class="fw-semibold mb-1">Modelos</h4>
     </div>
     <div class="col-12 col-sm-auto">
       <div class="hstack gap-2">
         <button type="button" class="btn btn-sm btn-primary" @click="openCreate">
-          Criar
+          Criar <i class="bi bi-plus-square p-1"></i>
         </button>
       </div>
     </div>
@@ -97,10 +97,10 @@ async function save() {
     <table class="table table-hover table-nowrap">
       <thead class="table-light text-start">
       <tr>
-        <th scope="col">Data</th>
-        <th scope="col">Valor</th>
-        <th scope="col">Tamanho</th>
-        <th scope="col">Extras</th>
+        <th scope="col" style="width: 25%;">Data</th>
+        <th scope="col" style="width: 20%;">Valor</th>
+        <th scope="col" style="width: 20%;">Tamanho</th>
+        <th scope="col" style="width: 35%;">Extras</th>
       </tr>
       </thead>
       <tbody>
@@ -110,7 +110,13 @@ async function save() {
         <td>{{ getSizeLabel(a.size) }}</td>
         <td>
           <ul class="mb-0 ps-3">
-            <li v-for="extra in a.extras" :key="extra">{{ extra }}</li>
+            <li
+              v-for="extra in a.extras"
+              :key="extra"
+              class="text-white px-3 m-1 rounded-pill d-inline-block" style="background-color: #531A54;"
+            >
+              {{ extra }}
+            </li>
           </ul>
         </td>
       </tr>
@@ -119,7 +125,7 @@ async function save() {
   </div>
 
   <Offcanvas name="order" :title="isEditMode ? 'Editar Pedido' : 'Novo Pedido'">
-    <div class="row g-5">
+    <div class="row g-5" >
 
       <!-- Valores informativos -->
       <div class="col-md-12">
@@ -167,7 +173,7 @@ async function save() {
 
       <!-- Valor total -->
       <div class="col-md-12">
-        <div class="alert alert-secondary mt-3" role="alert">
+        <div class="alert mt-3" role="alert">
           Valor estimado do pedido: <strong>${{ totalPrice.toFixed(2) }}</strong>
         </div>
       </div>
