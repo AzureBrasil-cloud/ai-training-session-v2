@@ -18,7 +18,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div v-if="userRole" class="offcanvas-lg offcanvas-start w-rem-80 w-lg-auto border-end-lg" data-bs-scroll="true"
+  <div class="offcanvas-lg offcanvas-start w-rem-80 w-lg-auto border-end-lg" data-bs-scroll="true"
        tabindex="-1"
        id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
     <nav
