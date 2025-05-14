@@ -109,6 +109,7 @@ async function save() {
       <thead class="table-light text-start">
       <tr>
         <th scope="col" style="width: 25%;">Data</th>
+        <th scope="col" style="width: 25%;">Usuário</th>
         <th scope="col" style="width: 20%;">Valor</th>
         <th scope="col" style="width: 20%;">Tamanho</th>
         <th scope="col" style="width: 35%;">Extras</th>
@@ -117,6 +118,7 @@ async function save() {
       <tbody>
       <tr class="text-start" v-for="a in _data" :key="a.id">
         <td><span v-date="a.createdAt"></span></td>
+        <td><span v-date="a.userEmail"></span></td>
         <td><span v-money="a.totalValue"></span></td>
         <td>{{ getSizeLabel(a.size) }}</td>
         <td>

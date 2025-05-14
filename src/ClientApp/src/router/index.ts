@@ -43,6 +43,18 @@ const router = createRouter({
       name: 'orders-chat',
       component: () => import('../views/ordersChat/ordersChatView.vue'),
       meta: { requiresAuth: true }
+    },
+    {
+      path: '/send-image-pre-order',
+      name: 'send-image-pre-order',
+      component: () => import('../views/orders/sendImagePreOrderView.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/image-pre-orders',
+      name: 'image-pre-orders',
+      component: () => import('../views/orders/ImagePreOrderView.vue'),
+      meta: { requiresAuth: true }
     }
   ],
 })

@@ -45,24 +45,6 @@ const handleLogout = () => {
           <span class="d-block text-heading fw-semibold">{{ userEmail }}</span>
         </div>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">
-          <i class="bi bi-house me-3"></i>Home
-        </a>
-        <a class="dropdown-item" href="#">
-          <i class="bi bi-pencil me-3"></i>Edit profile
-        </a>
-        <div class="dropdown-divider"></div>
-        <RouterLink to="/settings/projects" class="dropdown-item">
-          <i class="bi bi-gear me-3"></i>
-          <span>Settings</span>
-        </RouterLink>
-        <a class="dropdown-item" href="#">
-          <i class="bi bi-image me-3"></i>Media
-        </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="">
-          <i class="bi bi-chevron-expand me-3"></i>Trocar Conta
-        </a>
         <a @click="handleLogout" class="dropdown-item">
           <i class="bi bi-person me-3"></i>Sair
         </a>
