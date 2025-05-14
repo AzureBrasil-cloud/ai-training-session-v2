@@ -62,6 +62,10 @@ import RecentChats from '../sidebar/RecentChats.vue';
                   <i class="bi bi-chat-square-dots px-4"></i>
                   <span>Todos os pedidos</span>
                 </RouterLink>
+                <RouterLink to="/send-image-pre-order" class="dropdown-item">
+                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <span>Enviar pré-pedido via imagem</span>
+                </RouterLink>
                 <RouterLink to="/orders-chat" class="dropdown-item">
                   <i class="bi bi-chat-square-dots px-4"></i>
                   <span>Assistente de pedidos</span>

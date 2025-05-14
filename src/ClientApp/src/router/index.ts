@@ -24,6 +24,11 @@ const router = createRouter({
       path: '/orders-chat',
       name: 'orders-chat',
       component: () => import('../views/ordersChat/ordersChatView.vue'),
+    },
+    {
+      path: '/send-image-pre-order',
+      name: 'send-image-pre-order',
+      component: () => import('../views/orders/sendImagePreOrderView.vue'),
     }
   ],
 })
