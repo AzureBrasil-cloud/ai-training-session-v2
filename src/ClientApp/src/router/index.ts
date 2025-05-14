@@ -20,6 +20,16 @@ const router = createRouter({
       path: "/sign-in",
       name: "signin",
       component: SignInView
+    },
+    {
+      path: '/info-chat',
+      name: 'info-chat',
+      component: () => import('../views/infoChat/infoChatView.vue'),
+    },
+    {
+      path: '/orders-chat',
+      name: 'orders-chat',
+      component: () => import('../views/ordersChat/ordersChatView.vue'),
     }
   ],
 })
