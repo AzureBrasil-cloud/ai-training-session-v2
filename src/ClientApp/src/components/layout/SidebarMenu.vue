@@ -58,6 +58,10 @@ onBeforeMount(() => {
                   <i class="bi bi-chat-square-dots px-4"></i>
                   <span>Pré-pedido (imagem) </span>
                 </RouterLink>
+                <RouterLink to="/send-audio-pre-order" class="dropdown-item">
+                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <span>Pré-pedido (áudio) </span>
+                </RouterLink>
                 <RouterLink to="/info-chat" class="dropdown-item">
                   <i class="bi bi-chat-square-dots px-4"></i>
                   <span>Assistente de informações</span>
@@ -78,13 +82,17 @@ onBeforeMount(() => {
                   <i class="bi bi-chat-square-dots px-4"></i>
                   <span>Todos os pedidos</span>
                 </RouterLink>
-                <RouterLink to="/orders-chat" class="dropdown-item">
-                  <i class="bi bi-chat-square-dots px-4"></i>
-                  <span>Assistente de pedidos</span>
-                </RouterLink>
                 <RouterLink to="/image-pre-orders" class="dropdown-item">
                   <i class="bi bi-chat-square-dots px-4"></i>
                   <span>Pré-pedidos (imagem)</span>
+                </RouterLink>
+                <RouterLink to="/audio-pre-orders" class="dropdown-item">
+                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <span>Pré-pedidos (áudio)</span>
+                </RouterLink>
+                <RouterLink to="/orders-chat" class="dropdown-item">
+                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <span>Assistente de pedidos</span>
                 </RouterLink>
               </li>
             </ul>

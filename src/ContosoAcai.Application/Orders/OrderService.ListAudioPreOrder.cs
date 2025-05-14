@@ -5,11 +5,11 @@ namespace ContosoAcai.Application.Orders;
 
 public partial class OrderService
 {
-    public async Task<IList<ImagePreOrderResult>> ListImagePreOrdersAsync()
+    public async Task<IList<AudioPreOrderResult>> ListAudioPreOrder()
     {
-        var imagePreOrders = await context.ImagePreOrders
+        var imagePreOrders = await context.AudioPreOrders
             .ToListAsync();
 
-        return imagePreOrders.Select(x => (ImagePreOrderResult)x).ToList();
+        return imagePreOrders.Select(x => (AudioPreOrderResult)x).ToList();
     }
 }

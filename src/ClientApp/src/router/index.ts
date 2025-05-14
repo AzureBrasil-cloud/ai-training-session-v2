@@ -53,7 +53,19 @@ const router = createRouter({
     {
       path: '/image-pre-orders',
       name: 'image-pre-orders',
-      component: () => import('../views/orders/ImagePreOrderView.vue'),
+      component: () => import('../views/orders/imagePreOrderView.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/send-audio-pre-order',
+      name: 'send-audio-pre-order',
+      component: () => import('../views/orders/sendAudioPreOrderView.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/audio-pre-orders',
+      name: 'audio-pre-orders',
+      component: () => import('../views/orders/audioPreOrderView.vue'),
       meta: { requiresAuth: true }
     }
   ],
