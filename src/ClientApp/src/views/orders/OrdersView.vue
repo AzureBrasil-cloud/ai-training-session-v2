@@ -118,7 +118,7 @@ async function save() {
       <tbody>
       <tr class="text-start" v-for="a in _data" :key="a.id">
         <td><span v-date="a.createdAt"></span></td>
-        <td><span v-date="a.userEmail"></span></td>
+        <td><span v-text="a.userEmail"></span></td>
         <td><span v-money="a.totalValue"></span></td>
         <td>{{ getSizeLabel(a.size) }}</td>
         <td>
