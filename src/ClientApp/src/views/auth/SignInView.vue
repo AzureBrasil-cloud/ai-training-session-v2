@@ -67,7 +67,7 @@
 
       <div class="mt-auto mb-8 w-lg-75">
         <h1 class="ls-tight mb-4">
-          Faça seu pedido com IA
+          Faça seu pedido online!
         </h1>
         <p class="text-body-secondary pe-lg-10">
           E desfrute do melhor açai da cidade

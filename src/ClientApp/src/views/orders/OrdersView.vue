@@ -91,7 +91,7 @@ async function save() {
 <template>
   <div class="row g-6 p-4 align-items-end justify-content-between">
     <div class="col">
-      <h4 class="fw-semibold mb-1">Modelos</h4>
+      <h4 class="fw-semibold mb-1">Pedidos de açaí</h4>
     </div>
     <div class="col-12 col-sm-auto">
       <div class="hstack gap-2">

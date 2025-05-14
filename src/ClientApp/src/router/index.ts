@@ -57,15 +57,27 @@ const router = createRouter({
       meta: { requiresAuth: true }
     },
     {
+      path: '/audio-pre-orders',
+      name: 'audio-pre-orders',
+      component: () => import('../views/orders/audioPreOrderView.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
       path: '/send-audio-pre-order',
       name: 'send-audio-pre-order',
       component: () => import('../views/orders/sendAudioPreOrderView.vue'),
       meta: { requiresAuth: true }
     },
     {
-      path: '/audio-pre-orders',
-      name: 'audio-pre-orders',
-      component: () => import('../views/orders/audioPreOrderView.vue'),
+      path: '/reviews',
+      name: 'reviews',
+      component: () => import('../views/reviews/reviews.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/send-review',
+      name: 'send-review',
+      component: () => import('../views/reviews/sendReview.vue'),
       meta: { requiresAuth: true }
     }
   ],
