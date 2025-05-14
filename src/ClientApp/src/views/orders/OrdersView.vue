@@ -1,19 +1,18 @@
 <script setup lang="ts">
-import {inject, onMounted, ref} from "vue";
+import { inject, onBeforeMount, onMounted, ref } from "vue";
 import axios from 'axios';
-import type {IOffcanvas} from '@/plugins/offcanvas';
+import type { IOffcanvas } from '@/plugins/offcanvas';
 import type {Order} from "@/models/order.ts";
-import {computed} from 'vue'
+import { computed } from 'vue'
 
-const projects = ref<{ id: string; name: string }[]>([]);
 const $offcanvas = inject<IOffcanvas>('$offcanvas');
 const _data = ref<Order[]>();
 const isEditMode = ref(false);
 const selected = ref<string | null>(null);
 const form = ref<Order>();
 
-//todo: get from user store
-const email = "user@user.com";
+let userEmail = ref("");
+let userRole = ref("");
 
 const sizePrices: Record<number, number> = {
   1: 5.00,
@@ -39,35 +38,43 @@ const extrasOptions = [
 
 function getSizeLabel(size: number): string {
   switch (size) {
-    case 1:
-      return 'Pequeno'
-    case 2:
-      return 'Médio'
-    case 3:
-      return 'Grande'
-    default:
-      return 'Desconhecido'
+    case 1: return 'Pequeno'
+    case 2: return 'Médio'
+    case 3: return 'Grande'
+    default: return 'Desconhecido'
   }
 }
 
 async function fetchData(page: number = 1) {
-  const response = await axios.get<Order[]>(`/api/orders/${email}`);
+  const url = userRole.value === "admin"
+    ? "/api/orders"
+    : `/api/orders?userEmail=${userEmail.value}`
+
+  const response = await axios.get<Order[]>(url);
   _data.value = response.data;
 }
+
+onBeforeMount(() => {
+  const loggedUser = JSON.parse(sessionStorage.getItem("loggedUser") || "{}");
+
+  if (loggedUser.hasOwnProperty("email")) {
+    userEmail.value = loggedUser.email;
+    userRole.value = loggedUser.role;
+  }
+});
 
 onMounted(async () => {
   await fetchData();
 });
 
 async function openCreate() {
-  debugger;
   isEditMode.value = false;
   selected.value = null;
   form.value = {
     id: '',
     createdAt: null,
     totalValue: null,
-    userEmail: email,
+    userEmail: userEmail.value,
     size: 1,
     extras: []
   };
@@ -84,26 +91,25 @@ async function save() {
 <template>
   <div class="row g-6 p-4 align-items-end justify-content-between">
     <div class="col">
-      <h4 class="fw-semibold mb-1">Modelos</h4>
+      <h4 class="fw-semibold mb-1">Pedidos de açaí</h4>
     </div>
     <div class="col-12 col-sm-auto">
       <div class="hstack gap-2">
-        <button type="button" class="btn btn-sm
-
-        btn-primary" @click="openCreate">
+        <button type="button" class="btn btn-sm btn-primary" @click="openCreate">
           Criar <i class="bi bi-plus-square p-1"></i>
         </button>
       </div>
     </div>
   </div>
 
-  <hr class="mt-6 mb-0"/>
+  <hr class="mt-6 mb-0" />
 
   <div class="table-responsive">
     <table class="table table-hover table-nowrap">
       <thead class="table-light text-start">
       <tr>
         <th scope="col" style="width: 25%;">Data</th>
+        <th scope="col" style="width: 25%;">Usuário</th>
         <th scope="col" style="width: 20%;">Valor</th>
         <th scope="col" style="width: 20%;">Tamanho</th>
         <th scope="col" style="width: 35%;">Extras</th>
@@ -112,6 +118,7 @@ async function save() {
       <tbody>
       <tr class="text-start" v-for="a in _data" :key="a.id">
         <td><span v-date="a.createdAt"></span></td>
+        <td><span v-text="a.userEmail"></span></td>
         <td><span v-money="a.totalValue"></span></td>
         <td>{{ getSizeLabel(a.size) }}</td>
         <td>

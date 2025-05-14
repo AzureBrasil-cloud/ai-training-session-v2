@@ -1,4 +1,10 @@
 //  the _custom.scss file will be used to add your CSS styles.
+
+* {
+  box-sizing: border-box;
+}
+
 .pointer {
   cursor: pointer;
 }
+

@@ -8,12 +8,9 @@ namespace ContosoAcai.Web.Controllers.Orders;
 
 public partial class OrdersController
 {
-    [HttpGet("/api/orders")]
-    public async Task<IActionResult> Create(
-        string userEmail,
-        [FromServices] OrderService service)
+    [HttpGet("/api/pre-order/image")]
+    public async Task<IActionResult> ListImagePreOrder([FromServices] OrderService service)
     {
-        return (await service.ListByEmail(new ListByEmailQuery(userEmail)))
-            .ToApiResponse();
+        return (await service.ListImagePreOrdersAsync()).ToApiResponse();
     }
 }

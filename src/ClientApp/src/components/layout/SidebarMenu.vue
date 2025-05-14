@@ -3,8 +3,18 @@ import {useOrganizationStore} from '@/stores/organization';
 import UserMenu from './UserMenu.vue';
 import AgentsList from '../sidebar/AgentsList.vue';
 import RecentChats from '../sidebar/RecentChats.vue';
+import { onBeforeMount, ref } from 'vue';
 
 // const $orgStore = useOrganizationStore();
+
+let userRole = ref("");
+
+onBeforeMount(() => {
+  const loggedUser = sessionStorage.getItem("loggedUser");
+
+  userRole.value = loggedUser ? JSON.parse(loggedUser)?.role : "";
+});
+
 </script>
 
 <template>
@@ -31,8 +41,9 @@ import RecentChats from '../sidebar/RecentChats.vue';
             </div>
           </div>
       </div>
+
       <div class="px-4 py-2 flex-fill overflow-y-auto scrollbar">
-        <div class="vstack gap-5 py-5">
+        <div v-if="userRole === 'user'" class="vstack gap-5 py-5">
           <div>
             <div class="d-flex align-items-center px-3 px-lg-0 mb-1">
               <span class="d-block text-xs text-body-secondary fw-semibold me-auto">Usuário</span>
@@ -43,11 +54,28 @@ import RecentChats from '../sidebar/RecentChats.vue';
                   <i class="bi bi-chat-square-dots px-4"></i>
                   <span>Meus pedidos</span>
                 </RouterLink>
+                <RouterLink to="/send-image-pre-order" class="dropdown-item">
+                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <span>Pré-pedido (imagem) </span>
+                </RouterLink>
+                <RouterLink to="/send-audio-pre-order" class="dropdown-item">
+                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <span>Pré-pedido (áudio) </span>
+                </RouterLink>
+                <RouterLink to="/send-review" class="dropdown-item">
+                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <span>Fazer avaliação</span>
+                </RouterLink>
+                <RouterLink to="/info-chat" class="dropdown-item">
+                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <span>Assistente de informações</span>
+                </RouterLink>
               </li>
             </ul>
           </div>
         </div>
-        <div class="vstack gap-5">
+
+        <div v-else-if="userRole === 'admin'" class="vstack gap-5">
           <div>
             <div class="d-flex align-items-center px-3 px-lg-0 mb-1">
               <span class="d-block text-xs text-body-secondary fw-semibold me-auto">Admin</span>
@@ -57,6 +85,22 @@ import RecentChats from '../sidebar/RecentChats.vue';
                 <RouterLink to="/orders" class="dropdown-item">
                   <i class="bi bi-chat-square-dots px-4"></i>
                   <span>Todos os pedidos</span>
+                </RouterLink>
+                <RouterLink to="/image-pre-orders" class="dropdown-item">
+                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <span>Pré-pedidos (imagem)</span>
+                </RouterLink>
+                <RouterLink to="/audio-pre-orders" class="dropdown-item">
+                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <span>Pré-pedidos (áudio)</span>
+                </RouterLink>
+                <RouterLink to="/reviews" class="dropdown-item">
+                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <span>Avaliações</span>
+                </RouterLink>
+                <RouterLink to="/orders-chat" class="dropdown-item">
+                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <span>Assistente de pedidos</span>
                 </RouterLink>
               </li>
             </ul>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // import { onMounted, onBeforeUnmount, ref } from 'vue';
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import SidebarMenu from './SidebarMenu.vue';
 import MainContent from './MainContent.vue';
 import { useUserStore } from '../../stores/user';
@@ -40,11 +40,14 @@ import { useOrganizationStore } from '@/stores/organization';
 //   eventBus.off('OrgChanged', orgChanged)
 // })
 
+  const routesWithoutSidebar = ["signin"];
+  const route = useRoute();
+
 </script>
 
 <template>
   <div class="d-flex flex-column flex-lg-row h-lg-100 bg-body-tertiary" data-x-type="layout">
-    <SidebarMenu/>
+    <SidebarMenu v-if="!routesWithoutSidebar.includes(route.name)" />
     <MainContent/>
   </div>
 </template>
