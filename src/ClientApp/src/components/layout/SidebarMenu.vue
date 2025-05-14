@@ -3,12 +3,22 @@ import {useOrganizationStore} from '@/stores/organization';
 import UserMenu from './UserMenu.vue';
 import AgentsList from '../sidebar/AgentsList.vue';
 import RecentChats from '../sidebar/RecentChats.vue';
+import { onBeforeMount, ref } from 'vue';
 
 // const $orgStore = useOrganizationStore();
+
+let userRole = ref("");
+
+onBeforeMount(() => {
+  const loggedUser = sessionStorage.getItem("loggedUser");
+
+  userRole.value = loggedUser ? JSON.parse(loggedUser)?.role : "";
+});
+
 </script>
 
 <template>
-  <div class="offcanvas-lg offcanvas-start w-rem-80 w-lg-auto border-end-lg" data-bs-scroll="true"
+  <div v-if="userRole" class="offcanvas-lg offcanvas-start w-rem-80 w-lg-auto border-end-lg" data-bs-scroll="true"
        tabindex="-1"
        id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
     <nav
@@ -31,8 +41,9 @@ import RecentChats from '../sidebar/RecentChats.vue';
             </div>
           </div>
       </div>
+
       <div class="px-4 py-2 flex-fill overflow-y-auto scrollbar">
-        <div class="vstack gap-5 py-5">
+        <div v-if="userRole === 'user'" class="vstack gap-5 py-5">
           <div>
             <div class="d-flex align-items-center px-3 px-lg-0 mb-1">
               <span class="d-block text-xs text-body-secondary fw-semibold me-auto">Usuário</span>
@@ -47,7 +58,8 @@ import RecentChats from '../sidebar/RecentChats.vue';
             </ul>
           </div>
         </div>
-        <div class="vstack gap-5">
+
+        <div v-else-if="userRole === 'admin'" class="vstack gap-5">
           <div>
             <div class="d-flex align-items-center px-3 px-lg-0 mb-1">
               <span class="d-block text-xs text-body-secondary fw-semibold me-auto">Admin</span>
