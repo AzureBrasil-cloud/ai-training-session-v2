@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject, onMounted, ref } from "vue";
+import { inject, onBeforeMount, onMounted, ref } from "vue";
 import axios from 'axios';
 import type { IOffcanvas } from '@/plugins/offcanvas';
 import type {Order} from "@/models/order.ts";
@@ -11,8 +11,8 @@ const isEditMode = ref(false);
 const selected = ref<string | null>(null);
 const form = ref<Order>();
 
-//todo: get from user store
-const email = "user@user.com";
+let userEmail = ref("");
+let userRole = ref("");
 
 const sizePrices: Record<number, number> = {
   1: 5.00,
@@ -46,23 +46,35 @@ function getSizeLabel(size: number): string {
 }
 
 async function fetchData(page: number = 1) {
-  const response = await axios.get<Order[]>(`/api/orders?userEmail=${email}`);
+  const url = userRole.value === "admin"
+    ? "/api/orders"
+    : `/api/orders?userEmail=${userEmail.value}`
+
+  const response = await axios.get<Order[]>(url);
   _data.value = response.data;
 }
+
+onBeforeMount(() => {
+  const loggedUser = JSON.parse(sessionStorage.getItem("loggedUser") || "{}");
+
+  if (loggedUser.hasOwnProperty("email")) {
+    userEmail.value = loggedUser.email;
+    userRole.value = loggedUser.role;
+  }
+});
 
 onMounted(async () => {
   await fetchData();
 });
 
 async function openCreate() {
-  debugger;
   isEditMode.value = false;
   selected.value = null;
   form.value = {
     id: '',
     createdAt: null,
     totalValue: null,
-    userEmail: email,
+    userEmail: userEmail.value,
     size: 1,
     extras: []
   };

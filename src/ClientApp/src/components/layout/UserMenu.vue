@@ -1,8 +1,24 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { useUserStore } from '@/stores/user';
+//import { useUserStore } from '@/stores/user';
+import { useRouter } from 'vue-router';
+import { onBeforeMount, ref } from 'vue';
 
-const $store = useUserStore();
+let userEmail = ref("");
+const router = useRouter();
+
+onBeforeMount(() => {
+  const loggedUser = sessionStorage.getItem("loggedUser");
+  if (loggedUser) {
+    userEmail.value = JSON.parse(loggedUser)?.email;
+  }
+});
+
+const handleLogout = () => {
+  sessionStorage.removeItem("loggedUser");
+  router.push({ name: 'signin' });
+};
+
 </script>
 
 <template>
@@ -16,17 +32,17 @@ const $store = useUserStore();
         </div>
         <div class="flex-fill">
           <div class="d-flex align-items-center gap-2">
-            <span class="text-sm text-heading fw-semibold">{{ $store.user?.name }}</span>
+            <span class="text-sm text-heading fw-semibold">{{ userEmail }}</span>
           </div>
-          <span class="d-block text-xs text-muted">{{ $store.user?.email }}</span>
+          <!-- <span class="d-block text-xs text-muted">{{ $store.user?.email }}</span> -->
         </div>
       </button>
 
 
       <div class="dropdown-menu ">
         <div class="dropdown-header">
-          <span class="d-block text-xs text-muted mb-1">Signed in as:</span>
-          <span class="d-block text-heading fw-semibold">{{ $store.user?.name }}</span>
+          <span class="d-block text-xs text-muted mb-1">Logado(a) como:</span>
+          <span class="d-block text-heading fw-semibold">{{ userEmail }}</span>
         </div>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">
@@ -44,10 +60,10 @@ const $store = useUserStore();
           <i class="bi bi-image me-3"></i>Media
         </a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="/MicrosoftIdentity/Account/SignIn">
+        <a class="dropdown-item" href="">
           <i class="bi bi-chevron-expand me-3"></i>Trocar Conta
         </a>
-        <a class="dropdown-item" href="/MicrosoftIdentity/Account/SignOut">
+        <a @click="handleLogout" class="dropdown-item">
           <i class="bi bi-person me-3"></i>Sair
         </a>
       </div>
