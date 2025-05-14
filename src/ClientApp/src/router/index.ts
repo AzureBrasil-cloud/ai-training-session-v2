@@ -35,6 +35,11 @@ const router = createRouter({
       path: '/send-image-pre-order',
       name: 'send-image-pre-order',
       component: () => import('../views/orders/sendImagePreOrderView.vue'),
+    },
+    {
+      path: '/image-pre-orders',
+      name: 'image-pre-orders',
+      component: () => import('../views/orders/ImagePreOrderView.vue'),
     }
   ],
 })

@@ -56,7 +56,7 @@ onBeforeMount(() => {
                 </RouterLink>
                 <RouterLink to="/send-image-pre-order" class="dropdown-item">
                   <i class="bi bi-chat-square-dots px-4"></i>
-                  <span>Pré-pedido via imagem</span>
+                  <span>Pré-pedido (imagem) </span>
                 </RouterLink>
                 <RouterLink to="/info-chat" class="dropdown-item">
                   <i class="bi bi-chat-square-dots px-4"></i>
@@ -81,6 +81,10 @@ onBeforeMount(() => {
                 <RouterLink to="/orders-chat" class="dropdown-item">
                   <i class="bi bi-chat-square-dots px-4"></i>
                   <span>Assistente de pedidos</span>
+                </RouterLink>
+                <RouterLink to="/image-pre-orders" class="dropdown-item">
+                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <span>Pré-pedidos (imagem)</span>
                 </RouterLink>
               </li>
             </ul>

@@ -1,12 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onBeforeMount } from 'vue';
 import axios from 'axios';
-import { useUserStore } from '@/stores/user';
 
-const userStore = useUserStore();
 const fileInput = ref<File | null>(null);
 const error = ref('');
 const isSubmitting = ref(false);
+const userEmail = ref('');
+
+onBeforeMount(() => {
+  const loggedUser = JSON.parse(sessionStorage.getItem("loggedUser") || "{}");
+
+  if (loggedUser.hasOwnProperty("email")) {
+    userEmail.value = loggedUser.email;
+  }
+});
 
 function handleFileChange(e: Event) {
   error.value = '';
@@ -41,7 +48,7 @@ async function handleSubmit() {
   error.value = '';
 
   const formData = new FormData();
-  formData.append('userEmail', userStore.email);
+  formData.append('userEmail', userEmail.value);
   formData.append('file', fileInput.value);
 
   try {
