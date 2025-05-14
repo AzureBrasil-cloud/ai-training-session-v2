@@ -43,6 +43,10 @@ import RecentChats from '../sidebar/RecentChats.vue';
                   <i class="bi bi-chat-square-dots px-4"></i>
                   <span>Meus pedidos</span>
                 </RouterLink>
+                <RouterLink to="/info-chat" class="dropdown-item">
+                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <span>Assistente de informações</span>
+                </RouterLink>
               </li>
             </ul>
           </div>
@@ -57,6 +61,10 @@ import RecentChats from '../sidebar/RecentChats.vue';
                 <RouterLink to="/orders" class="dropdown-item">
                   <i class="bi bi-chat-square-dots px-4"></i>
                   <span>Todos os pedidos</span>
+                </RouterLink>
+                <RouterLink to="/orders-chat" class="dropdown-item">
+                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <span>Assistente de pedidos</span>
                 </RouterLink>
               </li>
             </ul>

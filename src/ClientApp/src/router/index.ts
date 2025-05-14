@@ -14,6 +14,16 @@ const router = createRouter({
       path: '/orders',
       name: 'orders',
       component: () => import('../views/orders/OrdersView.vue'),
+    },
+    {
+      path: '/info-chat',
+      name: 'info-chat',
+      component: () => import('../views/infoChat/infoChatView.vue'),
+    },
+    {
+      path: '/orders-chat',
+      name: 'orders-chat',
+      component: () => import('../views/ordersChat/ordersChatView.vue'),
     }
   ],
 })

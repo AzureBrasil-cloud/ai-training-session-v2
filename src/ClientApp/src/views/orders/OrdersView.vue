@@ -5,7 +5,6 @@ import type { IOffcanvas } from '@/plugins/offcanvas';
 import type {Order} from "@/models/order.ts";
 import { computed } from 'vue'
 
-const projects = ref<{ id: string; name: string }[]>([]);
 const $offcanvas = inject<IOffcanvas>('$offcanvas');
 const _data = ref<Order[]>();
 const isEditMode = ref(false);
