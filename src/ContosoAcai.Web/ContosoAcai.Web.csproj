@@ -26,4 +26,17 @@
     <ProjectReference Include="..\ContosoAcai.Application\ContosoAcai.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\videos\video-teste.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\videos\video.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\videos\" />
+  </ItemGroup>
+
 </Project>

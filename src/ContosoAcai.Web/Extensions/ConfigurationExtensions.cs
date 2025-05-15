@@ -37,6 +37,7 @@ public static class ConfigurationExtensions
             app.UseHsts();
         }
 
+        app.UseStaticFiles();
         app.UseHttpsRedirection();
         app.UseRouting();
 
