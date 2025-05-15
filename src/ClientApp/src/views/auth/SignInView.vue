@@ -60,6 +60,7 @@ const hasErrors = () => {
 };
 const videoUrl = `${window.location.origin}/videos/video.mp4`;
 const logo = `${window.location.origin}/images/logo-acai.png`;
+const logoAzBr = `${window.location.origin}/images/logo-azbr.png`;
 </script>
 
 <template>
@@ -156,8 +157,7 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
     class="position-relative d-flex justify-content-center px-5 py-5 p-lg-0 bg-body w-100 overflow-hidden"
     data-x-type="page">
     <div
-      class="col-lg-5 col-xl-5 p-12 p-xl-10 position-absolute start-0 top-0 min-vh-100 overflow-y-hidden d-none d-lg-flex flex-column bg-body-secondary border-end-lg">
-
+      class="col-lg-5 col-xl-5 p-12 p-xl-10 position-absolute start-0 top-0 min-vh-100 overflow-y-hidden d-none d-lg-flex flex-column border-end-lg" style="background-color: #6c2b6d">
       <div class="d-flex justify-content-center align-items-center flex-grow-1">
         <a class="d-block" href="#">
           <img :src="logo" width="500" alt="..."/>
@@ -165,10 +165,10 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
       </div>
 
       <div class="mt-auto mb-8 w-lg-75">
-        <h1 class="ls-tight mb-4 item-purple">
+        <h1 class="ls-tight mb-4 text-white">
           Faça seu pedido online!
         </h1>
-        <p class="text-body-secondary pe-lg-10">
+        <p class="pe-lg-10 text-white">
           E desfrute do melhor açaí da cidade.
         </p>
       </div>
@@ -177,8 +177,7 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
         class="w-rem-56 h-rem-56 bg-white bg-opacity-10 rounded-circle position-absolute bottom-0 end-0 me-10 transform translate-y-50">
       </div>
     </div>
-    <div
-      class="col-12 col-md-9 col-lg-7 offset-xl-7 offset-lg-5 vh-lg-100 d-flex flex-column justify-content-center py-lg-16 px-lg-20 position-relative">
+    <div class="col-12 col-md-9 col-lg-7 offset-xl-7 offset-lg-5 vh-lg-100 d-flex flex-column justify-content-center py-lg-16 px-lg-20 position-relative">
       <div class="row">
         <div class="col-lg-10 col-md-9 col-xl-8 col-xxl-7 mx-auto ms-xl-0">
           <div class="mb-12">
@@ -216,6 +215,9 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
           </form>
         </div>
       </div>
+    </div>
+    <div class="position-absolute bottom-0 end-0 me-3 mb-3">
+      <img :src="logoAzBr" alt="Logo Azure Brasil" style="max-height: 70px;">
     </div>
   </div>
 

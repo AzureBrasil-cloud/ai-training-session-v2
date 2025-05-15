@@ -73,7 +73,7 @@ public partial class AiAgentService
                         Body = new
                         {
                             Type = "string",
-                            Description = "The body of the email",
+                            Description = "The body of the email in HTML formatting",
                         },
                     },
                     Required = new[] { "receiver", "Subject", "body"},
