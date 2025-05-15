@@ -53,6 +53,7 @@
     return emailError.value || passwordError.value;
   };
   const videoUrl = `${window.location.origin}/videos/video.mp4`;
+  const logo = `${window.location.origin}/images/logo-acai.png`;
 </script>
 
 <template>
@@ -123,12 +124,13 @@
       </li>
     </ul>
   </HelpButton>
+
   <div class="position-relative d-flex justify-content-center px-5 py-5 p-lg-0 bg-body" data-x-type="page">
     <div
       class="col-lg-5 col-xl-5 p-12 p-xl-10 position-absolute start-0 top-0 min-vh-100 overflow-y-hidden d-none d-lg-flex flex-column bg-body-secondary border-end-lg">
 
       <a class="d-block" href="#">
-        <img src="/logo-acai.png" width="150"
+        <img :src="logo" width="500"
           alt="..." />
       </a>
 
