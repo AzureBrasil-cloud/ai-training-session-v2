@@ -3,6 +3,7 @@
   import { validators } from '@/utils/validators';
   import { ref, watch,  } from 'vue';
   import { useRouter } from 'vue-router';
+  import HelpButton from "@/components/common/HelpButton.vue";
 
   const router = useRouter();
 
@@ -51,11 +52,77 @@
   const hasErrors = () => {
     return emailError.value || passwordError.value;
   };
-
+  const videoUrl = `${window.location.origin}/videos/video.mp4`;
 </script>
 
 <template>
+  <HelpButton>
+    <div class="d-flex justify-content-center my-4">
+      <video
+          ref="player"
+          :src="videoUrl"
+          controls
+          loop
+          autoplay
+          muted
+          playsinline
+          style="width: 70%;"
+      ></video>
+    </div>
 
+    <h5 class="mb-3">Descritivo da Página de Login</h5>
+    <p>
+      A página de <strong>Login</strong> permite que os usuários acessem o sistema informando suas credenciais (email e senha). Ela fornece autenticação simulada com base em regras definidas no frontend, sem conexão com backends reais ou bancos de dados persistentes.
+    </p>
+
+    <h6 class="mt-4">Funcionalidades</h6>
+    <ul>
+      <li><strong>Autenticação de usuários comuns:</strong> Qualquer email válido e senha com no mínimo 8 caracteres permite o login como <code>usuário comum</code>.</li>
+      <li><strong>Autenticação de administrador:</strong> O acesso como <code>administrador</code> é feito usando:
+        <ul>
+          <li><strong>Email:</strong> <code>adm@adm.com</code></li>
+          <li><strong>Senha:</strong> <code>adm</code></li>
+        </ul>
+      </li>
+      <li><strong>Validação de campos:</strong> O sistema realiza validações locais para garantir que o email seja válido e a senha tenha o comprimento mínimo exigido.</li>
+      <li><strong>Feedback imediato:</strong> Erros de validação são exibidos diretamente abaixo dos campos de entrada.</li>
+      <li><strong>Redirecionamento automático:</strong> Após um login bem-sucedido, o usuário é redirecionado para a rota <code>home</code>.</li>
+    </ul>
+
+    <h6 class="mt-4">Processo Técnico</h6>
+    <p>
+      O sistema realiza a autenticação diretamente no frontend. As credenciais de administrador estão armazenadas como constante no código-fonte (em <code>ADM_CREDENTIALS</code>), enquanto as demais validações são feitas com funções auxiliares presentes no arquivo <code>validators.ts</code>.
+    </p>
+
+    <p>
+      Ao realizar um login com sucesso, os dados do usuário (email e tipo de acesso) são salvos no <strong>sessionStorage</strong> com a chave <code>loggedUser</code>, possibilitando o uso da sessão em outras páginas do sistema.
+    </p>
+
+    <h6 class="mt-4">Regras de Validação</h6>
+    <ul>
+      <li><strong>Email:</strong> Deve ter um formato válido (ex: <code>usuario@email.com</code>).</li>
+      <li><strong>Senha:</strong> Deve ter no mínimo <strong>8 caracteres</strong>, exceto no caso do administrador (<code>adm</code>).</li>
+    </ul>
+
+    <h6 class="mt-4">Objetivo</h6>
+    <p>
+      Esta funcionalidade foi criada para simular o processo de login em um ambiente controlado, útil para protótipos, testes ou demonstrações sem dependência de autenticação real.
+    </p>
+
+    <h6 class="mt-4">Links Úteis</h6>
+    <ul>
+      <li>
+        <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/Window/sessionStorage" target="_blank" rel="noopener">
+          Documentação – sessionStorage
+        </a>
+      </li>
+      <li>
+        <a href="https://vuejs.org/guide/essentials/reactivity-fundamentals.html" target="_blank" rel="noopener">
+          Vue 3 – Fundamentos de Reatividade
+        </a>
+      </li>
+    </ul>
+  </HelpButton>
   <div class="position-relative d-flex justify-content-center px-5 py-5 p-lg-0 bg-body" data-x-type="page">
     <div
       class="col-lg-5 col-xl-5 p-12 p-xl-10 position-absolute start-0 top-0 min-vh-100 overflow-y-hidden d-none d-lg-flex flex-column bg-body-secondary border-end-lg">
