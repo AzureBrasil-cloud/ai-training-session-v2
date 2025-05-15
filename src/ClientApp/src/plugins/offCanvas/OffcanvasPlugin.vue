@@ -19,9 +19,12 @@ function closeOffcanvas() {
 
 <template>
   <div class="offcanvas-backdrop fade" :class="{ show: _show }" v-if="_show" @click="closeOffcanvas"></div>
-  <div class="offcanvas offcanvas-end" :class="{ show: _show }" v-if="_show" style="background: #441945; color: white;">
+  <div class="offcanvas offcanvas-end bg-purple" :class="{ show: _show }" v-if="_show">
     <div class="offcanvas-header py-6 border-bottom">
-      <h5 id="offcanvas-title h4" class="text-white" v-html="$props.title"></h5>
+
+      <img src="/noun-smoothie-4106333.svg" alt="" width="18">
+      <h3 id="offcanvas-title h4" class="mx-3 text-white" v-html="$props.title"></h3>
+
       <div class="ms-auto text-xxs">
         <button type="button" class="btn-close btn-close-white text-white rounded-circle"
           @click="closeOffcanvas"></button>

@@ -91,11 +91,11 @@ async function save() {
 <template>
   <div class="row g-6 p-4 align-items-end justify-content-between">
     <div class="col">
-      <h4 class="fw-semibold mb-1">Pedidos de açaí</h4>
+      <h4 class="fw-semibold mb-1 item-purple">Pedidos de açaí</h4>
     </div>
     <div class="col-12 col-sm-auto">
       <div class="hstack gap-2">
-        <button type="button" class="btn btn-sm btn-primary" @click="openCreate">
+        <button type="button" class="btn btn-sm btn-purple" @click="openCreate">
           Criar <i class="bi bi-plus-square p-1"></i>
         </button>
       </div>
@@ -108,11 +108,11 @@ async function save() {
     <table class="table table-hover table-nowrap">
       <thead class="table-light text-start">
       <tr>
-        <th scope="col" style="width: 25%;">Data</th>
-        <th scope="col" style="width: 25%;">Usuário</th>
-        <th scope="col" style="width: 20%;">Valor</th>
-        <th scope="col" style="width: 20%;">Tamanho</th>
-        <th scope="col" style="width: 35%;">Extras</th>
+        <th scope="col" style="width: 15%;">Data</th>
+        <th scope="col" style="width: 20%;">Usuário</th>
+        <th scope="col" style="width: 15%;">Valor</th>
+        <th scope="col" style="width: 15%;">Tamanho</th>
+        <th scope="col" style="width: 45%;">Extras</th>
       </tr>
       </thead>
       <tbody>
@@ -144,7 +144,7 @@ async function save() {
       <div class="col-md-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title" style="color: #531A54"><i class="bi bi-currency-dollar"></i>Valores
+            <h5 class="card-title item-purple"><i class="bi bi-currency-dollar"></i>Valores
             </h5>
             <p class="card-subtitle text-body-secondary text-sm mb-4">
               Escolha o tamanho e os adicionais
@@ -153,8 +153,8 @@ async function save() {
               <div class="list-group-item">
                 <div class="d-flex align-items-center">
                   <div class="me-4">
-                    <div class="icon icon-shape text-lg bg-opacity-25 bg-primary text-primary">
-                      <i class="bi bi-cup-straw fs-4"></i>
+                    <div class="icon icon-shape text-lg bg-body-secondary text-primary">
+                      <img src="/size-acai.svg" alt="" width="12">
                     </div>
                   </div>
                   <div class="flex-fill">
@@ -171,8 +171,8 @@ async function save() {
               <div class="list-group-item">
                 <div class="d-flex align-items-center">
                   <div class="me-4">
-                    <div class="icon icon-shape text-lg bg-opacity-25 bg-primary text-primary">
-                      <i class="bi bi-cup-straw fs-3"></i>
+                    <div class="icon icon-shape text-lg bg-body-secondary text-primary">
+                      <img src="/size-acai.svg" alt="" width="15">
                     </div>
                   </div>
                   <div class="flex-fill">
@@ -189,8 +189,8 @@ async function save() {
               <div class="list-group-item">
                 <div class="d-flex align-items-center">
                   <div class="me-4">
-                    <div class="icon icon-shape text-lg bg-opacity-25 bg-primary text-primary">
-                      <i class="bi bi-cup-straw fs-2"></i>
+                    <div class="icon icon-shape text-lg bg-body-secondary text-primary">
+                      <img src="/size-acai.svg" alt="" width="18">
                     </div>
                   </div>
                   <div class="flex-fill">
@@ -207,8 +207,8 @@ async function save() {
               <div class="list-group-item">
                 <div class="d-flex align-items-center">
                   <div class="me-4">
-                    <div class="icon icon-shape text-lg bg-opacity-25 bg-primary text-primary">
-                      <i class="bi bi-plus-circle-dotted"></i>
+                    <div class="icon icon-shape text-lg bg-body-secondary text-primary">
+                      <i class="bi bi-plus-circle-dotted item-purple"></i>
                     </div>
                   </div>
                   <div class="flex-fill">
@@ -230,7 +230,7 @@ async function save() {
       <div class="col-md-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title pb-2" style="color: #531A54"><i class="bi bi-arrows-vertical"></i>Tamanho
+            <h5 class="card-title pb-2 item-purple"><i class="bi bi-arrows-vertical"></i>Tamanho
             </h5>
             <select class="form-select form-select-sm" v-model.number="form!.size" required>
               <option disabled value="">Selecione o tamanho</option>
@@ -247,7 +247,7 @@ async function save() {
         <div class="card">
           <div class="card-body">
             <div class="mb-4">
-              <h5 class="card-title pb-2" style="color: #531A54"><i
+              <h5 class="card-title pb-2 item-purple"><i
                 class="bi bi-plus-circle-dotted"></i> Adicionais</h5>
               <div class="form-check d-inline-block me-3" v-for="extra in extrasOptions"
                    :key="extra">
@@ -288,10 +288,10 @@ async function save() {
 
     <!-- Rodapé -->
     <template #footer>
-      <div class="d-flex align-items-center justify-content-end gap-2 py-4 px-8 border-top">
-        <button type="button" class="btn btn-sm btn-neutral" @click="$offcanvas?.close()">Fechar
+      <div class="d-flex align-items-center bg-body-secondary justify-content-between justify-content-end gap-2 py-4 px-8 border-top">
+        <button type="button" class="btn btn-sm btn-neutral" @click="$offcanvas?.close()">Cancelar
         </button>
-        <button type="button" class="btn btn-sm btn-primary" @click="save">
+        <button type="button" class="btn btn-sm btn-purple" @click="save">
           Salvar
         </button>
       </div>
