@@ -86,6 +86,7 @@ async function save() {
   await fetchData();
   $offcanvas?.close();
 }
+const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
 </script>
 
 <template>
@@ -154,7 +155,7 @@ async function save() {
                 <div class="d-flex align-items-center">
                   <div class="me-4">
                     <div class="icon icon-shape text-lg bg-body-secondary text-primary">
-                      <img src="/size-acai.svg" alt="" width="12">
+                      <img :src="sizeAcai" alt="" width="12">
                     </div>
                   </div>
                   <div class="flex-fill">
@@ -172,7 +173,7 @@ async function save() {
                 <div class="d-flex align-items-center">
                   <div class="me-4">
                     <div class="icon icon-shape text-lg bg-body-secondary text-primary">
-                      <img src="/size-acai.svg" alt="" width="15">
+                      <img :src="sizeAcai" alt="" width="15">
                     </div>
                   </div>
                   <div class="flex-fill">
@@ -190,7 +191,7 @@ async function save() {
                 <div class="d-flex align-items-center">
                   <div class="me-4">
                     <div class="icon icon-shape text-lg bg-body-secondary text-primary">
-                      <img src="/size-acai.svg" alt="" width="18">
+                      <img :src="sizeAcai" alt="" width="18">
                     </div>
                   </div>
                   <div class="flex-fill">
