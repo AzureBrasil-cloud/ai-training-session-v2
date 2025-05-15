@@ -83,7 +83,7 @@ async function openCreate() {
 }
 
 async function save() {
-  await axios.post<Model>(`/api/orders`, form.value);
+  await axios.post(`/api/orders`, form.value);
   await fetchData();
   $offcanvas?.close();
 }

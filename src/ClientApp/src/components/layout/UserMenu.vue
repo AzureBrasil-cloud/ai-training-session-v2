@@ -2,7 +2,7 @@
 import { RouterLink } from 'vue-router'
 //import { useUserStore } from '@/stores/user';
 import { useRouter } from 'vue-router';
-import { onBeforeMount, ref } from 'vue';
+import {onBeforeMount, onMounted, ref} from 'vue';
 
 let userEmail = ref("");
 const router = useRouter();
@@ -11,6 +11,14 @@ onBeforeMount(() => {
   const loggedUser = sessionStorage.getItem("loggedUser");
   if (loggedUser) {
     userEmail.value = JSON.parse(loggedUser)?.email;
+  }
+});
+
+onMounted(() => {
+  debugger;
+  const savedTheme = sessionStorage.getItem('theme');
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-bs-theme', savedTheme);
   }
 });
 

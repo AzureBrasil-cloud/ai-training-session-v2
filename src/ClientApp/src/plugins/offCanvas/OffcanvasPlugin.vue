@@ -15,6 +15,7 @@ const
 function closeOffcanvas() {
   $offcanvas?.close();
 }
+const nounSmoothie = `${window.location.origin}/images/noun-smoothie-4106333.svg`;
 </script>
 
 <template>
@@ -22,7 +23,7 @@ function closeOffcanvas() {
   <div class="offcanvas offcanvas-end bg-purple" :class="{ show: _show }" v-if="_show">
     <div class="offcanvas-header py-6 border-bottom">
 
-      <img src="/noun-smoothie-4106333.svg" alt="" width="18">
+      <img :src="nounSmoothie" alt="" width="18">
       <h3 id="offcanvas-title h4" class="mx-3 text-white" v-html="$props.title"></h3>
 
       <div class="ms-auto text-xxs">

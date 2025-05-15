@@ -29,7 +29,7 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
           <div
             class="w-100 px-2 py-2 text-start border-0 bg-transparent shadow-none bg-accent-hover rounded d-flex gap-3 align-items-center"
             data-bs-toggle="dropdown">
-            <img :src="logo" class="img-dark" alt="..." width="85" />
+            <img :src="logo" alt="..." width="85" />
             <div class="d-grid flex-grow-1 ls-tight text-sm">
               <span class="item-purple fw-semibold ">Contoso Açaí</span>
               <span class="text-truncate text-xs text-body-secondary mt-n1">Web app</span>

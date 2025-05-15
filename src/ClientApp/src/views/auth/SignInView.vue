@@ -17,15 +17,25 @@
     console.log("Email:", newValue);
   });
 
+  const darkTheme = () => {
+    document.documentElement.setAttribute('data-bs-theme', 'dark');
+    sessionStorage.setItem('theme', 'dark');
+  }
+
   const handleSubmit = async () => {
     try {
       if (email.value === ADM_CREDENTIALS.email && password.value === ADM_CREDENTIALS.password) {
+
+        darkTheme();
+
         sessionStorage.setItem("loggedUser", JSON.stringify({
           role: "admin",
           email: ADM_CREDENTIALS.email
         }));
+
         router.push({ name: "home" });
-      } else {
+      }
+      else {
         if (!validators.isValidEmail(email.value)) {
           emailError.value = "Email inválido.";
         }
@@ -42,6 +52,7 @@
           role: "user",
           email: email.value
         }));
+
         router.push({ name: "home" });
       }
     } catch (error) {
