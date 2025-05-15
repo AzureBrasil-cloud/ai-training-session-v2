@@ -61,12 +61,12 @@
       class="col-lg-5 col-xl-5 p-12 p-xl-10 position-absolute start-0 top-0 min-vh-100 overflow-y-hidden d-none d-lg-flex flex-column bg-body-secondary border-end-lg">
 
       <a class="d-block" href="#">
-        <img src="/logo-acai.svg" class="logo-dark h-rem-8 w-rem-auto"
+        <img src="/logo-acai.png" width="150"
           alt="..." />
       </a>
 
       <div class="mt-auto mb-8 w-lg-75">
-        <h1 class="ls-tight mb-4">
+        <h1 class="ls-tight mb-4 item-purple">
           Faça seu pedido online!
         </h1>
         <p class="text-body-secondary pe-lg-10">
@@ -83,7 +83,7 @@
       <div class="row">
         <div class="col-lg-10 col-md-9 col-xl-8 col-xxl-7 mx-auto ms-xl-0">
           <div class="mb-12">
-            <h1 class="h2 ls-tight fw-bolder">
+            <h1 class="h2 ls-tight fw-bolder item-purple">
               Entre na sua conta
             </h1>
             <p class="text-sm mt-2 text-body-secondary">
@@ -107,7 +107,7 @@
                 <span v-if="passwordError" class="mt-2 invalid-feedback">{{ passwordError }}</span>
             </div>
             <div>
-              <button @click="handleSubmit" class="btn btn-primary w-100">
+              <button @click="handleSubmit" class="btn btn-purple w-100">
                 Entrar
               </button>
             </div>

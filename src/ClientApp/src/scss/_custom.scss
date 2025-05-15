@@ -28,3 +28,20 @@
   border: 1px solid #5c265d;
   color: white;
 }
+
+.form-check-input:checked {
+  background-color: #441945;
+  border-color: #441945;
+}
+
+.form-check-input:focus {
+  border-color: #441945;
+  outline: 0;
+  box-shadow: 0 0 0 0.15rem var(--x-primary-bg-subtle);
+}
+
+.form-select:focus {
+  border-color: #441945;
+  outline: 0;
+  box-shadow: var(--x-shadow-sm), 0 0 0 0.15rem var(--x-primary-bg-subtle);
+}
