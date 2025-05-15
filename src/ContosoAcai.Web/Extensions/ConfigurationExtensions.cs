@@ -1,10 +1,33 @@
+using System.Diagnostics;
+using Azure.Monitor.OpenTelemetry.Exporter;
+using ContosoAcai.Application;
 using ContosoAcai.Application.Extensions;
 using PowerPilotChat.Web.Middlewares;
+using OpenTelemetry.Logs;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using OpenTelemetry.Metrics;
 
 namespace ContosoAcai.Web.Extensions;
 
 public static class ConfigurationExtensions
 {
+    public static void AddLogging(this WebApplicationBuilder builder)
+    {
+        builder.Logging.AddOpenTelemetry(options =>
+        {
+            options.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ConstosoAcai.Api")); 
+            options.AddOtlpExporter();
+            options.IncludeFormattedMessage = true;
+            options.ParseStateValues = true;
+            options.IncludeScopes = true; 
+            options.AddAzureMonitorLogExporter(cfg => 
+            {
+                cfg.ConnectionString = builder.Configuration["AzureMonitor:ConnectionString"];
+            });
+        });
+    }
+    
     public static void AddConfigurations(
         this IServiceCollection services, 
         IConfiguration configuration,
@@ -24,6 +47,30 @@ public static class ConfigurationExtensions
         
         // Global exception handler
         services.AddTransient<GlobalExceptionHandlerMiddleware>();
+        
+        AppContext.SetSwitch("Azure.Experimental.EnableActivitySource", true); 
+        AppContext.SetSwitch("Azure.Experimental.TraceGenAIMessageContent", true);
+
+        services.AddOpenTelemetry()
+            .WithTracing(tracing => tracing
+                .ConfigureResource(resource => resource.AddService("ConstosoAcai.Api"))    
+                .AddAspNetCoreInstrumentation()
+                .AddHttpClientInstrumentation()
+                .AddSource(InstrumentationConfig.ActivitySource.Name)
+                .AddOtlpExporter()
+                .AddAzureMonitorTraceExporter(options =>
+                {
+                    options.ConnectionString = configuration["AzureMonitor:ConnectionString"]!;
+                }))
+            .WithMetrics(metrics => metrics
+                .ConfigureResource(resource => resource.AddService("ConstosoAcai.Api"))    
+                .AddAspNetCoreInstrumentation()
+                .AddHttpClientInstrumentation()
+                .AddOtlpExporter()
+                .AddAzureMonitorMetricExporter(options =>
+                {
+                    options.ConnectionString = configuration["AzureMonitor:ConnectionString"]!;
+                }));
     }
 
     public static void ConfigureApplication(this WebApplication app)
