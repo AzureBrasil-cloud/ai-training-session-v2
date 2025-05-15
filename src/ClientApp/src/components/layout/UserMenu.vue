@@ -15,7 +15,6 @@ onBeforeMount(() => {
 });
 
 onMounted(() => {
-  debugger;
   const savedTheme = sessionStorage.getItem('theme');
   if (savedTheme) {
     document.documentElement.setAttribute('data-bs-theme', savedTheme);
