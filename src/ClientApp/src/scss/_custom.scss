@@ -1,7 +1,15 @@
 //  the _custom.scss file will be used to add your CSS styles.
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Remove scroll vertical e horizontal */
 }
 
 .pointer {
@@ -60,4 +68,38 @@
 .dropdown-item.active {
   background-color: #e9ecef; /* cor de fundo do item ativo */
   font-weight: 600;
+}
+
+.s-h3{
+  background: #e9ecef;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* Tooltip */
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-container .tooltip-text {
+  visibility: hidden;
+  background-color: #e9ecef;
+  color: #441945;
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 5px 10px;
+  position: absolute;
+  bottom: 125%; /* acima do botão */
+  right: 0;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
 }

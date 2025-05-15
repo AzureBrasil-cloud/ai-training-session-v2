@@ -46,34 +46,34 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
       </span>
             </div>
 
-            <ul class="navbar-nav navbar-vertical-nav d-flex flex-column gap-3 mx-lg-n2">
+            <ul class="navbar-nav navbar-vertical-nav d-flex flex-column mx-lg-n2">
               <li class="nav-item">
                 <RouterLink to="/orders" class="dropdown-item">
-                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <i class="bi bi-chat-square-dots px-3"></i>
                   <span>Meus pedidos</span>
                 </RouterLink>
               </li>
               <li class="nav-item">
                 <RouterLink to="/send-image-pre-order" class="dropdown-item">
-                  <i class="bi bi-images px-4"></i>
+                  <i class="bi bi-images px-3"></i>
                   <span>Pré-pedido (imagem)</span>
                 </RouterLink>
               </li>
               <li class="nav-item">
                 <RouterLink to="/send-audio-pre-order" class="dropdown-item">
-                  <i class="bi bi-music-note-list px-4"></i>
+                  <i class="bi bi-music-note-list px-3"></i>
                   <span>Pré-pedido (áudio)</span>
                 </RouterLink>
               </li>
               <li class="nav-item">
                 <RouterLink to="/send-review" class="dropdown-item">
-                  <i class="bi bi-card-checklist px-4"></i>
+                  <i class="bi bi-card-checklist px-3"></i>
                   <span>Fazer avaliação</span>
                 </RouterLink>
               </li>
               <li class="nav-item">
                 <RouterLink to="/info-chat" class="dropdown-item">
-                  <i class="bi bi-robot px-4"></i>
+                  <i class="bi bi-robot px-3"></i>
                   <span>Assistente de informações</span>
                 </RouterLink>
               </li>
@@ -90,10 +90,10 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
       </span>
             </div>
 
-            <ul class="navbar-nav navbar-vertical-nav d-flex flex-column gap-3 mx-lg-n2">
+            <ul class="navbar-nav navbar-vertical-nav d-flex flex-column mx-lg-n2">
               <li class="nav-item">
                 <RouterLink to="/orders" class="dropdown-item">
-                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <i class="bi bi-chat-square-dots px-3"></i>
                   <span>Todos os pedidos</span>
                 </RouterLink>
               </li>
@@ -105,19 +105,19 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
               </li>
               <li class="nav-item">
                 <RouterLink to="/audio-pre-orders" class="dropdown-item">
-                  <i class="bi bi-music-note-list px-4"></i>
+                  <i class="bi bi-music-note-list px-3"></i>
                   <span>Pré-pedidos (áudio)</span>
                 </RouterLink>
               </li>
               <li class="nav-item">
                 <RouterLink to="/reviews" class="dropdown-item">
-                  <i class="bi bi-card-checklist px-4"></i>
+                  <i class="bi bi-card-checklist px-3"></i>
                   <span>Avaliações</span>
                 </RouterLink>
               </li>
               <li class="nav-item">
                 <RouterLink to="/orders-chat" class="dropdown-item">
-                  <i class="bi bi-robot px-4"></i>
+                  <i class="bi bi-robot px-3"></i>
                   <span>Assistente de pedidos</span>
                 </RouterLink>
               </li>
