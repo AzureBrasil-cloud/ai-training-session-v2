@@ -3,7 +3,6 @@ using Azure.Monitor.OpenTelemetry.Exporter;
 using ContosoAcai.Application;
 using ContosoAcai.Application.Extensions;
 using PowerPilotChat.Web.Middlewares;
-using OpenTelemetry;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
@@ -13,6 +12,22 @@ namespace ContosoAcai.Web.Extensions;
 
 public static class ConfigurationExtensions
 {
+    public static void AddLogging(this WebApplicationBuilder builder)
+    {
+        builder.Logging.AddOpenTelemetry(options =>
+        {
+            options.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ConstosoAcai.Api")); 
+            options.AddOtlpExporter();
+            options.IncludeFormattedMessage = true;
+            options.ParseStateValues = true;
+            options.IncludeScopes = true; 
+            options.AddAzureMonitorLogExporter(cfg => 
+            {
+                cfg.ConnectionString = builder.Configuration["AzureMonitor:ConnectionString"];
+            });
+        });
+    }
+    
     public static void AddConfigurations(
         this IServiceCollection services, 
         IConfiguration configuration,
