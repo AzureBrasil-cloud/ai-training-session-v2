@@ -7,6 +7,7 @@ const fileInput = ref<File | null>(null);
 const error = ref('');
 const isSubmitting = ref(false);
 const userEmail = ref('');
+const fileName = ref('');
 
 onBeforeMount(() => {
   const loggedUser = JSON.parse(sessionStorage.getItem("loggedUser") || "{}");
@@ -27,16 +28,19 @@ function handleFileChange(e: Event) {
     if (!validTypes.includes(file.type)) {
       error.value = 'Formato inválido. Envie apenas arquivos .jpg ou .png';
       fileInput.value = null;
+      fileName.value = '';
       return;
     }
 
-    if (file.size > 3 * 1024 * 1024) {
-      error.value = 'O arquivo é maior que 3MB. Reduza o tamanho em https://www2.lunapic.com/';
+    if (file.size > 5 * 1024 * 1024) {
+      error.value = 'O arquivo é maior que 5MB. Reduza o tamanho em https://onlinepngtools.com/resize-png';
       fileInput.value = null;
+      fileName.value = '';
       return;
     }
 
     fileInput.value = file;
+    fileName.value = file.name;
   }
 }
 
@@ -56,7 +60,9 @@ async function handleSubmit() {
   try {
     await axios.post('/api/pre-order/image', formData);
     alert('Pré-pedido enviado com sucesso!');
+
     fileInput.value = null;
+    fileName.value = ''; // <-- Limpa o nome do arquivo
     (document.getElementById('file-upload') as HTMLInputElement).value = '';
   } catch (err) {
     error.value = 'Erro ao enviar o arquivo. Tente novamente mais tarde.';
@@ -89,7 +95,7 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
 
     <h6 class="mt-4">Funcionalidades</h6>
     <ul>
-      <li><strong>Upload de imagem:</strong> O usuário pode enviar arquivos nos formatos <code>.jpg</code> ou <code>.png</code>, com limite de 3MB.</li>
+      <li><strong>Upload de imagem:</strong> O usuário pode enviar arquivos nos formatos <code>.jpg</code> ou <code>.png</code>, com limite de 5MB.</li>
       <li><strong>Validação automática:</strong> A aplicação verifica o tipo e o tamanho do arquivo antes do envio.</li>
       <li><strong>Associação automática:</strong> O email do usuário logado é incluído no envio de forma automática.</li>
       <li><strong>Mensagens de erro e sucesso:</strong> Informações visuais ajudam o usuário a entender o status do envio.</li>
@@ -118,23 +124,67 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
     </ul>
   </HelpButton>
 
-  <div class="container py-4">
-    <h3 class="mb-4">Fazer pré-pedido via imagem</h3>
-
-    <div class="mb-3">
-      <label for="file-upload" class="form-label">Selecionar imagem (.jpg ou .png, máx 3MB)</label>
-      <input type="file" class="form-control" id="file-upload" accept="image/png, image/jpeg" @change="handleFileChange">
+  <div class="d-flex justify-content-center align-items-center bg-light px-3" style="min-height: 100vh;">
+    <!-- Novo painel de texto ao lado -->
+    <div class="me-4 d-none d-lg-flex align-items-center justify-content-center bg-purple text-white rounded shadow-sm p-5" style="max-width: 400px; min-height: 400px;">
+      <h1 class="display-5 fw-bold text-start text-white">
+        <i class="bi bi-images px-2"></i><br>
+        Fazer<br>
+        pré-pedido<br>
+        via imagem
+      </h1>
     </div>
 
-    <div v-if="error" class="alert alert-danger">
-      {{ error }}<br />
-      <a href="https://www2.lunapic.com/" target="_blank">Clique aqui para redimensionar sua imagem</a>
-    </div>
+    <!-- Modal com ícone e conteúdo centralizado -->
+    <div class="position-relative p-4 rounded shadow-sm bg-white d-flex flex-column justify-content-center align-items-center" style="max-width: 600px; width: 100%; min-height: 400px;">
 
-    <button class="btn btn-primary" :disabled="isSubmitting" @click="handleSubmit">
-      {{ isSubmitting ? 'Enviando...' : 'Enviar imagem' }}
-    </button>
+      <!-- Conteúdo centralizado -->
+      <div class="w-100" style="max-width: 500px;">
+        <!-- Área de upload moderna -->
+        <div class="card shadow-none border border-2 border-dashed border-primary-hover position-relative mb-4">
+          <div class="d-flex justify-content-center px-5 py-6">
+            <label for="file-upload" class="stretched-link" role="button">
+              <input
+                type="file"
+                class="visually-hidden"
+                id="file-upload"
+                accept="image/png, image/jpeg"
+                @change="handleFileChange"
+              >
+            </label>
+            <div class="text-center">
+              <div class="text-2xl text-muted">
+                <i class="bi bi-upload"></i>
+              </div>
+              <div class="d-flex text-sm mt-3 justify-content-center">
+                <p class="fw-semibold">Clique para enviar ou arraste a imagem aqui</p>
+              </div>
+              <p class="text-xs text-body-secondary">
+                Apenas PNG ou JPG. Máximo 5MB.
+              </p>
+              <p v-if="fileName" class="text-sm text-primary mt-2">
+                Arquivo selecionado: {{ fileName }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alerta de erro -->
+        <div v-if="error" class="alert alert-danger mb-4">
+          {{ error }}<br />
+          <a href="https://onlinepngtools.com/resize-png" target="_blank">Clique aqui para redimensionar sua imagem</a>
+        </div>
+
+        <!-- Botão -->
+        <button class="btn btn-purple w-100" :disabled="isSubmitting" @click="handleSubmit">
+          <i class="bi bi-send me-2" v-if="!isSubmitting"></i>
+          {{ isSubmitting ? 'Enviando...' : 'Enviar imagem' }}
+        </button>
+      </div>
+    </div>
   </div>
+
+
 </template>
 
 <style scoped>

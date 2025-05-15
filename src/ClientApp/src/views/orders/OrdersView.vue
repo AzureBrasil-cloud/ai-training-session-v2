@@ -137,8 +137,7 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
       <li><strong>Grande:</strong> R$10,00</li>
       <li><strong>Adicional:</strong> R$2,00 por item</li>
     </ul>
-    <p>
-      O valor total é exibido em tempo real antes da confirmação. Após salvar, o pedido é enviado para a API e aparece na tabela.
+    <p> O valor total é exibido em tempo real antes da confirmação. Após salvar, o pedido é enviado para a API e aparece na tabela.
     </p>
 
     <h6 class="mt-4">Objetivo</h6>
@@ -147,13 +146,13 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
     </p>
   </HelpButton>
 
-  <div class="row g-6 p-4 align-items-end justify-content-between">
+  <div class="row g-6 p-4 justify-content-between">
     <div class="col">
-      <h4 class="fw-semibold mb-1 item-purple">Pedidos de açaí</h4>
+      <h4 class="fw-semibold mb-1 item-purple s-h3"><i class="bi bi-chat-square-dots px-2" style="font-size:16px"></i>Pedidos de açaí</h4>
     </div>
     <div class="col-12 col-sm-auto">
       <div class="hstack gap-2">
-        <button type="button" class="btn btn-sm btn-purple" @click="openCreate">
+        <button type="button" class="btn btn-purple" @click="openCreate">
           Criar <i class="bi bi-plus-square p-1"></i>
         </button>
       </div>

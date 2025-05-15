@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div class="flex-lg-fill overflow-x-auto vstack vh-100" data-x-inject="navbar">
+  <div class="flex-lg-fill vstack vh-100" data-x-inject="navbar">
     <RouterView />
   </div>
 </template>

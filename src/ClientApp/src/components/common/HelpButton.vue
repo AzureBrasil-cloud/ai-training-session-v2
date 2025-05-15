@@ -7,13 +7,16 @@ defineExpose({ showModal })
 </script>
 
 <template>
-  <button
-    class="btn btn-sm btn-light position-fixed top-0 end-0 m-3 z-3"
-    @click="showModal = true"
-    aria-label="Ajuda"
-  >
-    ?
-  </button>
+  <div class="tooltip-container position-fixed bottom-0 end-0 m-3 z-3">
+    <button
+      class="btn btn-sm btn-purple"
+      @click="showModal = true"
+      aria-label="Ajuda"
+    >
+      ?
+    </button>
+    <span class="tooltip-text">Ajuda!</span>
+  </div>
 
   <HelpModal v-if="showModal" @close="showModal = false">
     <slot />
