@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, inject } from 'vue';
 import axios from 'axios';
 import HelpButton from "@/components/common/HelpButton.vue";
+import type { IOffcanvas } from '@/plugins/offcanvas';
+import type { Order } from '@/models/order';
+import OrderWindow from '@/components/common/OrderWindow.vue';
 
 interface PreOrderAudio {
   id: string;
@@ -15,6 +18,13 @@ interface PreOrderAudio {
 
 const data = ref<PreOrderAudio[]>([]);
 const isLoading = ref(false);
+const $offcanvas = inject<IOffcanvas>('$offcanvas');
+const isEditMode = ref(false);
+const selected = ref<string | null>(null);
+const form = ref<Order>();
+
+
+const userEmail = ref("");
 
 async function fetchPreOrders() {
   isLoading.value = true;
@@ -30,6 +40,21 @@ async function fetchPreOrders() {
 
 onMounted(fetchPreOrders);
 const videoUrl = `${window.location.origin}/videos/video.mp4`;
+
+const handleOpenOrderWindow = () => {
+  isEditMode.value = false;
+  selected.value = null;
+  form.value = {
+    id: '',
+    createdAt: null,
+    totalValue: null,
+    userEmail: userEmail.value,
+    size: 1,
+    extras: []
+  };
+  $offcanvas?.show("order");
+}
+
 </script>
 
 <template>
@@ -127,8 +152,8 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
           <td>{{ item.audioExtension }}</td>
           <td>
             <div class="d-flex gap-2">
-              <button class="btn btn-sm btn-outline-primary">Ver</button>
-              <button class="btn btn-sm btn-outline-success">Ver com AI</button>
+              <button class="btn btn-sm btn-outline-primary" @click="handleOpenOrderWindow">Ver</button>
+              <button class="btn btn-sm btn-outline-success" @click="handleOpenOrderWindow">Ver com AI</button>
             </div>
           </td>
         </tr>
@@ -136,4 +161,9 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
       </table>
     </div>
   </div>
+
+  <OrderWindow
+    :is-edit-mode="isEditMode"
+    v-model="form"
+  />
 </template>
