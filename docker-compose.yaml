@@ -1,44 +1,12 @@
-version: '3.8'
-name: power-gpt
+version: "3.8"
+
 services:
-  seqcli:
-    image: datalust/seqcli:latest
-    command: apikey create -t my-api-token --token 1231231123123122312 -s http://seq
-    depends_on:
-      - seq
-    networks:
-      - "seqnetwork"
-  seq:
-    image: datalust/seq:latest
-    volumes:
-      - ./seq-data/seq:/data
+  aspire-dashboard:
+    image: mcr.microsoft.com/dotnet/aspire-dashboard:9.0
+    container_name: aspire-dashboard
+    ports:
+      - "18888:18888"
+      - "4317:18889"
     environment:
-      - ACCEPT_EULA=Y
-    networks:
-      - "seqnetwork"
-    ports:
-      - "5341:80"
-  azurite:
-    image: mcr.microsoft.com/azure-storage/azurite
-    hostname: azurite
-    restart: always
-    command: "azurite --loose --blobHost 0.0.0.0 --blobPort 10000 --queueHost 0.0.0.0 --queuePort 10001"
-    ports:
-      - "10000:10000"
-      - "10001:10001"
-  database:
-    container_name: "sqlserver"
-    hostname: "sqlserver"
-    ports:
-      - "1438:1433"
-    image: "mcr.microsoft.com/azure-sql-edge:latest"
-    volumes:
-      - "./volume:/var/opt/mssql"
-    environment:
-      ACCEPT_EULA: "1"
-      MSSQL_SA_PASSWORD: "Teste12345!"
-volumes:
-  mssql-azuresql-edge-data:
-  sqlpad-volume:
-networks:
-  seqnetwork:
+      - ASPIRE_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=True
+    restart: unless-stopped

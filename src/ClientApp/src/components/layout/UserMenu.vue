@@ -21,7 +21,13 @@ onMounted(() => {
   }
 });
 
+const lightTheme = () => {
+  document.documentElement.setAttribute('data-bs-theme', 'light');
+  sessionStorage.setItem('theme', 'light');
+}
+
 const handleLogout = () => {
+  lightTheme();
   sessionStorage.removeItem("loggedUser");
   router.push({ name: 'signin' });
 };

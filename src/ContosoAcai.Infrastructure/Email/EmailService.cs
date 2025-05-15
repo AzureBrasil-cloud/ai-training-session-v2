@@ -10,6 +10,8 @@ public class EmailService(string secret, string senderEmail)
         string subject, 
         string body)
     {
+        body =  Constants.EmailBody.Replace("{body}", body);
+        
         var client = new SendGridClient(secret);
         var from = new EmailAddress(senderEmail, senderEmail);
         
