@@ -132,16 +132,14 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
 
   <div class="d-flex justify-content-center align-items-center bg-light px-3"
        style="min-height: 100vh;">
-    <!-- Novo painel de texto ao lado -->
-    <div
-      class="me-4 d-none d-lg-flex align-items-center justify-content-center bg-purple text-white rounded shadow-sm p-5"
-      style="max-width: 400px; min-height: 400px;">
+
+    <div class="me-4 d-none d-lg-flex align-items-center px-8 bg-purple text-white rounded shadow-sm p-5" style="max-width: 400px; min-height: 400px; width: 500px">
       <h1 class="display-5 fw-bold text-start text-white">
-        <i class="bi bi-music-note-list px-2"></i>
+        <i class="bi bi-music-note-list px-2" style="height: 50px; display: block;"></i>
         <br>
         Fazer<br>
         pré-pedido<br>
-        via áudio
+        via <u>áudio</u>
       </h1>
     </div>
 
@@ -150,7 +148,6 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
       style="max-width: 600px; width: 100%; min-height: 400px;">
 
       <div class="w-100" style="max-width: 500px;">
-        <!-- Área de upload moderna para áudio -->
         <div
           class="card shadow-none border border-2 border-dashed border-primary-hover position-relative mb-4">
           <div class="d-flex justify-content-center px-5 py-6">
@@ -171,24 +168,22 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
             </div>
           </div>
 
-          <!-- Nome do arquivo embaixo -->
           <div v-if="fileName" class="text-center pb-3">
             <i class="bi bi-file-earmark-music me-1"></i> {{ fileName }}
           </div>
         </div>
 
-        <!-- Alerta de erro -->
         <div v-if="error" class="alert alert-danger mb-4">
           {{ error }}
         </div>
 
-        <!-- Botão -->
         <button class="btn btn-purple w-100" :disabled="isSubmitting" @click="handleSubmit">
           <i class="bi bi-send me-2" v-if="!isSubmitting"></i>
           {{ isSubmitting ? 'Enviando...' : 'Enviar áudio' }}
         </button>
       </div>
     </div>
+
   </div>
 
 </template>

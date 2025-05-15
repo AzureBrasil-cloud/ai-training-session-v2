@@ -135,14 +135,13 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
   <div class="d-flex justify-content-center align-items-center bg-light px-3" style="min-height: 100vh;">
     <!-- Novo painel de texto ao lado -->
     <div
-      class="me-4 d-none d-lg-flex align-items-center justify-content-center bg-purple text-white rounded shadow-sm p-5"
-      style="max-width: 400px; min-height: 400px;">
+      class="me-4 d-none d-lg-flex align-items-center px-8 bg-purple text-white rounded shadow-sm p-5"
+      style="max-width: 400px; min-height: 400px; width: 500px;">
       <h1 class="display-5 fw-bold text-start text-white">
-        <i class="bi bi-card-checklist px-2"></i><br>
+        <i class="bi bi-card-checklist px-2" style="height: 50px; display: block;"></i><br>
         Enviar a<br>
-        avaliação <br>
-        sobre o <br>
-        Açaí
+        <u>avaliação</u> <br>
+        sobre o açaí<br>
       </h1>
     </div>
 
@@ -150,14 +149,13 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
     <div class="position-relative p-4 rounded shadow-sm bg-white d-flex flex-column justify-content-center align-items-center" style="max-width: 600px; width: 100%; min-height: 400px;">
 
       <div class="w-100" style="max-width: 500px;">
-
         <!-- Mensagens -->
         <div v-if="error" class="alert alert-danger mb-4">{{ error }}</div>
         <div v-if="success" class="alert alert-success mb-4">Avaliação enviada com sucesso!</div>
 
         <!-- Área de texto -->
         <div class="mb-4">
-          <label for="avaliacao-text" class="form-label fw-semibold">Sua avaliação</label>
+          <label for="avaliacao-text" class="form-label fw-semibold"><i class="bi bi-pen px-3"></i>Sua avaliação</label>
           <textarea
             id="avaliacao-text"
             class="form-control"
