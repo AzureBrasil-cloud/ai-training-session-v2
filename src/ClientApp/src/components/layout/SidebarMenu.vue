@@ -56,13 +56,13 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
               <li class="nav-item">
                 <RouterLink to="/send-image-pre-order" class="dropdown-item">
                   <i class="bi bi-images px-3"></i>
-                  <span>Pré-pedido (imagem)</span>
+                  <span>Pré-pedido <span class="btn btn-purple rounded-pill text-white p-0 px-2 mx-1" style="font-size:12px"> Imagem </span></span>
                 </RouterLink>
               </li>
               <li class="nav-item">
                 <RouterLink to="/send-audio-pre-order" class="dropdown-item">
                   <i class="bi bi-music-note-list px-3"></i>
-                  <span>Pré-pedido (áudio)</span>
+                  <span>Pré-pedido <span class="btn btn-purple rounded-pill text-white p-0 px-2 mx-1" style="font-size:12px"> Áudio </span></span>
                 </RouterLink>
               </li>
               <li class="nav-item">
@@ -100,13 +100,13 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
               <li class="nav-item">
                 <RouterLink to="/image-pre-orders" class="dropdown-item">
                   <i class="bi bi-images px-4"></i>
-                  <span>Pré-pedidos (imagem)</span>
+                  <span>Pré-pedidos <span class="btn bg-purple rounded-pill text-white p-0 px-2 mx-1" style="font-size:13px"> Imagem </span></span>
                 </RouterLink>
               </li>
               <li class="nav-item">
                 <RouterLink to="/audio-pre-orders" class="dropdown-item">
                   <i class="bi bi-music-note-list px-3"></i>
-                  <span>Pré-pedidos (áudio)</span>
+                  <span>Pré-pedidos <span class="btn btn-purple rounded-pill text-white p-0 px-2 mx-1" style="font-size:13px"> Áudio </span></span>
                 </RouterLink>
               </li>
               <li class="nav-item">

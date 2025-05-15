@@ -148,11 +148,13 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
 
   <div class="row g-6 p-4 justify-content-between">
     <div class="col">
-      <h4 class="fw-semibold mb-1 item-purple s-h3"><i class="bi bi-chat-square-dots px-2" style="font-size:16px"></i>Pedidos de açaí</h4>
+      <h4 class="fw-semibold mb-1 item-purple s-h3">
+        <i class="bi bi-chat-square-dots px-2" style="font-size:16px"></i>Lista de pedidos de açaí
+      </h4>
     </div>
     <div class="col-12 col-sm-auto">
       <div class="hstack gap-2">
-        <button type="button" class="btn btn-purple" @click="openCreate">
+        <button type="button" class="btn btn-purple w-100 w-sm-auto" @click="openCreate">
           Criar <i class="bi bi-plus-square p-1"></i>
         </button>
       </div>
@@ -197,7 +199,7 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
 
   <Offcanvas name="order" :title="isEditMode ? 'Editar Pedido' : 'Novo Pedido'">
     <div class="row g-3">
-      <!-- Valores informativos -->
+
       <div class="col-md-12">
         <div class="card">
           <div class="card-body">
@@ -282,8 +284,6 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
         </div>
       </div>
 
-
-      <!-- Seleção de tamanho -->
       <div class="col-md-12">
         <div class="card">
           <div class="card-body">
@@ -299,7 +299,6 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
         </div>
       </div>
 
-      <!-- Seleção de adicionais -->
       <div class="col-md-12">
         <div class="card">
           <div class="card-body">
@@ -324,7 +323,6 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
         </div>
       </div>
 
-      <!-- Valor total -->
       <div class="col-md-12">
         <div class="d-flex justify-content-between text-white bg-white bg-opacity-10 rounded-3 p-3">
           <div>
@@ -343,7 +341,6 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
 
     </div>
 
-    <!-- Rodapé -->
     <template #footer>
       <div class="d-flex align-items-center bg-body-secondary justify-content-between justify-content-end gap-2 py-4 px-8 border-top">
         <button type="button" class="btn btn-sm btn-neutral" @click="$offcanvas?.close()">Cancelar

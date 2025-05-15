@@ -125,22 +125,20 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
   </HelpButton>
 
   <div class="d-flex justify-content-center align-items-center bg-light px-3" style="min-height: 100vh;">
-    <!-- Novo painel de texto ao lado -->
-    <div class="me-4 d-none d-lg-flex align-items-center justify-content-center bg-purple text-white rounded shadow-sm p-5" style="max-width: 400px; min-height: 400px;">
+
+    <div class="me-4 d-none d-lg-flex align-items-center px-8 bg-purple text-white rounded shadow-sm p-5" style="max-width: 400px; min-height: 400px; width: 500px">
       <h1 class="display-5 fw-bold text-start text-white">
-        <i class="bi bi-images px-2"></i><br>
+        <i class="bi bi-images px-2" style="height: 50px; display: block;"></i><br>
         Fazer<br>
         pré-pedido<br>
-        via imagem
+        via <u>imagem</u>
       </h1>
     </div>
 
-    <!-- Modal com ícone e conteúdo centralizado -->
+
     <div class="position-relative p-4 rounded shadow-sm bg-white d-flex flex-column justify-content-center align-items-center" style="max-width: 600px; width: 100%; min-height: 400px;">
 
-      <!-- Conteúdo centralizado -->
       <div class="w-100" style="max-width: 500px;">
-        <!-- Área de upload moderna -->
         <div class="card shadow-none border border-2 border-dashed border-primary-hover position-relative mb-4">
           <div class="d-flex justify-content-center px-5 py-6">
             <label for="file-upload" class="stretched-link" role="button">
@@ -169,18 +167,17 @@ const videoUrl = `${window.location.origin}/videos/video.mp4`;
           </div>
         </div>
 
-        <!-- Alerta de erro -->
         <div v-if="error" class="alert alert-danger mb-4">
           {{ error }}<br />
           <a href="https://onlinepngtools.com/resize-png" target="_blank">Clique aqui para redimensionar sua imagem</a>
         </div>
 
-        <!-- Botão -->
         <button class="btn btn-purple w-100" :disabled="isSubmitting" @click="handleSubmit">
           <i class="bi bi-send me-2" v-if="!isSubmitting"></i>
           {{ isSubmitting ? 'Enviando...' : 'Enviar imagem' }}
         </button>
       </div>
+
     </div>
   </div>
 

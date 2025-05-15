@@ -45,7 +45,7 @@ const handleLogout = () => {
         </div>
         <div class="flex-fill">
           <div class="d-flex align-items-center gap-2">
-            <span class="text-sm text-heading fw-semibold">{{ userEmail }}</span>
+            <span class="text-sm text-heading fw-semibold" :title="userEmail">{{ userEmail.length > 22 ? userEmail.slice(0, 22) + '...' : userEmail }}</span>
           </div>
           <!-- <span class="d-block text-xs text-muted">{{ $store.user?.email }}</span> -->
         </div>
