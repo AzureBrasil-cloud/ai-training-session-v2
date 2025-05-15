@@ -45,3 +45,19 @@
   outline: 0;
   box-shadow: var(--x-shadow-sm), 0 0 0 0.15rem var(--x-primary-bg-subtle);
 }
+
+/* SideBar */
+
+.dropdown-item {
+  padding: 8px 0;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa; /* cor de fundo ao passar o mouse */
+}
+
+.dropdown-item.active {
+  background-color: #e9ecef; /* cor de fundo do item ativo */
+  font-weight: 600;
+}

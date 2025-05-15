@@ -3,7 +3,7 @@ import {useOrganizationStore} from '@/stores/organization';
 import UserMenu from './UserMenu.vue';
 import AgentsList from '../sidebar/AgentsList.vue';
 import RecentChats from '../sidebar/RecentChats.vue';
-import { onBeforeMount, ref } from 'vue';
+import {onBeforeMount, ref} from 'vue';
 
 // const $orgStore = useOrganizationStore();
 
@@ -38,29 +38,40 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
       </div>
 
       <div class="px-4 py-2 flex-fill overflow-y-auto scrollbar">
-        <div v-if="userRole === 'user'" class="vstack gap-5 py-5">
+        <div v-if="userRole === 'user'" class="vstack gap-5">
           <div>
-            <div class="d-flex align-items-center px-3 px-lg-0 mb-1">
-              <span class="d-block text-sm item-purple fw-semibold me-auto">USUÁRIO</span>
+            <div class="d-flex align-items-center px-3 px-lg-0 mb-3">
+      <span class="d-block text-sm item-purple fw-semibold bg-light px-3 py-2 rounded-3 w-100">
+        USUÁRIO
+      </span>
             </div>
-            <ul class="navbar-nav navbar-vertical-nav gap-1 mx-lg-n2">
+
+            <ul class="navbar-nav navbar-vertical-nav d-flex flex-column gap-3 mx-lg-n2">
               <li class="nav-item">
                 <RouterLink to="/orders" class="dropdown-item">
                   <i class="bi bi-chat-square-dots px-4"></i>
                   <span>Meus pedidos</span>
                 </RouterLink>
+              </li>
+              <li class="nav-item">
                 <RouterLink to="/send-image-pre-order" class="dropdown-item">
                   <i class="bi bi-images px-4"></i>
-                  <span>Pré-pedido (imagem) </span>
+                  <span>Pré-pedido (imagem)</span>
                 </RouterLink>
+              </li>
+              <li class="nav-item">
                 <RouterLink to="/send-audio-pre-order" class="dropdown-item">
                   <i class="bi bi-music-note-list px-4"></i>
-                  <span>Pré-pedido (áudio) </span>
+                  <span>Pré-pedido (áudio)</span>
                 </RouterLink>
+              </li>
+              <li class="nav-item">
                 <RouterLink to="/send-review" class="dropdown-item">
                   <i class="bi bi-card-checklist px-4"></i>
                   <span>Fazer avaliação</span>
                 </RouterLink>
+              </li>
+              <li class="nav-item">
                 <RouterLink to="/info-chat" class="dropdown-item">
                   <i class="bi bi-robot px-4"></i>
                   <span>Assistente de informações</span>
@@ -70,29 +81,41 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
           </div>
         </div>
 
+
         <div v-else-if="userRole === 'admin'" class="vstack gap-5">
           <div>
-            <div class="d-flex align-items-center px-3 px-lg-0 mb-1">
-              <span class="d-block text-sm item-purple fw-semibold me-auto">ADMIN</span>
+            <div class="d-flex align-items-center px-3 px-lg-0 mb-3">
+      <span class="d-block text-sm item-purple fw-semibold bg-light px-3 py-2 rounded-3 w-100">
+        ADMIN
+      </span>
             </div>
-            <ul class="navbar-nav navbar-vertical-nav gap-0.5 mx-lg-n2">
+
+            <ul class="navbar-nav navbar-vertical-nav d-flex flex-column gap-3 mx-lg-n2">
               <li class="nav-item">
                 <RouterLink to="/orders" class="dropdown-item">
                   <i class="bi bi-chat-square-dots px-4"></i>
                   <span>Todos os pedidos</span>
                 </RouterLink>
+              </li>
+              <li class="nav-item">
                 <RouterLink to="/image-pre-orders" class="dropdown-item">
                   <i class="bi bi-images px-4"></i>
                   <span>Pré-pedidos (imagem)</span>
                 </RouterLink>
+              </li>
+              <li class="nav-item">
                 <RouterLink to="/audio-pre-orders" class="dropdown-item">
                   <i class="bi bi-music-note-list px-4"></i>
                   <span>Pré-pedidos (áudio)</span>
                 </RouterLink>
+              </li>
+              <li class="nav-item">
                 <RouterLink to="/reviews" class="dropdown-item">
                   <i class="bi bi-card-checklist px-4"></i>
                   <span>Avaliações</span>
                 </RouterLink>
+              </li>
+              <li class="nav-item">
                 <RouterLink to="/orders-chat" class="dropdown-item">
                   <i class="bi bi-robot px-4"></i>
                   <span>Assistente de pedidos</span>
@@ -101,6 +124,8 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
             </ul>
           </div>
         </div>
+
+
       </div>
 
       <UserMenu/>

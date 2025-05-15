@@ -37,6 +37,8 @@ const extrasOptions = [
   'Paçoca'
 ]
 
+const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
+
 function getSizeLabel(size: number): string {
   switch (size) {
     case 1: return 'Pequeno'
@@ -87,7 +89,6 @@ async function save() {
   await fetchData();
   $offcanvas?.close();
 }
-const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
 const videoUrl = `${window.location.origin}/videos/video.mp4`;
 </script>
 
