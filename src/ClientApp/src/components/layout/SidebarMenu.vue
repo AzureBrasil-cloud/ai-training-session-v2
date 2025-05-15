@@ -28,14 +28,8 @@ onBeforeMount(() => {
           <div
             class="w-100 px-2 py-2 text-start border-0 bg-transparent shadow-none bg-accent-hover rounded d-flex gap-3 align-items-center"
             data-bs-toggle="dropdown">
-            <img src="/logo-acai.svg"
-                 class="img-dark avatar avatar-sm"
-                 alt="..."/>
-            <img src="https://assets.webpixels.io/img/logos/clever-light-sm.svg"
-                 class="img-light avatar avatar-sm"
-                 alt="..."/>
+            <img src="/logo-acai.png" class="img-dark" alt="..." width="85" />
             <div class="d-grid flex-grow-1 ls-tight text-sm">
-
               <span class="item-purple fw-semibold ">Contoso Açaí</span>
               <span class="text-truncate text-xs text-body-secondary mt-n1">Web app</span>
             </div>
@@ -46,7 +40,7 @@ onBeforeMount(() => {
         <div v-if="userRole === 'user'" class="vstack gap-5 py-5">
           <div>
             <div class="d-flex align-items-center px-3 px-lg-0 mb-1">
-              <span class="d-block text-xs text-body-secondary fw-semibold me-auto">Usuário</span>
+              <span class="d-block text-sm item-purple fw-semibold me-auto">USUÁRIO</span>
             </div>
             <ul class="navbar-nav navbar-vertical-nav gap-1 mx-lg-n2">
               <li class="nav-item">
@@ -59,15 +53,15 @@ onBeforeMount(() => {
                   <span>Pré-pedido (imagem) </span>
                 </RouterLink>
                 <RouterLink to="/send-audio-pre-order" class="dropdown-item">
-                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <i class="bi bi-music-note-list px-4"></i>
                   <span>Pré-pedido (áudio) </span>
                 </RouterLink>
                 <RouterLink to="/send-review" class="dropdown-item">
-                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <i class="bi bi-card-checklist px-4"></i>
                   <span>Fazer avaliação</span>
                 </RouterLink>
                 <RouterLink to="/info-chat" class="dropdown-item">
-                  <i class="bi bi-chat-square-dots px-4"></i>
+                  <i class="bi bi-robot px-4"></i>
                   <span>Assistente de informações</span>
                 </RouterLink>
               </li>
@@ -78,7 +72,7 @@ onBeforeMount(() => {
         <div v-else-if="userRole === 'admin'" class="vstack gap-5">
           <div>
             <div class="d-flex align-items-center px-3 px-lg-0 mb-1">
-              <span class="d-block text-xs text-body-secondary fw-semibold me-auto">Admin</span>
+              <span class="d-block text-sm item-purple fw-semibold me-auto">ADMIN</span>
             </div>
             <ul class="navbar-nav navbar-vertical-nav gap-0.5 mx-lg-n2">
               <li class="nav-item">
