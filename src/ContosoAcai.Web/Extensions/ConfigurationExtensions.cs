@@ -1,5 +1,13 @@
+using System.Diagnostics;
+using Azure.Monitor.OpenTelemetry.Exporter;
+using ContosoAcai.Application;
 using ContosoAcai.Application.Extensions;
 using PowerPilotChat.Web.Middlewares;
+using OpenTelemetry;
+using OpenTelemetry.Logs;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using OpenTelemetry.Metrics;
 
 namespace ContosoAcai.Web.Extensions;
 
@@ -24,6 +32,30 @@ public static class ConfigurationExtensions
         
         // Global exception handler
         services.AddTransient<GlobalExceptionHandlerMiddleware>();
+        
+        AppContext.SetSwitch("Azure.Experimental.EnableActivitySource", true); 
+        AppContext.SetSwitch("Azure.Experimental.TraceGenAIMessageContent", true);
+
+        services.AddOpenTelemetry()
+            .WithTracing(tracing => tracing
+                .ConfigureResource(resource => resource.AddService("ConstosoAcai.Api"))    
+                .AddAspNetCoreInstrumentation()
+                .AddHttpClientInstrumentation()
+                .AddSource(InstrumentationConfig.ActivitySource.Name)
+                .AddOtlpExporter()
+                .AddAzureMonitorTraceExporter(options =>
+                {
+                    options.ConnectionString = configuration["AzureMonitor:ConnectionString"]!;
+                }))
+            .WithMetrics(metrics => metrics
+                .ConfigureResource(resource => resource.AddService("ConstosoAcai.Api"))    
+                .AddAspNetCoreInstrumentation()
+                .AddHttpClientInstrumentation()
+                .AddOtlpExporter()
+                .AddAzureMonitorMetricExporter(options =>
+                {
+                    options.ConnectionString = configuration["AzureMonitor:ConnectionString"]!;
+                }));
     }
 
     public static void ConfigureApplication(this WebApplication app)

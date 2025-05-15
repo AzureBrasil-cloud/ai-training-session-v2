@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Text;
 using Azure;
 using Azure.AI.Projects;
@@ -10,7 +11,7 @@ public partial class AiAgentService
 {
     private const string AnnotationMark = "📖";
     
-    public async Task<Message> CreateRunAsync(
+    public async Task<(Message Message, long InputTokenCount, long OutputTokenCount)> CreateRunAsync(
         Credentials credentials,
         string threadId,
         string userMessage,
@@ -22,9 +23,7 @@ public partial class AiAgentService
             threadId,
             MessageRole.User,
             userMessage);
-
-        var agent = await client.GetAgentAsync(agentId);
-
+        
         Response<ThreadRun> runResponse = await client.CreateRunAsync(
             threadId,
             agentId,
@@ -50,10 +49,9 @@ public partial class AiAgentService
 
         if (runResponse.Value.Status == RunStatus.Failed)
         {
-            return new Message(
-                Guid.NewGuid().ToString(), 
-                MessageRole.User.ToString(),
-                $"Error: {runResponse.Value.LastError.Message}");
+            return (new Message(Guid.NewGuid().ToString(), MessageRole.User.ToString(), $"Error: {runResponse.Value.LastError.Message}"),
+                0,
+                0);
         }
         
         Response<PageableList<ThreadMessage>> afterRunMessagesResponse =
@@ -102,6 +100,8 @@ public partial class AiAgentService
             text.Length--;
         }
 
-        return new Message(message.Id, message.Role.ToString(), text.ToString());
+        return (new Message(message.Id, message.Role.ToString(), text.ToString()), 
+            runResponse.Value.Usage.PromptTokens, 
+            runResponse.Value.Usage.CompletionTokens);
     }
 }
