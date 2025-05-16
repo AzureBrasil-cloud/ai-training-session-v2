@@ -89,7 +89,7 @@ async function save() {
   await fetchData();
   $offcanvas?.close();
 }
-const videoUrl = `${window.location.origin}/videos/video.mp4`;
+const videoUrl = `${window.location.origin}/videos/list-create-order.mp4`;
 </script>
 
 <template>

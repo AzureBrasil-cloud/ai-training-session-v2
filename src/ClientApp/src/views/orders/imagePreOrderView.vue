@@ -29,7 +29,7 @@ async function fetchPreOrders() {
 }
 
 onMounted(fetchPreOrders);
-const videoUrl = `${window.location.origin}/videos/video.mp4`;
+const videoUrl = `${window.location.origin}/videos/pre-order-image.mp4`;
 </script>
 
 <template>

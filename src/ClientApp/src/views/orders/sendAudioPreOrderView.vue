@@ -60,7 +60,7 @@ async function handleSubmit() {
   }
 }
 
-const videoUrl = `${window.location.origin}/videos/video.mp4`;
+const videoUrl = `${window.location.origin}/videos/create-audio.mp4`;
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ChatWindow from '@/components/common/ChatWindow.vue';
 import HelpButton from "@/components/common/HelpButton.vue";
-const videoUrl = `${window.location.origin}/videos/video.mp4`;
+const videoUrl = `${window.location.origin}/videos/order-agent.mp4`;
 </script>
 
 <template>

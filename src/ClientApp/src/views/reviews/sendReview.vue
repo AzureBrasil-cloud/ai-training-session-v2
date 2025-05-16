@@ -40,7 +40,7 @@ async function submitReview() {
   }
 }
 
-const videoUrl = `${window.location.origin}/videos/video.mp4`;
+const videoUrl = `${window.location.origin}/videos/create-review.mp4`;
 </script>
 
 <template>

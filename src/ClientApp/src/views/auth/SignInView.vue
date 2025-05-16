@@ -58,7 +58,7 @@ const handleSubmit = async () => {
 const hasErrors = () => {
   return emailError.value || passwordError.value;
 };
-const videoUrl = `${window.location.origin}/videos/video.mp4`;
+const videoUrl = `${window.location.origin}/videos/login.mp4`;
 const logo = `${window.location.origin}/images/logo-acai.png`;
 const logoAzBr = `${window.location.origin}/images/logo-azbr.png`;
 </script>
