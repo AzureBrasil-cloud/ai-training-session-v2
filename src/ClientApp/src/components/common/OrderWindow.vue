@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { EXTRA_OPTIONS, SIZE_PRICES, TOPPING_PRICE } from '@/constants/order';
 import type { Order } from '@/models/order';
 import type { IOffcanvas } from '@/plugins/offcanvas';
+import { capitalize } from '@/utils/capitalize';
 import axios from 'axios';
 import { computed, inject } from 'vue';
 
@@ -16,25 +18,10 @@ const emit = defineEmits<{
   (event: 'fetchData'): Promise<void>;
 }>();
 
-const extrasOptions = [
-  'M&Ms',
-  'Leite ninho',
-  'Granola',
-  'Paçoca'
-]
-
-const sizePrices: Record<number, number> = {
-  1: 5.00,
-  2: 7.50,
-  3: 10.00,
-}
-
-const toppingPrice = 2.00
-
 const totalPrice = computed(() => {
   if (!model.value) return 0
-  const sizeValue = sizePrices[model.value.size] || 0
-  const extrasValue = (model.value.extras?.length || 0) * toppingPrice
+  const sizeValue = SIZE_PRICES[model.value.size] || 0
+  const extrasValue = (model.value.extras?.length || 0) * TOPPING_PRICE
   return sizeValue + extrasValue
 })
 
@@ -142,7 +129,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
             <select class="form-select form-select-sm" v-model.number="model!.size" required>
               <option disabled value="">Selecione o tamanho</option>
               <option :value="1">Pequeno</option>
-              <option :value="2">Médio</option>
+              <option :value="2">Médio</option>665
               <option :value="3">Grande</option>
             </select>
           </div>
@@ -155,7 +142,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
             <div class="mb-4">
               <h5 class="card-title pb-2 item-purple"><i
                 class="bi bi-plus-circle-dotted"></i> Adicionais</h5>
-              <div class="form-check d-inline-block me-3" v-for="extra in extrasOptions"
+              <div class="form-check d-inline-block me-3" v-for="extra in EXTRA_OPTIONS"
                    :key="extra">
                 <input
                   class="form-check-input"
@@ -164,7 +151,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
                   :value="extra"
                   v-model="model!.extras"
                 />
-                <label class="form-check-label" :for="extra">{{ extra }}</label>
+                <label class="form-check-label" :for="extra">{{ capitalize(extra) }}</label>
               </div>
             </div>
             <small class="form-text text-muted bg-white rounded-2 p-2">Selecione zero ou mais

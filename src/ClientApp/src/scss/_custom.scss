@@ -12,6 +12,10 @@ html, body {
   overflow: hidden; /* Remove scroll vertical e horizontal */
 }
 
+.fontBold {
+  font-weight: 600;
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -62,11 +66,11 @@ html, body {
 }
 
 .dropdown-item:hover {
-  background-color: #f8f9fa; /* cor de fundo ao passar o mouse */
+  background-color: #f8f9fa59; /* cor de fundo ao passar o mouse */
 }
 
 .dropdown-item.active {
-  background-color: #e9ecef; /* cor de fundo do item ativo */
+  background-color: #e9ecef8c; /* cor de fundo do item ativo */
   font-weight: 600;
 }
 

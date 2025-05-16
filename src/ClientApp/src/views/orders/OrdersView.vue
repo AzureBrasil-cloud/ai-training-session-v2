@@ -7,6 +7,7 @@ import OrderWindow from "@/components/common/OrderWindow.vue";
 import { auth } from "@/utils/auth";
 import type { IOffcanvas } from "@/plugins/offcanvas";
 
+const $offcanvas = inject<IOffcanvas>('$offcanvas');
 const _data = ref<Order[]>();
 const isEditMode = ref(false);
 const selected = ref<string | null>(null);
@@ -62,25 +63,6 @@ onMounted(async () => {
   await fetchData();
 });
 
-async function openCreate() {
-  isEditMode.value = false;
-  selected.value = null;
-  form.value = {
-    id: '',
-    createdAt: null,
-    totalValue: null,
-    userEmail: userEmail.value,
-    size: 1,
-    extras: []
-  };
-  $offcanvas?.show('order');
-}
-
-async function save() {
-  await axios.post(`/api/orders`, form.value);
-  await fetchData();
-  $offcanvas?.close();
-}
 const videoUrl = `${window.location.origin}/videos/list-create-order.mp4`;
 </script>
 

@@ -13,9 +13,6 @@
   let emailError = ref("");
   let passwordError = ref("");
 
-  watch(email, (newValue) => {
-    console.log("Email:", newValue);
-  });
 
   const darkTheme = () => {
     document.documentElement.setAttribute('data-bs-theme', 'dark');
@@ -24,6 +21,18 @@
 
 const handleSubmit = async () => {
   try {
+    if (email.value === "") {
+      emailError.value = "Email é um campo obrigatório.";
+    }
+
+    if (password.value === "") {
+      passwordError.value = "Senha é um campo obrigatório.";
+    }
+
+    if (email.value === "" || password.value === "") {
+      return;
+    }
+
     if (email.value === ADM_CREDENTIALS.email && password.value === ADM_CREDENTIALS.password) {
       darkTheme();
       sessionStorage.setItem("loggedUser", JSON.stringify({

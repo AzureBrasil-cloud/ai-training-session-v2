@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { EXTRA_OPTIONS, SIZE_PRICES, TOPPING_PRICE } from '@/constants/order';
 import type { Order } from '@/models/order';
 import type { PreOrderAudio } from '@/models/preOrderAudio';
 import type { IOffcanvas } from '@/plugins/offcanvas';
-import { preOrder } from '@/utils/preOrder';
+import { capitalize } from '@/utils/capitalize';
 import axios from 'axios';
 import { computed, inject, ref, watchEffect } from 'vue';
 
@@ -11,8 +12,6 @@ const preOrderAudioRef = ref<string>("");
 const $offcanvas = inject<IOffcanvas>('$offcanvas');
 
 const model = defineModel<Order>();
-
-console.log("model", model);
 
 const props = defineProps<{
   isEditMode: boolean;
@@ -23,25 +22,10 @@ const emit = defineEmits<{
   (event: 'fetchData'): Promise<void>;
 }>();
 
-const extrasOptions = [
-  'M&Ms',
-  'Leite ninho',
-  'Granola',
-  'Paçoca'
-]
-
-const sizePrices: Record<number, number> = {
-  1: 5.00,
-  2: 7.50,
-  3: 10.00,
-}
-
-const toppingPrice = 2.00
-
 const totalPrice = computed(() => {
   if (!model.value) return 0
-  const sizeValue = sizePrices[model.value.size] || 0
-  const extrasValue = (model.value.extras?.length || 0) * toppingPrice
+  const sizeValue = SIZE_PRICES[model.value.size] || 0
+  const extrasValue = (model.value.extras?.length || 0) * TOPPING_PRICE
   return sizeValue + extrasValue
 })
 
@@ -55,7 +39,7 @@ watchEffect(() => {
   preOrderAudioRef.value = props.preOrderAudio?.content ?? "";
 })
 
-const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
+const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
 </script>
 
 <template>
@@ -64,9 +48,9 @@ const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
       <div class="col-md-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title item-purple">Pedido solicitado</h5>
+            <h5 class="card-title fontBold">Pedido solicitado</h5>
             <p class="card-subtitle text-body-secondary text-sm mb-4">
-              Informações do pedido: <br />
+              <span class="fontBold">Informações do pedido:</span> <br />
               {{ preOrderAudioRef }}
             </p>
           </div>
@@ -76,9 +60,9 @@ const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
       <div class="col-md-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title item-purple"><i class="bi bi-currency-dollar"></i>Valores
+            <h5 class="card-title fontBold"><i class="bi bi-currency-dollar"></i>Valores
             </h5>
-            <p class="card-subtitle text-body-secondary text-sm mb-4">
+            <p class="card-subtitle text-body-secondary text-sm mb-4 fontBold">
               Escolha o tamanho e os adicionais
             </p>
             <div class="list-group list-group-borderless gap-2 list-group-flush">
@@ -140,7 +124,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
                 <div class="d-flex align-items-center">
                   <div class="me-4">
                     <div class="icon icon-shape text-lg bg-body-secondary text-primary">
-                      <i class="bi bi-plus-circle-dotted item-purple"></i>
+                      <i class="bi bi-plus-circle-dotted text-white"></i>
                     </div>
                   </div>
                   <div class="flex-fill">
@@ -160,7 +144,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
       <div class="col-md-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title pb-2 item-purple"><i class="bi bi-arrows-vertical"></i>Tamanho</h5>
+            <h5 class="card-title pb-2 fontBold"><i class="bi bi-arrows-vertical"></i>Tamanho</h5>
             <select class="form-select form-select-sm" v-model.number="model!.size" required>
               <option disabled value="">Selecione o tamanho</option>
               <option :value="1">Pequeno</option>
@@ -175,19 +159,20 @@ const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
         <div class="card">
           <div class="card-body">
             <div class="mb-4">
-              <h5 class="card-title pb-2 item-purple"><i
+              <h5 class="card-title pb-2 fontBold"><i
                 class="bi bi-plus-circle-dotted"></i> Adicionais</h5>
-              <div class="form-check d-inline-block me-3" v-for="extra in extrasOptions"
+              <div class="form-check d-inline-block me-3" v-for="extra in EXTRA_OPTIONS"
                    :key="extra">
+
                 <input
                   class="form-check-input"
                   type="checkbox"
                   :id="extra"
                   :value="extra"
                   v-model="model!.extras"
-                  :checked="model?.extras?.includes(extra.toLowerCase())"
+                  :checked="model?.extras?.includes(extra)"
                 />
-                <label class="form-check-label" :for="extra">{{ extra }}</label>
+                <label class="form-check-label" :for="extra">{{ capitalize(extra) }}</label>
               </div>
             </div>
             <small class="form-text text-muted bg-white rounded-2 p-2">Selecione zero ou mais

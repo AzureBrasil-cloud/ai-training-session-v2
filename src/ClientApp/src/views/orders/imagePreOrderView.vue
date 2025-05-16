@@ -7,7 +7,7 @@ import type { Order } from '@/models/order';
 import type { PreOrderImage } from '@/models/preOrderImage';
 import ImageOrderWindowPreOrder from '@/components/common/ImageOrderWindowPreOrder.vue';
 
-const videoUrl = `${window.location.origin}/videos/video.mp4`;
+const videoUrl = `${window.location.origin}/videos/pre-order-image.mp4`;
 
 const data = ref<PreOrderImage[]>([]);
 const isLoading = ref(false);
@@ -16,8 +16,6 @@ const isEditMode = ref(false);
 const selected = ref<string | null>(null);
 const form = ref<Order>();
 const orderData = ref<PreOrderImage>();
-
-const userEmail = ref("");
 
 onMounted(fetchPreOrders);
 
@@ -33,8 +31,6 @@ async function fetchPreOrders() {
   }
 }
 
-onMounted(fetchPreOrders);
-const videoUrl = `${window.location.origin}/videos/pre-order-image.mp4`;
 const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
   let url = `/api/pre-order/image/${id}`;
 
@@ -50,17 +46,17 @@ const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
       id: response.data.id,
       createdAt: new Date(response.data.createdAt),
       totalValue: null,
-      userEmail: userEmail.value,
+      userEmail: response.data.userEmail,
       size: response.data.aiTransformedOrder?.size ?? 1,
-      extras: response.data.aiTransformedOrder?.extras ?? []
+      extras: response.data.aiTransformedOrder?.extras.map(e => e.toLowerCase()) ?? []
     };
   }
   else {
     form.value = {
-      id: '',
-      createdAt: null,
+      id: response.data.id,
+      createdAt: new Date(response.data.createdAt),
       totalValue: null,
-      userEmail: userEmail.value,
+      userEmail: response.data.userEmail,
       size: 1,
       extras: []
     };

@@ -1,3 +1,7 @@
+using System.Text.Json;
+using System.Text.Json.Schema;
+using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using ContosoAcai.Infrastructure.Azure.Shared;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Schema.Generation;
@@ -44,8 +48,24 @@ public partial class AiInferenceService
             new UserChatMessage(content)
         };
         
-        JSchemaGenerator generator = new JSchemaGenerator();
-        var jsonSchema = generator.Generate(typeof(T)).ToString();
+        var serializerOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web)
+        {
+            WriteIndented = true,
+            NumberHandling = JsonNumberHandling.Strict,
+            Converters = { new JsonStringEnumConverter() },
+            PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
+            RespectNullableAnnotations = true,
+            TypeInfoResolver = new DefaultJsonTypeInfoResolver(),
+            UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow
+        };
+
+        var exporterOptions = new JsonSchemaExporterOptions
+        {
+            TreatNullObliviousAsNonNullable = true
+        };
+        
+        JsonSerializerOptions options = JsonSerializerOptions.Default;
+        var jsonSchema = options.GetJsonSchemaAsNode(typeof(T), exporterOptions).ToJsonString(serializerOptions);
         
         var result = await client.CompleteChatAsync(
             chat,
