@@ -4,17 +4,8 @@ import axios from 'axios';
 import HelpButton from "@/components/common/HelpButton.vue";
 import type { IOffcanvas } from '@/plugins/offcanvas';
 import type { Order } from '@/models/order';
-import OrderWindow from '@/components/common/OrderWindow.vue';
-
-interface PreOrderImage {
-  id: string;
-  userEmail: string;
-  imageName: string;
-  imageExtension: string;
-  keyValuePairs: string[];
-  createdAt: string;
-  aiTransformedOrder: string | null;
-}
+import type { PreOrderImage } from '@/models/preOrderImage';
+import ImageOrderWindowPreOrder from '@/components/common/ImageOrderWindowPreOrder.vue';
 
 const videoUrl = `${window.location.origin}/videos/video.mp4`;
 
@@ -24,7 +15,7 @@ const $offcanvas = inject<IOffcanvas>('$offcanvas');
 const isEditMode = ref(false);
 const selected = ref<string | null>(null);
 const form = ref<Order>();
-
+const orderData = ref<PreOrderImage>();
 
 const userEmail = ref("");
 
@@ -42,17 +33,39 @@ async function fetchPreOrders() {
   }
 }
 
-const handleOpenOrderWindow = () => {
+const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
+  let url = `/api/pre-order/image/${id}`;
+
+  if (aiTransformation) {
+    url += '?applyAiTransformation=true';
+  }
+
+  const response = await axios.get<PreOrderImage>(url);
+  orderData.value = response.data;
+
+  if (aiTransformation) {
+    form.value = {
+      id: response.data.id,
+      createdAt: new Date(response.data.createdAt),
+      totalValue: null,
+      userEmail: userEmail.value,
+      size: response.data.aiTransformedOrder?.size ?? 1,
+      extras: response.data.aiTransformedOrder?.extras ?? []
+    };
+  }
+  else {
+    form.value = {
+      id: '',
+      createdAt: null,
+      totalValue: null,
+      userEmail: userEmail.value,
+      size: 1,
+      extras: []
+    };
+  }
+
   isEditMode.value = false;
   selected.value = null;
-  form.value = {
-    id: '',
-    createdAt: null,
-    totalValue: null,
-    userEmail: userEmail.value,
-    size: 1,
-    extras: []
-  };
   $offcanvas?.show("order");
 }
 </script>
@@ -152,8 +165,8 @@ const handleOpenOrderWindow = () => {
           <td>{{ item.imageExtension }}</td>
           <td>
             <div class="d-flex gap-2">
-              <button class="btn btn-sm btn-outline-primary" @click="handleOpenOrderWindow">Ver</button>
-              <button class="btn btn-sm btn-outline-success" @click="handleOpenOrderWindow">Ver com AI</button>
+              <button class="btn btn-sm btn-outline-primary" @click="() => handleOpenOrderWindow(item.id, false)">Ver</button>
+              <button class="btn btn-sm btn-outline-success" @click="() => handleOpenOrderWindow(item.id, true)">Ver com AI</button>
             </div>
           </td>
         </tr>
@@ -162,8 +175,9 @@ const handleOpenOrderWindow = () => {
     </div>
   </div>
 
-  <OrderWindow
+  <ImageOrderWindowPreOrder
     :is-edit-mode="isEditMode"
     v-model="form"
+    :pre-order-image="orderData"
   />
 </template>

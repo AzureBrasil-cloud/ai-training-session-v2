@@ -1,15 +1,21 @@
 <script setup lang="ts">
 import type { Order } from '@/models/order';
+import type { PreOrderAudio } from '@/models/preOrderAudio';
+import type { PreOrderImage } from '@/models/preOrderImage';
 import type { IOffcanvas } from '@/plugins/offcanvas';
+import { preOrder } from '@/utils/preOrder';
 import axios from 'axios';
-import { computed, inject } from 'vue';
+import { computed, inject, ref, watchEffect } from 'vue';
+
+const preOrderImageRef = ref<string>("");
 
 const $offcanvas = inject<IOffcanvas>('$offcanvas');
 
 const model = defineModel<Order>();
 
-defineProps<{
+const props = defineProps<{
   isEditMode: boolean;
+  preOrderImage?: PreOrderImage;
 }>();
 
 const emit = defineEmits<{
@@ -44,12 +50,32 @@ async function save() {
   $offcanvas?.close();
 }
 
+watchEffect(() => {
+  const preOrderValues = preOrder.transformPreOrderKeyValuePairs(props.preOrderImage?.keyValuePairs ?? [])
+
+  if (preOrderValues && preOrderValues.length > 0) {
+    preOrderImageRef.value = preOrderValues;
+  }
+})
+
 const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
 </script>
 
 <template>
 <Offcanvas name="order" :title="isEditMode ? 'Editar Pedido' : 'Novo Pedido'">
     <div class="row g-3">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title item-purple">Pedido solicitado</h5>
+            <p class="card-subtitle text-body-secondary text-sm mb-4">
+              Informações do pedido: <br />
+              {{ preOrderImageRef }}
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div class="col-md-12">
         <div class="card">
           <div class="card-body">
@@ -137,8 +163,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
       <div class="col-md-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title pb-2 item-purple"><i class="bi bi-arrows-vertical"></i>Tamanho
-            </h5>
+            <h5 class="card-title pb-2 item-purple"><i class="bi bi-arrows-vertical"></i>Tamanho</h5>
             <select class="form-select form-select-sm" v-model.number="model!.size" required>
               <option disabled value="">Selecione o tamanho</option>
               <option :value="1">Pequeno</option>
@@ -163,6 +188,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
                   :id="extra"
                   :value="extra"
                   v-model="model!.extras"
+                  :checked="model?.extras?.includes(extra)"
                 />
                 <label class="form-check-label" :for="extra">{{ extra }}</label>
               </div>

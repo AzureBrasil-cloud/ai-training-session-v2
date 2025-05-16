@@ -4,17 +4,8 @@ import axios from 'axios';
 import HelpButton from "@/components/common/HelpButton.vue";
 import type { IOffcanvas } from '@/plugins/offcanvas';
 import type { Order } from '@/models/order';
-import OrderWindow from '@/components/common/OrderWindow.vue';
-
-interface PreOrderAudio {
-  id: string;
-  userEmail: string;
-  audioName: string;
-  audioExtension: string;
-  content: string;
-  createdAt: string;
-  aiTransformedOrder: string | null;
-}
+import type { PreOrderAudio } from '@/models/preOrderAudio';
+import AudioOrderWindowPreOrder from '@/components/common/AudioOrderWindowPreOrder.vue';
 
 const data = ref<PreOrderAudio[]>([]);
 const isLoading = ref(false);
@@ -22,9 +13,13 @@ const $offcanvas = inject<IOffcanvas>('$offcanvas');
 const isEditMode = ref(false);
 const selected = ref<string | null>(null);
 const form = ref<Order>();
-
+const orderData = ref<PreOrderAudio>();
 
 const userEmail = ref("");
+
+const videoUrl = `${window.location.origin}/videos/video.mp4`;
+
+onMounted(fetchPreOrders);
 
 async function fetchPreOrders() {
   isLoading.value = true;
@@ -38,20 +33,39 @@ async function fetchPreOrders() {
   }
 }
 
-onMounted(fetchPreOrders);
-const videoUrl = `${window.location.origin}/videos/video.mp4`;
+const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
+  let url = `/api/pre-order/audio/${id}`;
 
-const handleOpenOrderWindow = () => {
+  if (aiTransformation) {
+    url += '?applyAiTransformation=true';
+  }
+
+  const response = await axios.get<PreOrderAudio>(url);
+  orderData.value = response.data;
+
+  if (aiTransformation) {
+    form.value = {
+      id: response.data.id,
+      createdAt: new Date(response.data.createdAt),
+      totalValue: null,
+      userEmail: userEmail.value,
+      size: response.data.aiTransformedOrder?.size ?? 1,
+      extras: response.data.aiTransformedOrder?.extras ?? []
+    };
+  }
+  else {
+    form.value = {
+      id: '',
+      createdAt: null,
+      totalValue: null,
+      userEmail: userEmail.value,
+      size: 1,
+      extras: []
+    };
+  }
+
   isEditMode.value = false;
   selected.value = null;
-  form.value = {
-    id: '',
-    createdAt: null,
-    totalValue: null,
-    userEmail: userEmail.value,
-    size: 1,
-    extras: []
-  };
   $offcanvas?.show("order");
 }
 
@@ -152,8 +166,8 @@ const handleOpenOrderWindow = () => {
           <td>{{ item.audioExtension }}</td>
           <td>
             <div class="d-flex gap-2">
-              <button class="btn btn-sm btn-outline-primary" @click="handleOpenOrderWindow">Ver</button>
-              <button class="btn btn-sm btn-outline-success" @click="handleOpenOrderWindow">Ver com AI</button>
+              <button class="btn btn-sm btn-outline-primary" @click="() => handleOpenOrderWindow(item.id, false)">Ver</button>
+              <button class="btn btn-sm btn-outline-success" @click="() => handleOpenOrderWindow(item.id, true)">Ver com AI</button>
             </div>
           </td>
         </tr>
@@ -162,8 +176,9 @@ const handleOpenOrderWindow = () => {
     </div>
   </div>
 
-  <OrderWindow
+  <AudioOrderWindowPreOrder
     :is-edit-mode="isEditMode"
     v-model="form"
+    :pre-order-audio="orderData"
   />
 </template>
