@@ -1,7 +1,8 @@
 // src/components/common/ChatWindow.vue
 <template>
   <div class="d-flex flex-column p-3" style="height: 95vh;">
-    <h3 class="mb-3">{{ title }}</h3>
+
+    <h4 class="mb-3 item-purple s-h3"><i class="bi bi-robot px-3"></i>{{ title }}</h4>
 
     <div v-if="isLoading" class="text-muted small mb-2">
       <span class="spinner-border spinner-border-sm me-2" role="status"></span>

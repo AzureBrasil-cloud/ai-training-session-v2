@@ -19,6 +19,22 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
 </script>
 
 <template>
+  <!-- Topbar visível apenas em mobile -->
+  <div class="d-flex justify-content-between align-items-center d-lg-none p-3">
+    <!-- Logo à esquerda -->
+    <img :src="logo" alt="Logo" width="85" />
+
+    <!-- Botão hamburguer à direita -->
+    <button
+      class="btn btn-purple"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#sidebarOffcanvas"
+      aria-controls="sidebarOffcanvas"
+    >
+      <i class="bi bi-list fs-3"></i>
+    </button>
+  </div>
   <div class="offcanvas-lg offcanvas-start w-rem-80 w-lg-auto border-end-lg" data-bs-scroll="true"
        tabindex="-1"
        id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">

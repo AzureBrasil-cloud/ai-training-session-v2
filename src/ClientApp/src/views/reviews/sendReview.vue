@@ -133,10 +133,8 @@ const videoUrl = `${window.location.origin}/videos/create-review.mp4`;
 
 
   <div class="d-flex justify-content-center align-items-center bg-light px-3" style="min-height: 100vh;">
-    <!-- Novo painel de texto ao lado -->
-    <div
-      class="me-4 d-none d-lg-flex align-items-center px-8 bg-purple text-white rounded shadow-sm p-5"
-      style="max-width: 400px; min-height: 400px; width: 500px;">
+
+    <div class="me-4 d-none d-lg-flex align-items-center px-8 bg-purple text-white rounded shadow-sm p-5" style="height: 98%; width: 50%">
       <h1 class="display-5 fw-bold text-start text-white">
         <i class="bi bi-card-checklist px-2" style="height: 50px; display: block;"></i><br>
         Enviar a<br>
@@ -145,15 +143,13 @@ const videoUrl = `${window.location.origin}/videos/create-review.mp4`;
       </h1>
     </div>
 
-    <!-- Modal com ícone e conteúdo centralizado -->
-    <div class="position-relative p-4 rounded shadow-sm bg-white d-flex flex-column justify-content-center align-items-center" style="max-width: 600px; width: 100%; min-height: 400px;">
+    <div class="position-relative p-4 rounded shadow-sm bg-white d-flex flex-column justify-content-center align-items-center" style="width: 100%; height: 98%;">
 
       <div class="w-100" style="max-width: 500px;">
-        <!-- Mensagens -->
+
         <div v-if="error" class="alert alert-danger mb-4">{{ error }}</div>
         <div v-if="success" class="alert alert-success mb-4">Avaliação enviada com sucesso!</div>
 
-        <!-- Área de texto -->
         <div class="mb-4">
           <label for="avaliacao-text" class="form-label fw-semibold"><i class="bi bi-pen px-3"></i>Sua avaliação</label>
           <textarea
@@ -166,7 +162,6 @@ const videoUrl = `${window.location.origin}/videos/create-review.mp4`;
           ></textarea>
         </div>
 
-        <!-- Botão -->
         <button class="btn btn-purple w-100" @click="submitReview" :disabled="isSubmitting">
           <i class="bi bi-send me-2" v-if="!isSubmitting"></i>
           {{ isSubmitting ? 'Enviando...' : 'Enviar Review' }}

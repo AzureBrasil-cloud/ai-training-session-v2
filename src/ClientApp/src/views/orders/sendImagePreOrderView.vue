@@ -126,7 +126,7 @@ const videoUrl = `${window.location.origin}/videos/create-image.mp4`;
 
   <div class="d-flex justify-content-center align-items-center bg-light px-3" style="min-height: 100vh;">
 
-    <div class="me-4 d-none d-lg-flex align-items-center px-8 bg-purple text-white rounded shadow-sm p-5" style="max-width: 400px; min-height: 400px; width: 500px">
+    <div class="me-4 d-none d-lg-flex align-items-center px-8 bg-purple text-white rounded shadow-sm p-5" style="height: 98%; width: 50%">
       <h1 class="display-5 fw-bold text-start text-white">
         <i class="bi bi-images px-2" style="height: 50px; display: block;"></i><br>
         Fazer<br>
@@ -136,7 +136,7 @@ const videoUrl = `${window.location.origin}/videos/create-image.mp4`;
     </div>
 
 
-    <div class="position-relative p-4 rounded shadow-sm bg-white d-flex flex-column justify-content-center align-items-center" style="max-width: 600px; width: 100%; min-height: 400px;">
+    <div class="position-relative p-4 rounded shadow-sm bg-white d-flex flex-column justify-content-center align-items-center" style="width: 100%; height: 98%;">
 
       <div class="w-100" style="max-width: 500px;">
         <div class="card shadow-none border border-2 border-dashed border-primary-hover position-relative mb-4">

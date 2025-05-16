@@ -133,7 +133,7 @@ const videoUrl = `${window.location.origin}/videos/create-audio.mp4`;
   <div class="d-flex justify-content-center align-items-center bg-light px-3"
        style="min-height: 100vh;">
 
-    <div class="me-4 d-none d-lg-flex align-items-center px-8 bg-purple text-white rounded shadow-sm p-5" style="max-width: 400px; min-height: 400px; width: 500px">
+    <div class="me-4 d-none d-lg-flex align-items-center px-8 bg-purple text-white rounded shadow-sm p-5" style="height: 98%; width: 50%">
       <h1 class="display-5 fw-bold text-start text-white">
         <i class="bi bi-music-note-list px-2" style="height: 50px; display: block;"></i>
         <br>
@@ -145,7 +145,7 @@ const videoUrl = `${window.location.origin}/videos/create-audio.mp4`;
 
     <div
       class="position-relative p-4 rounded shadow-sm bg-white d-flex flex-column justify-content-center align-items-center"
-      style="max-width: 600px; width: 100%; min-height: 400px;">
+      style="width: 100%; height: 98%;">
 
       <div class="w-100" style="max-width: 500px;">
         <div

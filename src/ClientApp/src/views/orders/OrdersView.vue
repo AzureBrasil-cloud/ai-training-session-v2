@@ -141,7 +141,7 @@ const videoUrl = `${window.location.origin}/videos/list-create-order.mp4`;
   <div class="row g-6 p-4 justify-content-between">
     <div class="col">
       <h4 class="fw-semibold mb-1 item-purple s-h3">
-        <i class="bi bi-chat-square-dots px-2" style="font-size:16px"></i>Lista de pedidos de açaí
+        <i class="bi bi-chat-square-dots px-2"></i>Lista de pedidos de açaí
       </h4>
     </div>
     <div v-if="!userIsAdmin" class="col-12 col-sm-auto">
