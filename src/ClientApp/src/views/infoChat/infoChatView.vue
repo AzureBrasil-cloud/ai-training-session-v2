@@ -15,7 +15,7 @@ const videoUrl = `${window.location.origin}/videos/doc-agent.mp4`;
           autoplay
           muted
           playsinline
-          style="width: 70%;"
+          style="width: 100%;"
       ></video>
     </div>
 

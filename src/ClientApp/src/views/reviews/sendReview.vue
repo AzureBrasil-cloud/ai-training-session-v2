@@ -54,7 +54,7 @@ const videoUrl = `${window.location.origin}/videos/create-review.mp4`;
         autoplay
         muted
         playsinline
-        style="width: 70%;"
+        style="width: 100%;"
       ></video>
     </div>
 

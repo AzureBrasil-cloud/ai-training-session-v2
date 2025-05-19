@@ -83,7 +83,7 @@ const logoAzBr = `${window.location.origin}/images/logo-azbr.png`;
         autoplay
         muted
         playsinline
-        style="width: 70%;"
+        style="width: 100%;"
       ></video>
     </div>
 
@@ -221,12 +221,12 @@ const logoAzBr = `${window.location.origin}/images/logo-azbr.png`;
                 Entrar
               </button>
             </div>
+            <div class="d-flex justify-content-center align-items-center mt-4">
+              <img :src="logoAzBr" alt="Logo Azure Brasil" style="max-height: 90px;">
+            </div>
           </form>
         </div>
       </div>
-    </div>
-    <div class="position-absolute bottom-0 end-0 me-3 mb-3">
-      <img :src="logoAzBr" alt="Logo Azure Brasil" style="max-height: 70px;">
     </div>
   </div>
 
