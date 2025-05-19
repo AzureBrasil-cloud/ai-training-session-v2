@@ -10,8 +10,21 @@ namespace ContosoAcai.Application.Orders;
 public partial class OrderService
 {
     private string InstructionsAudio => """
-                                   Extract the order information;
-                                   """;
+                                        Extract the order information from the transcription. Respond **only** with a JSON object matching the provided schema. Requirements:
+                                        - Property "size": a string equal to one of:
+                                            - "1" for Small
+                                            - "2" for Medium
+                                            - "3" for Large
+                                        - Map Portuguese terms if needed: pequeno→Small, médio→Medium, grande→Large.
+                                        - Property "extras": an array of strings listing each extra.
+                                        - Do not include any other properties, labels or explanatory text.
+
+                                        Example output:
+                                        {
+                                          "size": "1",
+                                          "extras": ["M&Ms", "Chocolate"]
+                                        }
+                                        """;
     
     public async Task<AudioPreOrderResult?> GetByIdAsync(GetAudioPreOrderQuery query)
     {

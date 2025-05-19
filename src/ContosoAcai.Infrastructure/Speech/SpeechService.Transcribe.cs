@@ -2,8 +2,9 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using ContosoAcai.Infrastructure.Azure.Shared;
+using ContosoAcai.Infrastructure.Azure.Speech;
 
-namespace ContosoAcai.Infrastructure.Azure.Speech;
+namespace ContosoAcai.Infrastructure.Speech;
 
 public partial class SpeechService(IHttpClientFactory httpClientFactory)
 

@@ -58,7 +58,7 @@ public partial class AiInferenceService
             TypeInfoResolver = new DefaultJsonTypeInfoResolver(),
             UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow
         };
-
+        
         var exporterOptions = new JsonSchemaExporterOptions
         {
             TreatNullObliviousAsNonNullable = true

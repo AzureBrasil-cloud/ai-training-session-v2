@@ -4,6 +4,7 @@ using ContosoAcai.Infrastructure.Azure.Speech;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using AiInferenceService = ContosoAcai.Infrastructure.AiInference.AiInferenceService;
+using SpeechService = ContosoAcai.Infrastructure.Speech.SpeechService;
 
 namespace ContosoAcai.Application.Orders;
 

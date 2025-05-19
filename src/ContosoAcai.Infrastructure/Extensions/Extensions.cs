@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AiAgentService = ContosoAcai.Infrastructure.AIAgent.AiAgentService;
 using AiInferenceService = ContosoAcai.Infrastructure.AiInference.AiInferenceService;
+using SpeechService = ContosoAcai.Infrastructure.Speech.SpeechService;
 
 namespace ContosoAcai.Infrastructure.Extensions;
 
