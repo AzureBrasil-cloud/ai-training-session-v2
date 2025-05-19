@@ -83,7 +83,7 @@ const logoAzBr = `${window.location.origin}/images/logo-azbr.png`;
         autoplay
         muted
         playsinline
-        style="width: 70%;"
+        style="width: 100%;"
       ></video>
     </div>
 

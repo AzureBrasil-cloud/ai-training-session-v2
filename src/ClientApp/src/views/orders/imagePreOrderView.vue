@@ -79,7 +79,7 @@ const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
           autoplay
           muted
           playsinline
-          style="width: 70%;"
+          style="width: 100%;"
       ></video>
     </div>
 
