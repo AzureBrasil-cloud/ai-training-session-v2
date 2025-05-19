@@ -5,6 +5,7 @@ import HelpButton from "@/components/common/HelpButton.vue";
 
 const fileInput = ref<File | null>(null);
 const error = ref('');
+const successMessage = ref('');
 const isSubmitting = ref(false);
 const userEmail = ref('');
 const fileName = ref('');
@@ -59,7 +60,7 @@ async function handleSubmit() {
 
   try {
     await axios.post('/api/pre-order/image', formData);
-    alert('Pré-pedido enviado com sucesso!');
+    successMessage.value = 'Pré-pedido enviado com sucesso!';
 
     fileInput.value = null;
     fileName.value = ''; // <-- Limpa o nome do arquivo
@@ -139,6 +140,12 @@ const videoUrl = `${window.location.origin}/videos/create-image.mp4`;
     <div class="position-relative p-4 rounded shadow-sm bg-white d-flex flex-column justify-content-center align-items-center" style="width: 100%; height: 98%;">
 
       <div class="w-100" style="max-width: 500px;">
+        <div v-if="successMessage" class="alert alert-success mb-4">{{ successMessage }}</div>
+        <div v-if="error" class="alert alert-danger mb-4">
+          {{ error }}<br />
+          <a href="https://onlinepngtools.com/resize-png" target="_blank">Clique aqui para redimensionar sua imagem</a>
+        </div>
+
         <div class="card shadow-none border border-2 border-dashed border-primary-hover position-relative mb-4">
           <div class="d-flex justify-content-center px-5 py-6">
             <label for="file-upload" class="stretched-link" role="button">
@@ -165,11 +172,6 @@ const videoUrl = `${window.location.origin}/videos/create-image.mp4`;
               </p>
             </div>
           </div>
-        </div>
-
-        <div v-if="error" class="alert alert-danger mb-4">
-          {{ error }}<br />
-          <a href="https://onlinepngtools.com/resize-png" target="_blank">Clique aqui para redimensionar sua imagem</a>
         </div>
 
         <button class="btn btn-purple w-100" :disabled="isSubmitting" @click="handleSubmit">

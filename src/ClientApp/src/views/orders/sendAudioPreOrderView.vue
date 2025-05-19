@@ -5,6 +5,7 @@ import HelpButton from "@/components/common/HelpButton.vue";
 
 const fileInput = ref<File | null>(null);
 const error = ref('');
+const successMessage = ref('');
 const isSubmitting = ref(false);
 const userEmail = ref('');
 const fileName = ref('');
@@ -49,7 +50,7 @@ async function handleSubmit() {
 
   try {
     await axios.post('/api/pre-order/audio', formData);
-    alert('Pré-pedido de áudio enviado com sucesso!');
+    successMessage.value = 'Pré-pedido de áudio enviado com sucesso!';
     fileInput.value = null;
     fileName.value = ''; // limpa o nome do arquivo
     (document.getElementById('file-upload') as HTMLInputElement).value = '';
@@ -148,6 +149,11 @@ const videoUrl = `${window.location.origin}/videos/create-audio.mp4`;
       style="width: 100%; height: 98%;">
 
       <div class="w-100" style="max-width: 500px;">
+        <div v-if="successMessage" class="alert alert-success mb-4">{{ successMessage }}</div>
+        <div v-if="error" class="alert alert-danger mb-4">
+          {{ error }}
+        </div>
+
         <div
           class="card shadow-none border border-2 border-dashed border-primary-hover position-relative mb-4">
           <div class="d-flex justify-content-center px-5 py-6">
@@ -171,10 +177,6 @@ const videoUrl = `${window.location.origin}/videos/create-audio.mp4`;
           <div v-if="fileName" class="text-center pb-3">
             <i class="bi bi-file-earmark-music me-1"></i> {{ fileName }}
           </div>
-        </div>
-
-        <div v-if="error" class="alert alert-danger mb-4">
-          {{ error }}
         </div>
 
         <button class="btn btn-purple w-100" :disabled="isSubmitting" @click="handleSubmit">
