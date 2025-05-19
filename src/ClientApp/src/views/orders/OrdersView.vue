@@ -66,6 +66,7 @@ onMounted(async () => {
 const videoUrl = `${window.location.origin}/videos/list-create-order.mp4`;
 </script>
 
+
 <template>
   <HelpButton>
     <div class="d-flex justify-content-center my-4">
@@ -77,7 +78,7 @@ const videoUrl = `${window.location.origin}/videos/list-create-order.mp4`;
           autoplay
           muted
           playsinline
-          style="width: 100%;"
+          style="width: 100%; height: auto;"
       ></video>
     </div>
 
@@ -120,7 +121,7 @@ const videoUrl = `${window.location.origin}/videos/list-create-order.mp4`;
     </p>
   </HelpButton>
 
-  <div class="row g-6 p-4 justify-content-between">
+  <div class="row g-3 px-4 py-4 justify-content-between">
     <div class="col">
       <h4 class="fw-semibold mb-1 item-purple s-h3">
         <i class="bi bi-chat-square-dots px-2"></i>Lista de pedidos de açaí
@@ -137,15 +138,15 @@ const videoUrl = `${window.location.origin}/videos/list-create-order.mp4`;
 
   <hr class="mt-6 mb-0" />
 
-  <div class="table-responsive">
-    <table class="table table-hover table-nowrap">
+  <div class="table-responsive" style="overflow-x: auto;">
+    <table class="table table-hover table-nowrap w-100">
       <thead class="table-light text-start">
       <tr>
-        <th scope="col" style="width: 15%;">Data</th>
-        <th scope="col" style="width: 20%;">Usuário</th>
-        <th scope="col" style="width: 15%;">Valor</th>
-        <th scope="col" style="width: 15%;">Tamanho</th>
-        <th scope="col" style="width: 45%;">Extras</th>
+        <th scope="col" class="colum-title" style="width: 15%;">Data</th>
+        <th scope="col" class="colum-title" style="width: 20%;">Usuário</th>
+        <th scope="col" class="colum-title" style="width: 15%;">Valor</th>
+        <th scope="col" class="colum-title" style="width: 15%;">Tamanho</th>
+        <th scope="col" class="colum-title" style="width: 45%;">Extras</th>
       </tr>
       </thead>
       <tbody>

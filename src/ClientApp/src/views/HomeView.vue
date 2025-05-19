@@ -112,7 +112,7 @@ onMounted(async () => {
     <header class="px-4 py-3">
       <div class="d-flex align-items-center justify-content-between flex-wrap gap-4 ">
         <div>
-          <h6>
+          <h6 style="color: gray">
            AzureBrasil.cloud apresenta Contoso Açaí
           </h6>
         </div>
@@ -121,54 +121,51 @@ onMounted(async () => {
     <div class="flex-fill overflow-y-lg-auto scrollbar bg-body rounded-top-3 rounded-top-lg-4 border-top"
       data-x-inject="page">
 
-
       <main class="h-100">
         <div class="container-fluid h-100">
-          <div class="row g-0 align-items-center justify-content-center" style="height: 98vh;">
+          <div class="row g-0 align-items-center justify-content-center" style="height: 100%;">
             <div class="col-12 d-flex flex-row h-100">
 
-              <!-- Coluna Esquerda: Título -->
               <div class="w-50 d-flex flex-column justify-content-center align-items-start px-5 border-end">
-                <h1 class="text-start text-white fw-bold lh-1 display-6 display-md-3 display-lg-1">
+                <h1 class="home-text-light text-start fw-bold lh-1 display-6 display-md-3 display-lg-1">
                   Seja muito <br> bem-vindo(a) ao <u>Contoso Açai</u>
                 </h1>
               </div>
 
-              <!-- Coluna Direita: Botões -->
               <div class="w-50 d-flex flex-column justify-content-center px-5">
                 <div v-if="messages.length === 0">
                   <div class="row g-3">
 
                     <div class="col-12">
-                      <RouterLink to="/orders" class="btn w-100 py-3 py-md-4 py-lg-5 d-flex align-items-center justify-content-center border border-white text-white btn-custom-hover" style="min-height: 70px;">
+                      <RouterLink to="/orders" class="btn btn-purple w-100 py-3 py-md-4 py-lg-5 d-flex align-items-center justify-content-center" style="min-height: 70px;">
                         <i class="bi bi-chat-square-dots me-3 fs-3 fs-md-4"></i>
                         <span class="fs-5 fs-md-3">Meus pedidos</span>
                       </RouterLink>
                     </div>
 
                     <div class="col-12">
-                      <RouterLink to="/send-image-pre-order" class="btn w-100 py-3 py-md-4 py-lg-5 d-flex align-items-center justify-content-center border border-white text-white btn-custom-hover" style="min-height: 70px;">
+                      <RouterLink to="/send-image-pre-order" class="btn btn-purple w-100 py-3 py-md-4 py-lg-5 d-flex align-items-center justify-content-center" style="min-height: 70px;">
                         <i class="bi bi-images me-3 fs-3 fs-md-1"></i>
-                        <span class="fs-5 fs-md-3">Pré-pedido <span class="badge bg-purple text-white ms-2">Imagem</span></span>
+                        <span class="fs-5 fs-md-3">Pré-pedido <span class="badge bg-white item-purple ms-2">Imagem</span></span>
                       </RouterLink>
                     </div>
 
                     <div class="col-12">
-                      <RouterLink to="/send-audio-pre-order" class="btn w-100 py-3 py-md-4 py-lg-5 d-flex align-items-center justify-content-center border border-white text-white btn-custom-hover" style="min-height: 70px;">
+                      <RouterLink to="/send-audio-pre-order" class="btn btn-purple w-100 py-3 py-md-4 py-lg-5 d-flex align-items-center justify-content-center" style="min-height: 70px;">
                         <i class="bi bi-music-note-list me-3 fs-3 fs-md-1"></i>
-                        <span class="fs-5 fs-md-3">Pré-pedido <span class="badge bg-purple text-white ms-2">Áudio</span></span>
+                        <span class="fs-5 fs-md-3">Pré-pedido <span class="badge bg-white item-purple ms-2">Áudio</span></span>
                       </RouterLink>
                     </div>
 
                     <div class="col-12">
-                      <RouterLink to="/send-review" class="btn w-100 py-3 py-md-4 py-lg-5 d-flex align-items-center justify-content-center border border-white text-white btn-custom-hover" style="min-height: 70px;">
+                      <RouterLink to="/send-review" class="btn btn-purple w-100 py-3 py-md-4 py-lg-5 d-flex align-items-center justify-content-center" style="min-height: 70px;">
                         <i class="bi bi-card-checklist me-3 fs-3 fs-md-1"></i>
                         <span class="fs-5 fs-md-3">Fazer avaliação</span>
                       </RouterLink>
                     </div>
 
                     <div class="col-12">
-                      <RouterLink to="/info-chat" class="btn w-100 py-3 py-md-4 py-lg-5 d-flex align-items-center justify-content-center border border-white text-white btn-custom-hover" style="min-height: 70px;">
+                      <RouterLink to="/info-chat" class="btn btn-purple w-100 py-3 py-md-4 py-lg-5 d-flex align-items-center justify-content-center" style="min-height: 70px;">
                         <i class="bi bi-robot me-3 fs-3 fs-md-1"></i>
                         <span class="fs-5 fs-md-3">Assistente de informações</span>
                       </RouterLink>
@@ -177,7 +174,6 @@ onMounted(async () => {
                   </div>
                 </div>
 
-                <!-- Mensagens (se houver) -->
                 <div v-else class="overflow-auto" style="max-height: 98vh">
                   <div
                     class="vstack gap-4 bg-body border px-10 py-6 mb-2 shadow"

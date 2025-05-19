@@ -9,7 +9,53 @@ html, body {
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Remove scroll vertical e horizontal */
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.custom-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+/* DARK */
+
+html[data-bs-theme="dark"] .custom-sidebar {
+  background-color: blue !important;
+}
+
+/* LIGHT */
+
+html[data-bs-theme="light"] .home-text-light {
+    color: #441945 !important;
+ }
+
+html[data-bs-theme="light"] .btn-purple {
+  background: #441945;
+  border: 1px solid #441945;
+  color: white;
+}
+
+html[data-bs-theme="light"] .btn-purple:hover{
+  background: #5c265d;
+  border: 1px solid #5c265d;
+  color: white;
+}
+
+html[data-bs-theme="light"] .colum-title {
+  color: #404040 !important;
 }
 
 th {
@@ -121,3 +167,5 @@ th {
   color: #441945 !important;
   border-color: #ffffff !important;
 }
+
+

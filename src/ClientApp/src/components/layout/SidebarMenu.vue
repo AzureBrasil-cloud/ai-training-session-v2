@@ -2,10 +2,12 @@
 import { auth } from '@/utils/auth';
 import UserMenu from './UserMenu.vue';
 import {onBeforeMount, ref} from 'vue';
+import { useRouter } from 'vue-router';
 
 const userIsAdmin = auth.userIsAdmin();
 
 let userRole = ref("");
+const router = useRouter();
 
 onBeforeMount(() => {
   const loggedUser = sessionStorage.getItem("loggedUser");
@@ -17,12 +19,11 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
 </script>
 
 <template>
-  <!-- Topbar visível apenas em mobile -->
+
   <div class="d-flex justify-content-between align-items-center d-lg-none p-3">
-    <!-- Logo à esquerda -->
+
     <img :src="logo" alt="Logo" width="85" />
 
-    <!-- Botão hamburguer à direita -->
     <button
       class="btn btn-purple"
       type="button"
@@ -40,15 +41,17 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
       class="sidebar w-100 w-rem-lg-64 d-flex flex-column flex-shrink-0 position-relative z-2 h-100">
 
       <div class="dropdown-center px-4 py-2 mx-n2 position-relative">
-          <div
-            class="w-100 px-2 py-2 text-start border-0 bg-transparent shadow-none bg-accent-hover rounded d-flex gap-3 align-items-center"
-            data-bs-toggle="dropdown">
-            <img :src="logo" alt="..." width="85" />
-            <div class="d-grid flex-grow-1 ls-tight text-sm">
-              <span :class="[userIsAdmin ? 'text-white' : 'text-black', 'fw-semibold']">Contoso Açaí</span>
-              <span class="text-truncate text-xs text-body-secondary mt-n1">Web app</span>
-            </div>
+        <div
+          class="w-100 px-2 py-2 text-start border-0 bg-transparent shadow-none bg-accent-hover rounded d-flex gap-3 align-items-center"
+          @click="router.push('/')"
+          style="cursor: pointer"
+        >
+          <img :src="logo" alt="..." width="85" />
+          <div class="d-grid flex-grow-1 ls-tight text-sm">
+            <span :class="[userIsAdmin ? 'text-white' : 'text-black', 'fw-semibold']">Contoso Açaí</span>
+            <span class="text-truncate text-xs text-body-secondary mt-n1">Web app</span>
           </div>
+        </div>
       </div>
 
       <div class="px-4 py-2 flex-fill overflow-y-auto scrollbar">
