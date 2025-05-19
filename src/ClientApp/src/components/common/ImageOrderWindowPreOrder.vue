@@ -54,9 +54,9 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
       <div class="col-md-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title fontBold">Pedido solicitado</h5>
+            <h5 class="card-title fw-bold">Pedido solicitado</h5>
             <p class="card-subtitle text-body-secondary text-sm mb-4">
-              <span class="fontBold">Informações do pedido:</span> <br />
+              <span class="fw-bold">Informações do pedido:</span> <br />
               {{ preOrderImageRef }}
             </p>
           </div>
@@ -66,9 +66,9 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
       <div class="col-md-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title fontBold"><i class="bi bi-currency-dollar"></i>Valores
+            <h5 class="card-title fw-bold"><i class="bi bi-currency-dollar"></i>Valores
             </h5>
-            <p class="card-subtitle text-body-secondary text-sm mb-4 fontBold">
+            <p class="card-subtitle text-body-secondary text-sm mb-4 fw-bold">
               Escolha o tamanho e os adicionais
             </p>
             <div class="list-group list-group-borderless gap-2 list-group-flush">
@@ -150,7 +150,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
       <div class="col-md-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title pb-2 fontBold"><i class="bi bi-arrows-vertical"></i>Tamanho</h5>
+            <h5 class="card-title pb-2 fw-bold"><i class="bi bi-arrows-vertical"></i>Tamanho</h5>
             <select class="form-select form-select-sm" v-model.number="model!.size" required>
               <option disabled value="">Selecione o tamanho</option>
               <option :value="1">Pequeno</option>
@@ -165,7 +165,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
         <div class="card">
           <div class="card-body">
             <div class="mb-4">
-              <h5 class="card-title pb-2 fontBold"><i
+              <h5 class="card-title pb-2 fw-bold"><i
                 class="bi bi-plus-circle-dotted"></i> Adicionais</h5>
               <div class="form-check d-inline-block me-3" v-for="extra in EXTRA_OPTIONS"
                    :key="extra">
@@ -180,7 +180,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
                 <label class="form-check-label" :for="extra">{{ capitalize(extra) }}</label>
               </div>
             </div>
-            <small class="form-text text-muted bg-white rounded-2 p-2">Selecione zero ou mais
+            <small class="form-text bg-grey-600 text-white rounded-2 p-2">Selecione zero ou mais
               adicionais.</small>
           </div>
         </div>

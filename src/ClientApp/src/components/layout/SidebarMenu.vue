@@ -47,7 +47,7 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
             data-bs-toggle="dropdown">
             <img :src="logo" alt="..." width="85" />
             <div class="d-grid flex-grow-1 ls-tight text-sm">
-              <span class="item-purple fw-semibold ">Contoso Açaí</span>
+              <span class="text-white fw-semibold ">Contoso Açaí</span>
               <span class="text-truncate text-xs text-body-secondary mt-n1">Web app</span>
             </div>
           </div>

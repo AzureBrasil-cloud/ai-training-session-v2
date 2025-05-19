@@ -12,8 +12,20 @@ html, body {
   overflow: hidden; /* Remove scroll vertical e horizontal */
 }
 
-.fontBold {
-  font-weight: 600;
+.btn-reset {
+  background: #2874F7;
+  border: 1px solid #2874F7;
+  color: white;
+
+  &:hover {
+    background: #4d8af4;
+    border: 1px solid #4d8af4;
+    color: white;
+  }
+}
+
+.bg-grey-600 {
+  background-color: #262626;
 }
 
 .pointer {
