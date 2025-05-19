@@ -24,7 +24,7 @@
 
     <div class="d-flex">
       <input class="form-control me-2" v-model="userInput" @keydown="handleKeyDown" :disabled="isLoading || isWaitingResponse" placeholder="Digite sua mensagem..." />
-      <button class="btn me-2 btn-reset" @click="resetThread" :disabled="isLoading">Resetar</button>
+      <button class="btn me-2 btn-primary" @click="resetThread" :disabled="isLoading">Resetar</button>
       <button class="btn btn-purple" @click="sendMessage" :disabled="isLoading || isWaitingResponse">Enviar</button>
     </div>
   </div>

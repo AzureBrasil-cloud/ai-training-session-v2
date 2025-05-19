@@ -1,4 +1,5 @@
 import './scss/main.scss'
+import './scss/_custom.scss'
 
 // Import Bootstrap JavaScript features (optional)
 import 'bootstrap'

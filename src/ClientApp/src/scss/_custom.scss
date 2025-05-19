@@ -12,20 +12,16 @@ html, body {
   overflow: hidden; /* Remove scroll vertical e horizontal */
 }
 
-.btn-reset {
-  background: #2874F7;
-  border: 1px solid #2874F7;
-  color: white;
-
-  &:hover {
-    background: #4d8af4;
-    border: 1px solid #4d8af4;
-    color: white;
-  }
+th {
+  color: white !important;
 }
 
-.bg-grey-600 {
+.bg-gray-600 {
   background-color: #262626;
+}
+
+.bg-gray-100 {
+  background-color: #F5F5F5;
 }
 
 .pointer {

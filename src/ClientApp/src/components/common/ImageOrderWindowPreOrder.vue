@@ -4,6 +4,7 @@ import type { Order } from '@/models/order';
 import type { PreOrderAudio } from '@/models/preOrderAudio';
 import type { PreOrderImage } from '@/models/preOrderImage';
 import type { IOffcanvas } from '@/plugins/offcanvas';
+import { auth } from '@/utils/auth';
 import { capitalize } from '@/utils/capitalize';
 import { preOrder } from '@/utils/preOrder';
 import axios from 'axios';
@@ -14,6 +15,8 @@ const preOrderImageRef = ref<string>("");
 const $offcanvas = inject<IOffcanvas>('$offcanvas');
 
 const model = defineModel<Order>();
+
+const isAdmin = auth.userIsAdmin();
 
 const props = defineProps<{
   isEditMode: boolean;
@@ -180,7 +183,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
                 <label class="form-check-label" :for="extra">{{ capitalize(extra) }}</label>
               </div>
             </div>
-            <small class="form-text bg-grey-600 text-white rounded-2 p-2">Selecione zero ou mais
+            <small :class="['form-text', isAdmin ? 'bg-gray-600 text-white' : 'bg-gray-100 text-black', 'rounded-2', 'p-2']">Selecione zero ou mais
               adicionais.</small>
           </div>
         </div>

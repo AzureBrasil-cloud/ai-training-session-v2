@@ -163,8 +163,8 @@ const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
           <td>{{ item.imageExtension }}</td>
           <td>
             <div class="d-flex gap-2">
-              <button class="btn btn-sm btn-outline-primary" @click="() => handleOpenOrderWindow(item.id, false)">Ver</button>
-              <button class="btn btn-sm btn-outline-success" @click="() => handleOpenOrderWindow(item.id, true)">Ver com AI</button>
+              <button class="btn btn-sm btn-primary" @click="() => handleOpenOrderWindow(item.id, false)">Ver</button>
+              <button class="btn btn-sm btn-success" @click="() => handleOpenOrderWindow(item.id, true)">Ver com AI</button>
             </div>
           </td>
         </tr>

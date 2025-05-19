@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import {useOrganizationStore} from '@/stores/organization';
+import { auth } from '@/utils/auth';
 import UserMenu from './UserMenu.vue';
-import AgentsList from '../sidebar/AgentsList.vue';
-import RecentChats from '../sidebar/RecentChats.vue';
 import {onBeforeMount, ref} from 'vue';
 
-// const $orgStore = useOrganizationStore();
+const userIsAdmin = auth.userIsAdmin();
 
 let userRole = ref("");
 
@@ -47,7 +45,7 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
             data-bs-toggle="dropdown">
             <img :src="logo" alt="..." width="85" />
             <div class="d-grid flex-grow-1 ls-tight text-sm">
-              <span class="text-white fw-semibold ">Contoso Açaí</span>
+              <span :class="[userIsAdmin ? 'text-white' : 'text-black', 'fw-semibold']">Contoso Açaí</span>
               <span class="text-truncate text-xs text-body-secondary mt-n1">Web app</span>
             </div>
           </div>
