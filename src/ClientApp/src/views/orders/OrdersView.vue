@@ -174,6 +174,7 @@ const videoUrl = `${window.location.origin}/videos/list-create-order.mp4`;
   <OrderWindow
     :is-edit-mode="isEditMode"
     v-model="form"
+    @fetch-data="fetchData"
   />
 
 </template>
