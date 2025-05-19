@@ -218,7 +218,7 @@ const logoAzBr = `${window.location.origin}/images/logo-azbr.png`;
               <span v-if="passwordError" class="mt-2 invalid-feedback">{{ passwordError }}</span>
             </div>
             <div>
-              <button @click="handleSubmit" class="btn btn-purple w-100">
+              <button @click.prevent="handleSubmit" class="btn btn-purple w-100">
                 Entrar
               </button>
             </div>
