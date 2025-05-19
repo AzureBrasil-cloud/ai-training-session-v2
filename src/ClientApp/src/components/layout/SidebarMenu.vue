@@ -113,7 +113,7 @@ const logo = `${window.location.origin}/images/logo-acai.png`;
               </li>
               <li class="nav-item">
                 <RouterLink to="/image-pre-orders" class="dropdown-item">
-                  <i class="bi bi-images px-4"></i>
+                  <i class="bi bi-images px-3"></i>
                   <span>Pré-pedidos <span class="btn bg-purple rounded-pill text-white p-0 px-2 mx-1" style="font-size:13px"> Imagem </span></span>
                 </RouterLink>
               </li>

@@ -139,7 +139,12 @@ const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
   </HelpButton>
 
   <div class="p-4">
-    <h3 class="mb-4">Lista de pré-pedidos por imagem</h3>
+
+    <div class="col">
+      <h4 class="fw-semibold mb-1 item-purple s-h3">
+        <i class="bi bi-images px-2"></i>Lista de pré-pedidos por imagem
+      </h4>
+    </div>
 
     <div v-if="isLoading" class="text-muted mb-3">
       <span class="spinner-border spinner-border-sm me-2" role="status"></span>

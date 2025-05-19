@@ -115,7 +115,12 @@ const videoUrl = `${window.location.origin}/videos/list-reviews.mp4`;
   </HelpButton>
 
   <div class="p-4">
-    <h3 class="mb-4">Lista de reviews</h3>
+
+    <div class="col">
+      <h4 class="fw-semibold mb-1 item-purple s-h3">
+        <i class="bi bi-card-checklist px-2"></i>Lista de reviews
+      </h4>
+    </div>
 
     <div v-if="isLoading" class="text-muted mb-3">
       <span class="spinner-border spinner-border-sm me-2" role="status"></span>

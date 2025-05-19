@@ -147,8 +147,8 @@ const videoUrl = `${window.location.origin}/videos/create-review.mp4`;
 
       <div class="w-100" style="max-width: 500px;">
 
-        <div v-if="error" class="alert alert-danger mb-4">{{ error }}</div>
-        <div v-if="success" class="alert alert-success mb-4">Avaliação enviada com sucesso!</div>
+        <div v-if="error" class="alert alert-danger mb-4"><i class="bi bi-x-circle-fill me-2 fs-4"></i>{{ error }}</div>
+        <div v-if="success" class="alert alert-success mb-4"><i class="bi bi-check-circle-fill me-2 fs-4"></i>Avaliação enviada com sucesso!</div>
 
         <div class="mb-4">
           <label for="avaliacao-text" class="form-label fw-semibold"><i class="bi bi-pen px-3"></i>Sua avaliação</label>

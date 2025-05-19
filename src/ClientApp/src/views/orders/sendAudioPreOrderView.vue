@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref, onBeforeMount} from 'vue';
+import { ref, onBeforeMount } from 'vue';
 import axios from 'axios';
 import HelpButton from "@/components/common/HelpButton.vue";
 
@@ -9,6 +9,7 @@ const successMessage = ref('');
 const isSubmitting = ref(false);
 const userEmail = ref('');
 const fileName = ref('');
+const isDragOver = ref(false);
 
 onBeforeMount(() => {
   const loggedUser = JSON.parse(sessionStorage.getItem("loggedUser") || "{}");
@@ -17,22 +18,46 @@ onBeforeMount(() => {
   }
 });
 
+function onDragOver() {
+  isDragOver.value = true;
+}
+
+function onDragLeave() {
+  isDragOver.value = false;
+}
+
+function onDrop(e: DragEvent) {
+  isDragOver.value = false;
+  error.value = '';
+  const file = e.dataTransfer?.files[0];
+  if (file) processFile(file);
+}
+
 function handleFileChange(e: Event) {
   error.value = '';
-  fileName.value = ''; // limpa nome anterior
   const target = e.target as HTMLInputElement;
   if (target.files && target.files[0]) {
-    const file = target.files[0];
-
-    if (file.type !== 'audio/mpeg') {
-      error.value = 'Formato inválido. Envie apenas arquivos .mp3';
-      fileInput.value = null;
-      return;
-    }
-
-    fileInput.value = file;
-    fileName.value = file.name; // define nome do arquivo
+    processFile(target.files[0]);
   }
+}
+
+function processFile(file: File) {
+  if (file.type !== 'audio/mpeg') {
+    error.value = 'Formato inválido. Envie apenas arquivos .mp3';
+    fileInput.value = null;
+    fileName.value = '';
+    return;
+  }
+
+  if (file.size > 3 * 1024 * 1024) {
+    error.value = 'O arquivo é maior que 3MB. Por favor, reduza o tamanho.';
+    fileInput.value = null;
+    fileName.value = '';
+    return;
+  }
+
+  fileInput.value = file;
+  fileName.value = file.name;
 }
 
 async function handleSubmit() {
@@ -52,7 +77,7 @@ async function handleSubmit() {
     await axios.post('/api/pre-order/audio', formData);
     successMessage.value = 'Pré-pedido de áudio enviado com sucesso!';
     fileInput.value = null;
-    fileName.value = ''; // limpa o nome do arquivo
+    fileName.value = '';
     (document.getElementById('file-upload') as HTMLInputElement).value = '';
   } catch (err) {
     error.value = 'Erro ao enviar o arquivo. Tente novamente mais tarde.';
@@ -63,6 +88,7 @@ async function handleSubmit() {
 
 const videoUrl = `${window.location.origin}/videos/create-audio.mp4`;
 </script>
+
 
 <template>
   <HelpButton>
@@ -149,35 +175,47 @@ const videoUrl = `${window.location.origin}/videos/create-audio.mp4`;
       style="width: 100%; height: 98%;">
 
       <div class="w-100" style="max-width: 500px;">
-        <div v-if="successMessage" class="alert alert-success mb-4">{{ successMessage }}</div>
+        <div v-if="successMessage" class="alert alert-success mb-4 d-flex align-items-center">
+          <i class="bi bi-check-circle-fill me-2 fs-4"></i>
+          <div>{{ successMessage }}</div>
+        </div>
         <div v-if="error" class="alert alert-danger mb-4">
+          <i class="bi bi-x-circle-fill me-2 fs-4"></i>
           {{ error }}
         </div>
 
         <div
-          class="card shadow-none border border-2 border-dashed border-primary-hover position-relative mb-4">
-          <div class="d-flex justify-content-center px-5 py-6">
-            <label for="file-upload" class="stretched-link" role="button">
-              <input type="file" class="visually-hidden" id="file-upload" accept="audio/mpeg"
-                     @change="handleFileChange">
-            </label>
+          class="card shadow-none border border-2 border-dashed position-relative mb-4"
+          :class="isDragOver ? 'border-primary' : 'border-primary-hover'"
+          @dragover.prevent="onDragOver"
+          @dragleave.prevent="onDragLeave"
+          @drop.prevent="onDrop"
+        >
+          <label for="file-upload" class="w-100 h-100 d-flex justify-content-center align-items-center flex-column px-5 py-6" role="button" style="cursor: pointer;">
+            <input
+              type="file"
+              id="file-upload"
+              class="visually-hidden"
+              accept="audio/mpeg"
+              @change="handleFileChange"
+            />
             <div class="text-center">
               <div class="text-2xl text-muted">
                 <i class="bi bi-mic-fill"></i>
               </div>
               <div class="d-flex text-sm mt-3 justify-content-center">
-                <p class="fw-semibold">Clique para enviar ou arraste o áudio aqui</p>
+                <p class="fw-semibold mb-0">Clique para enviar ou arraste o áudio aqui</p>
               </div>
-              <p class="text-xs text-body-secondary">
+              <p class="text-xs text-body-secondary mb-0">
                 Apenas arquivos MP3. Máximo 3MB.
               </p>
+              <p v-if="fileName" class="text-sm text-primary mt-2">
+                Arquivo selecionado: {{ fileName }}
+              </p>
             </div>
-          </div>
-
-          <div v-if="fileName" class="text-center pb-3">
-            <i class="bi bi-file-earmark-music me-1"></i> {{ fileName }}
-          </div>
+          </label>
         </div>
+
 
         <button class="btn btn-purple w-100" :disabled="isSubmitting" @click="handleSubmit">
           <i class="bi bi-send me-2" v-if="!isSubmitting"></i>

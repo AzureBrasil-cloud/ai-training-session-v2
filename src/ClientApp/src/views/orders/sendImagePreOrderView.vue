@@ -19,30 +19,53 @@ onBeforeMount(() => {
 })
 ;
 
+const isDragOver = ref(false);
+
+function onDragOver() {
+  isDragOver.value = true;
+}
+
+function onDragLeave() {
+  isDragOver.value = false;
+}
+
+function onDrop(e: DragEvent) {
+  isDragOver.value = false;
+  error.value = '';
+
+  const file = e.dataTransfer?.files[0];
+  if (file) {
+    processFile(file);
+  }
+}
+
 function handleFileChange(e: Event) {
   error.value = '';
   const target = e.target as HTMLInputElement;
   if (target.files && target.files[0]) {
-    const file = target.files[0];
-    const validTypes = ['image/jpeg', 'image/png'];
-
-    if (!validTypes.includes(file.type)) {
-      error.value = 'Formato inválido. Envie apenas arquivos .jpg ou .png';
-      fileInput.value = null;
-      fileName.value = '';
-      return;
-    }
-
-    if (file.size > 5 * 1024 * 1024) {
-      error.value = 'O arquivo é maior que 5MB. Reduza o tamanho em https://onlinepngtools.com/resize-png';
-      fileInput.value = null;
-      fileName.value = '';
-      return;
-    }
-
-    fileInput.value = file;
-    fileName.value = file.name;
+    processFile(target.files[0]);
   }
+}
+
+function processFile(file: File) {
+  const validTypes = ['image/jpeg', 'image/png'];
+
+  if (!validTypes.includes(file.type)) {
+    error.value = 'Formato inválido. Envie apenas arquivos .jpg ou .png';
+    fileInput.value = null;
+    fileName.value = '';
+    return;
+  }
+
+  if (file.size > 5 * 1024 * 1024) {
+    error.value = 'O arquivo é maior que 5MB. Reduza o tamanho em https://onlinepngtools.com/resize-png';
+    fileInput.value = null;
+    fileName.value = '';
+    return;
+  }
+
+  fileInput.value = file;
+  fileName.value = file.name;
 }
 
 async function handleSubmit() {
@@ -136,43 +159,54 @@ const videoUrl = `${window.location.origin}/videos/create-image.mp4`;
       </h1>
     </div>
 
-
     <div class="position-relative p-4 rounded shadow-sm bg-white d-flex flex-column justify-content-center align-items-center" style="width: 100%; height: 98%;">
 
       <div class="w-100" style="max-width: 500px;">
-        <div v-if="successMessage" class="alert alert-success mb-4">{{ successMessage }}</div>
+        <div v-if="successMessage" class="alert alert-success mb-4 d-flex align-items-center">
+          <i class="bi bi-check-circle-fill me-2 fs-4"></i>
+          <div>{{ successMessage }}</div>
+        </div>
         <div v-if="error" class="alert alert-danger mb-4">
+          <i class="bi bi-x-circle-fill me-2 fs-4"></i>
           {{ error }}<br />
           <a href="https://onlinepngtools.com/resize-png" target="_blank">Clique aqui para redimensionar sua imagem</a>
         </div>
 
-        <div class="card shadow-none border border-2 border-dashed border-primary-hover position-relative mb-4">
-          <div class="d-flex justify-content-center px-5 py-6">
-            <label for="file-upload" class="stretched-link" role="button">
-              <input
-                type="file"
-                class="visually-hidden"
-                id="file-upload"
-                accept="image/png, image/jpeg"
-                @change="handleFileChange"
-              >
-            </label>
+        <!-- Dropzone com clique e drag-and-drop -->
+        <div
+          class="card shadow-none border border-2 border-dashed position-relative mb-4 border-primary-hover"
+          :class="isDragOver ? 'border-primary' : 'border'"
+          @dragover.prevent="onDragOver"
+          @dragleave.prevent="onDragLeave"
+          @drop.prevent="onDrop"
+        >
+          <!-- LABEL cobre toda a área e ativa o input ao clicar -->
+          <label for="file-upload" class="w-100 h-100 d-flex justify-content-center align-items-center flex-column px-5 py-6" role="button" style="cursor: pointer;">
+            <input
+              type="file"
+              id="file-upload"
+              class="visually-hidden"
+              accept="image/png, image/jpeg"
+              @change="handleFileChange"
+            />
+
             <div class="text-center">
               <div class="text-2xl text-muted">
                 <i class="bi bi-upload"></i>
               </div>
               <div class="d-flex text-sm mt-3 justify-content-center">
-                <p class="fw-semibold">Clique para enviar ou arraste a imagem aqui</p>
+                <p class="fw-semibold mb-0">Clique para enviar ou arraste a imagem aqui</p>
               </div>
-              <p class="text-xs text-body-secondary">
+              <p class="text-xs text-body-secondary mb-0">
                 Apenas PNG ou JPG. Máximo 5MB.
               </p>
               <p v-if="fileName" class="text-sm text-primary mt-2">
                 Arquivo selecionado: {{ fileName }}
               </p>
             </div>
-          </div>
+          </label>
         </div>
+
 
         <button class="btn btn-purple w-100" :disabled="isSubmitting" @click="handleSubmit">
           <i class="bi bi-send me-2" v-if="!isSubmitting"></i>

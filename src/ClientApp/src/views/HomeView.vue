@@ -112,111 +112,96 @@ onMounted(async () => {
     <header class="px-4 py-3">
       <div class="d-flex align-items-center justify-content-between flex-wrap gap-4 ">
         <div>
-          <h1 class="ls-tight h3 ">
-            HOME PAGE
-          </h1>
-        </div>
-        <div class="hstack gap-2 justify-content-end">
-          <!-- <button type="button" class="btn btn-sm btn-neutral" @click="resetChat">
-            <i class="bi bi-plus-lg me-1"></i>
-            New chat
-          </button> -->
+          <h6>
+           AzureBrasil.cloud apresenta Contoso Açaí
+          </h6>
         </div>
       </div>
     </header>
     <div class="flex-fill overflow-y-lg-auto scrollbar bg-body rounded-top-3 rounded-top-lg-4 border-top"
       data-x-inject="page">
-      <main class=" h-100">
-        <div class="row g-0 justify-content-center h-100">
-          <div class="col-xl-10 col-xxl-9 h-100 d-flex flex-column">
-            <div class="mt-16 mb-16 px-6 px-lg-8 text-center">
-              <div v-if="messages.length === 0">
-                <h1 class="ls-tight h1 ">
-                  Hello
-                </h1>
 
-                <p class="px-lg-32 mt-4 text-body-secondary">
-                  Ask anything, explore possibilities, and get instant insights all in one prompt.
-                </p>
-                <!-- <div class="row row-cols-sm-2 g-5 mt-10 w-xxl-75 mx-auto">
-                  <div class="col">
-                    <div class="card shadow-2-hover">
-                      <div class="p-3 d-flex align-items-center gap-4">
-                        <div class="icon icon-shape bg-purple-100 text-purple-500 text-lg rounded">
-                          <i class="bi bi-justify-left"></i>
-                        </div>
-                        <div class="text-heading fw-semibold me-auto">
-                          Write a text
-                        </div>
-                        <button type="button"
-                          class="btn btn-xs btn-square btn-neutral rounded-circle border border-dashed shadow-none stretched-link">
-                          <i class="bi bi-plus-lg"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="card shadow-2-hover">
-                      <div class="p-3 d-flex align-items-center gap-4">
-                        <div class="icon icon-shape bg-orange-100 text-orange-500 text-lg rounded">
-                          <i class="bi bi-brilliance"></i>
-                        </div>
-                        <div class="text-heading fw-semibold me-auto">
-                          Generate an image
-                        </div>
-                        <button type="button"
-                          class="btn btn-xs btn-square btn-neutral rounded-circle border border-dashed shadow-none stretched-link">
-                          <i class="bi bi-plus-lg"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="card shadow-2-hover">
-                      <div class="p-3 d-flex align-items-center gap-4">
-                        <div class="icon icon-shape bg-yellow-100 text-yellow-500 text-lg rounded">
-                          <i class="bi bi-camera-video"></i>
-                        </div>
-                        <div class="text-heading fw-semibold me-auto">
-                          Create video
-                        </div>
-                        <button type="button"
-                          class="btn btn-xs btn-square btn-neutral rounded-circle border border-dashed shadow-none stretched-link">
-                          <i class="bi bi-plus-lg"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="card shadow-2-hover">
-                      <div class="p-3 d-flex align-items-center gap-4">
-                        <div class="icon icon-shape bg-green-100 text-green-500 text-lg rounded">
-                          <i class="bi bi-signpost-2"></i>
-                        </div>
-                        <div class="text-heading fw-semibold me-auto">
-                          Write a plan
-                        </div>
-                        <button type="button"
-                          class="btn btn-xs btn-square btn-neutral rounded-circle border border-dashed shadow-none stretched-link">
-                          <i class="bi bi-plus-lg"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
+
+      <main class="h-100">
+        <div class="container-fluid h-100">
+          <div class="row g-0 align-items-center justify-content-center" style="height: 98vh;">
+            <div class="col-12 d-flex flex-row h-100">
+
+              <!-- Coluna Esquerda: Título -->
+              <div class="w-50 d-flex flex-column justify-content-center align-items-start px-5 border-end">
+                <h1 class="text-start text-white fw-bold lh-1 display-6 display-md-3 display-lg-1">
+                  Seja muito <br> bem-vindo(a) ao <u>Contoso Açai</u>
+                </h1>
               </div>
-              <div class="vstack gap-4 bg-body border px-10 py-6 mb-2 shadow"
-                :class="{ 'opacity-75': m.id === '', 'text-right': m.id === '', 'text-left': m.id !== '', 'rounded-pill': m.id === '', 'rounded': m.id !== '' }"
-                v-else v-for="m in messages" :key="m.id">
-                <div class="article text-sm mt-4">
-                  <p v-html="renderMarkdown(m.message)"></p>
+
+              <!-- Coluna Direita: Botões -->
+              <div class="w-50 d-flex flex-column justify-content-center px-5">
+                <div v-if="messages.length === 0">
+                  <div class="row g-3">
+
+                    <div class="col-12">
+                      <RouterLink to="/orders" class="btn w-100 py-3 py-md-4 py-lg-5 d-flex align-items-center justify-content-center border border-white text-white btn-custom-hover" style="min-height: 70px;">
+                        <i class="bi bi-chat-square-dots me-3 fs-3 fs-md-4"></i>
+                        <span class="fs-5 fs-md-3">Meus pedidos</span>
+                      </RouterLink>
+                    </div>
+
+                    <div class="col-12">
+                      <RouterLink to="/send-image-pre-order" class="btn w-100 py-3 py-md-4 py-lg-5 d-flex align-items-center justify-content-center border border-white text-white btn-custom-hover" style="min-height: 70px;">
+                        <i class="bi bi-images me-3 fs-3 fs-md-1"></i>
+                        <span class="fs-5 fs-md-3">Pré-pedido <span class="badge bg-purple text-white ms-2">Imagem</span></span>
+                      </RouterLink>
+                    </div>
+
+                    <div class="col-12">
+                      <RouterLink to="/send-audio-pre-order" class="btn w-100 py-3 py-md-4 py-lg-5 d-flex align-items-center justify-content-center border border-white text-white btn-custom-hover" style="min-height: 70px;">
+                        <i class="bi bi-music-note-list me-3 fs-3 fs-md-1"></i>
+                        <span class="fs-5 fs-md-3">Pré-pedido <span class="badge bg-purple text-white ms-2">Áudio</span></span>
+                      </RouterLink>
+                    </div>
+
+                    <div class="col-12">
+                      <RouterLink to="/send-review" class="btn w-100 py-3 py-md-4 py-lg-5 d-flex align-items-center justify-content-center border border-white text-white btn-custom-hover" style="min-height: 70px;">
+                        <i class="bi bi-card-checklist me-3 fs-3 fs-md-1"></i>
+                        <span class="fs-5 fs-md-3">Fazer avaliação</span>
+                      </RouterLink>
+                    </div>
+
+                    <div class="col-12">
+                      <RouterLink to="/info-chat" class="btn w-100 py-3 py-md-4 py-lg-5 d-flex align-items-center justify-content-center border border-white text-white btn-custom-hover" style="min-height: 70px;">
+                        <i class="bi bi-robot me-3 fs-3 fs-md-1"></i>
+                        <span class="fs-5 fs-md-3">Assistente de informações</span>
+                      </RouterLink>
+                    </div>
+
+                  </div>
                 </div>
+
+                <!-- Mensagens (se houver) -->
+                <div v-else class="overflow-auto" style="max-height: 98vh">
+                  <div
+                    class="vstack gap-4 bg-body border px-10 py-6 mb-2 shadow"
+                    :class="{ 'opacity-75': m.id === '', 'text-right': m.id === '', 'text-left': m.id !== '', 'rounded-pill': m.id === '', 'rounded': m.id !== '' }"
+                    v-for="m in messages"
+                    :key="m.id"
+                  >
+                    <div class="article text-sm mt-4">
+                      <p v-html="renderMarkdown(m.message)"></p>
+                    </div>
+                  </div>
+                </div>
+
               </div>
+
             </div>
-            <!-- <div class="mt-auto px-6 px-lg-8 py-6"> -->
           </div>
         </div>
       </main>
+
+
+
+
+
     </div>
   </div>
 </template>
