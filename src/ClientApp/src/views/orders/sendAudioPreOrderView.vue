@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref, onBeforeMount} from 'vue';
+import { ref, onBeforeMount } from 'vue';
 import axios from 'axios';
 import HelpButton from "@/components/common/HelpButton.vue";
 
@@ -91,28 +91,20 @@ const videoUrl = `${window.location.origin}/videos/create-audio.mp4`;
 
 
 <template>
-  <HelpButton>
-    <div class="d-flex justify-content-center my-4">
-      <video
-        ref="player"
-        :src="videoUrl"
-        controls
-        loop
-        autoplay
-        muted
-        playsinline
-        style="width: 100%;"
-      ></video>
-    </div>
+  <div class="d-flex flex-column justify-content-center h-100">
+    <HelpButton>
+      <div class="d-flex justify-content-center my-4">
+        <video ref="player" :src="videoUrl" controls loop autoplay muted playsinline style="width: 100%;"></video>
+      </div>
 
-    <h2 class="mb-5 mt-8"><i class="bi bi-music-note-list px-2"></i>Descritivo da Página de Pré-Pedido via Áudio</h2>
-    <p>
-      Esta página permite que usuários realizem um <strong>pré-pedido de açaí por meio do envio de
-      um arquivo de áudio no formato MP3</strong>. A proposta é simplificar o processo de pedido
-      utilizando a voz.
-    </p>
+      <h2 class="mb-5 mt-8"><i class="bi bi-music-note-list px-2"></i>Descritivo da Página de Pré-Pedido via Áudio</h2>
+      <p>
+        Esta página permite que usuários realizem um <strong>pré-pedido de açaí por meio do envio de
+          um arquivo de áudio no formato MP3</strong>. A proposta é simplificar o processo de pedido
+        utilizando a voz.
+      </p>
 
-    <p>
+      <p>
       <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded"><i class="bi bi-list-task px-2"></i>
         Funcionalidades</h5>
       <ul>
@@ -130,9 +122,9 @@ const videoUrl = `${window.location.origin}/videos/create-audio.mp4`;
           envio.
         </li>
       </ul>
-    </p>
+      </p>
 
-    <p>
+      <p>
       <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded"><i class="bi bi-asterisk px-2"></i>O que
         acontece após o envio</h5>
       Após o envio, o arquivo de áudio é processado pelo backend. O sistema utiliza o serviço
@@ -142,117 +134,104 @@ const videoUrl = `${window.location.origin}/videos/create-audio.mp4`;
         <strong>in-memory</strong>, ficando disponível para análises e ações futuras por parte dos
         administradores.
       </p>
-    </p>
+      </p>
 
-    <p>
+      <p>
       <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded"><i class="bi bi-bullseye px-2"></i> Objetivo</h5>
       Esta funcionalidade promove acessibilidade e praticidade, permitindo que usuários façam
       pedidos por voz em vez de preencher formulários tradicionais.
-    </p>
+      </p>
 
-    <p>
+      <p>
       <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded"><i class="bi bi-link-45deg px-2"></i> Links
         Úteis</h5>
       <ul>
         <li>
-          <a href="https://learn.microsoft.com/pt-br/azure/ai-services/speech-service/overview"
-             target="_blank" rel="noopener">
+          <a href="https://learn.microsoft.com/pt-br/azure/ai-services/speech-service/overview" target="_blank"
+            rel="noopener">
             Azure AI Speech – Visão Geral
           </a>
         </li>
         <li>
-          <a href="https://www.youtube.com/watch?v=b-wL9gqzrbc"
-             target="_blank" rel="noopener">
+          <a href="https://www.youtube.com/watch?v=b-wL9gqzrbc" target="_blank" rel="noopener">
             Azure AI Speech na prática
           </a>
         </li>
       </ul>
-    </p>
-  </HelpButton>
+      </p>
+    </HelpButton>
 
-  <div
-    class="d-flex flex-column flex-lg-row justify-content-center align-items-stretch bg-light px-3 pt-3 pt-lg-0">
+    <div class="d-flex flex-column flex-lg-row justify-content-center align-items-stretch px-3 pt-3 pt-lg-0">
 
-    <!-- Título (Mobile) -->
-    <div
-      class="d-flex d-lg-none align-items-center bg-purple text-white rounded shadow-sm p-4 mb-3 w-100"
-      style="max-width: 500px;">
-      <h1 class="display-6 fw-bold text-start text-white m-0">
-        <i class="bi bi-music-note-list me-2"></i>
-        Fazer pré-pedido<br>via <u>áudio</u>
-      </h1>
-    </div>
+      <!-- Título (Mobile) -->
+      <div class="d-flex d-lg-none align-items-center bg-purple text-white rounded shadow-sm p-4 mb-3 w-100"
+        style="max-width: 500px;">
+        <h1 class="display-6 fw-bold text-start text-white m-0">
+          <i class="bi bi-music-note-list me-2"></i>
+          Fazer pré-pedido<br>via <u>áudio</u>
+        </h1>
+      </div>
 
-    <!-- Título (Desktop) -->
-    <div
-      class="m-lg-2 d-none d-lg-flex align-items-center px-5 py-5 bg-purple text-white rounded shadow-sm"
-      style="width: 50%; height: 98vh;">
-      <h1 class="display-5 fw-bold text-start text-white">
-        <i class="bi bi-music-note-list px-2" style="height: 50px; display: block;"></i>
-        <br>
-        Fazer<br>
-        pré-pedido<br>
-        via <u>áudio</u>
-      </h1>
-    </div>
+      <!-- Título (Desktop) -->
+      <div class="m-lg-2 d-none d-lg-flex align-items-center px-5 py-5 bg-purple text-white rounded shadow-sm"
+        style="width: 50%; height: 50vh;">
+        <h1 class="display-5 fw-bold text-start text-white">
+          <i class="bi bi-music-note-list px-2" style="height: 50px; display: block;"></i>
+          <br>
+          Fazer<br>
+          pré-pedido<br>
+          via <u>áudio</u>
+        </h1>
+      </div>
 
-    <!-- Upload -->
-    <div
-      class="position-relative bg-white rounded shadow-sm d-flex flex-column justify-content-center align-items-center w-100 px-3 py-4 py-lg-5 m-0 m-lg-2"
-      style="max-width: 100%;">
-      <div class="w-100" style="max-width: 500px;">
+      <!-- Upload -->
+      <div
+        class="position-relative bg-white rounded shadow-sm d-flex flex-column justify-content-center align-items-center w-100 px-3 py-4 py-lg-5 m-0 m-lg-2"
+        style="max-width: 100%;">
+        <div class="w-100" style="max-width: 500px;">
 
-        <div v-if="successMessage" class="alert alert-success mb-4 d-flex align-items-center">
-          <i class="bi bi-check-circle-fill me-2 fs-4"></i>
-          <div>{{ successMessage }}</div>
-        </div>
-        <div v-if="error" class="alert alert-danger mb-4">
-          <i class="bi bi-x-circle-fill me-2 fs-4"></i>
-          {{ error }}
-        </div>
+          <div v-if="successMessage" class="alert alert-success mb-4 d-flex align-items-center">
+            <i class="bi bi-check-circle-fill me-2 fs-4"></i>
+            <div>{{ successMessage }}</div>
+          </div>
+          <div v-if="error" class="alert alert-danger mb-4">
+            <i class="bi bi-x-circle-fill me-2 fs-4"></i>
+            {{ error }}
+          </div>
 
-        <div
-          class="card shadow-none border border-2 border-dashed position-relative mb-4"
-          :class="isDragOver ? 'border-primary' : 'border-primary-hover'"
-          @dragover.prevent="onDragOver"
-          @dragleave.prevent="onDragLeave"
-          @drop.prevent="onDrop"
-        >
-          <label for="file-upload"
-                 class="w-100 h-100 d-flex justify-content-center align-items-center flex-column px-5 py-6"
-                 role="button" style="cursor: pointer;">
-            <input
-              type="file"
-              id="file-upload"
-              class="visually-hidden"
-              accept="audio/mpeg"
-              @change="handleFileChange"
-            />
-            <div class="text-center">
-              <div class="text-2xl text-muted">
-                <i class="bi bi-mic-fill"></i>
+          <div class="card shadow-none border border-2 border-dashed position-relative mb-4"
+            :class="isDragOver ? 'border-primary' : 'border-primary-hover'" @dragover.prevent="onDragOver"
+            @dragleave.prevent="onDragLeave" @drop.prevent="onDrop">
+            <label for="file-upload"
+              class="w-100 h-100 d-flex justify-content-center align-items-center flex-column px-5 py-6" role="button"
+              style="cursor: pointer;">
+              <input type="file" id="file-upload" class="visually-hidden" accept="audio/mpeg"
+                @change="handleFileChange" />
+              <div class="text-center">
+                <div class="text-2xl text-muted">
+                  <i class="bi bi-mic-fill"></i>
+                </div>
+                <div class="d-flex text-sm mt-3 justify-content-center">
+                  <p class="fw-semibold mb-0">Clique para enviar ou arraste o áudio aqui</p>
+                </div>
+                <p class="text-xs text-body-secondary mb-0">
+                  Apenas arquivos MP3. Máximo 3MB.
+                </p>
+                <p v-if="fileName" class="text-sm text-primary mt-2">
+                  Arquivo selecionado: {{ fileName }}
+                </p>
               </div>
-              <div class="d-flex text-sm mt-3 justify-content-center">
-                <p class="fw-semibold mb-0">Clique para enviar ou arraste o áudio aqui</p>
-              </div>
-              <p class="text-xs text-body-secondary mb-0">
-                Apenas arquivos MP3. Máximo 3MB.
-              </p>
-              <p v-if="fileName" class="text-sm text-primary mt-2">
-                Arquivo selecionado: {{ fileName }}
-              </p>
-            </div>
-          </label>
-        </div>
+            </label>
+          </div>
 
-        <button class="btn btn-purple w-100" :disabled="isSubmitting" @click="handleSubmit">
-          <i class="bi bi-send me-2" v-if="!isSubmitting"></i>
-          {{ isSubmitting ? 'Enviando...' : 'Enviar áudio' }}
-        </button>
+          <button class="btn btn-purple w-100" :disabled="isSubmitting" @click="handleSubmit">
+            <i class="bi bi-send me-2" v-if="!isSubmitting"></i>
+            {{ isSubmitting ? 'Enviando...' : 'Enviar áudio' }}
+          </button>
+        </div>
       </div>
     </div>
   </div>
-
 </template>
 
 <style scoped>
