@@ -117,7 +117,7 @@ const videoUrl = `${window.location.origin}/videos/create-audio.mp4`;
         Funcionalidades</h5>
       <ul>
         <li><strong>Envio de áudio:</strong> O usuário pode selecionar e enviar um arquivo de áudio
-          <code>.mp3</code> contendo seu pedido falado.
+          <code>.mp3</code> contendo a descrição do pedido.
         </li>
         <li><strong>Validação de formato:</strong> Apenas arquivos com a extensão <code>.mp3</code>
           são aceitos. Outros formatos são bloqueados com aviso ao usuário.
@@ -135,7 +135,7 @@ const videoUrl = `${window.location.origin}/videos/create-audio.mp4`;
     <p>
       <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded"><i class="bi bi-asterisk px-2"></i>O que
         acontece após o envio</h5>
-      Após o envio, o arquivo de áudio é processado pela API de backend. O sistema utiliza o serviço
+      Após o envio, o arquivo de áudio é processado pelo backend. O sistema utiliza o serviço
       <strong>Azure AI Speech</strong> para transcrever automaticamente o conteúdo falado em texto.
       <p>
         O conteúdo textual resultante é salvo junto ao pré-pedido no banco de dados
@@ -158,6 +158,12 @@ const videoUrl = `${window.location.origin}/videos/create-audio.mp4`;
           <a href="https://learn.microsoft.com/pt-br/azure/ai-services/speech-service/overview"
              target="_blank" rel="noopener">
             Azure AI Speech – Visão Geral
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/watch?v=b-wL9gqzrbc"
+             target="_blank" rel="noopener">
+            Azure AI Speech na prática
           </a>
         </li>
       </ul>

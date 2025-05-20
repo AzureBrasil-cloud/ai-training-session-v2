@@ -131,6 +131,13 @@ const videoUrl = `${window.location.origin}/videos/create-review.mp4`;
           Few-Shot Learning – Documentação .NET + IA
         </a>
       </li>
+      <li>
+        <a
+          href="https://tallesvaliatti.com/criando-sdks-em-net-b381be1da0b2"
+          target="_blank" rel="noopener">
+          Classificando textos com o Azure OpenAI
+        </a>
+      </li>
     </ul>
     </p>
   </HelpButton>

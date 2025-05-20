@@ -65,6 +65,16 @@ const videoUrl = `${window.location.origin}/videos/order-agent.mp4`;
           Function Calling – Documentação Oficial
         </a>
       </li>
+      <li>
+        <a href="https://tallesvaliatti.com/criando-uma-aplica%C3%A7%C3%A3o-com-o-azure-ai-agent-service-parte-1-1d4fef7901a4" target="_blank" rel="noopener">
+          Azure AI Agent Service – Overview
+        </a>
+      </li>
+      <li>
+        <a href="https://tallesvaliatti.com/criando-uma-aplica%C3%A7%C3%A3o-com-o-azure-ai-agent-service-parte-3-366060579b58" target="_blank" rel="noopener">
+          Azure AI Agent Service – Function Calling
+        </a>
+      </li>
     </ul>
     </p>
   </HelpButton>

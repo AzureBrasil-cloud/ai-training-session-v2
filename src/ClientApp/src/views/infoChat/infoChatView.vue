@@ -28,7 +28,7 @@ const videoUrl = `${window.location.origin}/videos/doc-agent.mp4`;
     <ul>
       <li><strong>Interface de conversa em tempo real:</strong> O usuário digita mensagens e recebe respostas em linguagem natural do assistente.</li>
       <li><strong>Mensagens com formatação:</strong> O conteúdo pode incluir listas, negrito, links e outros elementos via Markdown.</li>
-      <li><strong>Reset de sessão:</strong> A qualquer momento é possível reiniciar a conversa clicando no botão “Resetar”.</li>
+      <li><strong>Reset de sessão:</strong> A qualquer momento é possível reiniciar a conversa clicando no botão “Resetar”, onde uma nova <strong>thread de conversa</strong> é criada</li>.
     </ul>
 
     <p>
@@ -36,7 +36,7 @@ const videoUrl = `${window.location.origin}/videos/doc-agent.mp4`;
       O assistente foi criado utilizando o <strong>Azure AI Agent Service</strong>, um serviço da Microsoft que permite criar agentes conversacionais personalizados com integração nativa a ferramentas de IA.
     </p>
     <p>
-      Cada vez que um usuário acessa a página, um novo <strong>agente</strong> e uma nova <strong>thread de conversa</strong> são criados via API. As interações subsequentes utilizam esses identificadores para manter o contexto da conversa.
+      Cada vez que um usuário acessa a página, um novo <strong>agente</strong> e uma nova <strong>thread</strong> são criados. As interações subsequentes utilizam esses identificadores para manter o contexto da conversa.
     </p>
 
     <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-asterisk px-2"></i> Acesso a Conteúdo Privado com Vector Store</h5>
@@ -69,6 +69,16 @@ const videoUrl = `${window.location.origin}/videos/doc-agent.mp4`;
       <li>
         <a href="https://learn.microsoft.com/en-us/azure/ai-services/agents/how-to/tools/file-search?tabs=python&pivots=overview" target="_blank" rel="noopener">
           Azure Agents – File Search
+        </a>
+      </li>
+      <li>
+        <a href="https://www.azurebrasil.cloud/busca-de-arquivos-nos-assistentes-do-azure-openai-ampliando-o-conhecimento-com-informacoes-externas-2/" target="_blank" rel="noopener">
+          Azure OpenAI – File Search
+        </a>
+      </li>
+      <li>
+        <a href="https://tallesvaliatti.com/criando-uma-aplica%C3%A7%C3%A3o-com-o-azure-ai-agent-service-parte-1-1d4fef7901a4" target="_blank" rel="noopener">
+          Um overview sobre o Azure AI Agent Service
         </a>
       </li>
     </ul>

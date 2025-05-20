@@ -122,10 +122,10 @@ const videoUrl = `${window.location.origin}/videos/list-create-order.mp4`;
       Os preços são calculados dinamicamente:
     </p>
     <ul>
-      <li><strong>Pequeno:</strong> R$5,00</li>
-      <li><strong>Médio:</strong> R$7,50</li>
-      <li><strong>Grande:</strong> R$10,00</li>
-      <li><strong>Adicional:</strong> R$2,00 por item</li>
+      <li><strong>Pequeno:</strong> $5.00</li>
+      <li><strong>Médio:</strong> $7.50</li>
+      <li><strong>Grande:</strong> $10.00</li>
+      <li><strong>Adicional:</strong> $2.00 por item</li>
     </ul>
     <p> O valor total é exibido em tempo real antes da confirmação. Após salvar, o pedido é enviado
       para a API e aparece na tabela.
@@ -136,6 +136,31 @@ const videoUrl = `${window.location.origin}/videos/list-create-order.mp4`;
       Esta funcionalidade oferece uma forma rápida, prática e visual de realizar pedidos, mantendo
       controle centralizado e visibilidade tanto para clientes quanto para administradores do
       sistema.
+    </p>
+    <p>
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-link-45deg px-2"></i>
+        Links
+        Úteis</h5>
+      <ul>
+        <li>
+          <a href="https://learn.microsoft.com/pt-br/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-9.0"
+             target="_blank" rel="noopener">
+            ASP.NET Core
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/watch?v=MbX3YgVmD00"
+             target="_blank" rel="noopener">
+            ASP.NET Core MVC with Vue.js
+          </a>
+        </li>
+        <li>
+          <a href="https://learn.microsoft.com/en-us/ef/core/providers/in-memory/?tabs=dotnet-core-cli"
+             target="_blank" rel="noopener">
+            EF Core In-Memory Database
+          </a>
+        </li>
+      </ul>
     </p>
   </HelpButton>
 
