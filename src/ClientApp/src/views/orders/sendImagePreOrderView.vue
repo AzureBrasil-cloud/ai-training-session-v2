@@ -140,8 +140,7 @@ const videoUrl = `${window.location.origin}/videos/create-image.mp4`;
 
     <p>
       <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded"><i class="bi bi-asterisk px-2"></i> Como Funciona o Pré-Pedido por Imagem</h5>
-      O processo se inicia quando o usuário envia uma imagem por meio de um <strong>POST na Web
-      API</strong>. A imagem é analisada utilizando o serviço <strong>Azure Document
+      O processo se inicia quando o usuário envia uma imagem por meio de um <strong>POST ao backend</strong>. A imagem é analisada utilizando o serviço <strong>Azure Document
       Intelligence</strong>, que realiza a extração automática e estruturada dos dados presentes no
       arquivo.
     </p>
@@ -165,6 +164,12 @@ const videoUrl = `${window.location.origin}/videos/create-image.mp4`;
           <a href="https://azure.microsoft.com/pt-br/products/ai-services/ai-document-intelligence"
              target="_blank" rel="noopener">
             Azure AI Document Intelligence – Visão Geral
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/watch?v=CgFblpWJ8lU&t"
+             target="_blank" rel="noopener">
+            Azure AI Document Intelligence na Prática
           </a>
         </li>
       </ul>
