@@ -120,7 +120,7 @@ const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
 
     <p>
       <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-asterisk px-2"></i> Como Funciona o Pré-Pedido por Imagem</h5>
-      O processo se inicia quando o usuário envia uma imagem por meio de um POST na Web API. A
+      O processo se inicia quando o usuário envia uma imagem por meio de um POST ao backend. A
       imagem é analisada utilizando o serviço <strong>Azure Document Intelligence</strong>, que
       realiza a extração automática e estruturada dos dados presentes no arquivo.
     </p>
@@ -157,6 +157,12 @@ const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
         <a href="https://azure.microsoft.com/pt-br/products/ai-services/ai-document-intelligence"
            target="_blank" rel="noopener">
           Azure Document Intelligence – Visão Geral
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/watch?v=ZWYy2gGxsHU"
+           target="_blank" rel="noopener">
+          Structured Output no Azure OpenAI: Guia Completo
         </a>
       </li>
     </ul>

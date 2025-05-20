@@ -119,7 +119,7 @@ const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
     <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-asterisk px-2"></i> Processo de Geração do Pré-Pedido</h5>
     <p>
       O pré-pedido é criado quando um usuário envia um <strong>arquivo de áudio (MP3)</strong> para
-      a Web API. Esse áudio é processado pelo serviço <strong>Azure AI Speech</strong>, que realiza
+      o backend. Esse áudio é processado pelo serviço <strong>Azure AI Speech</strong>, que realiza
       a transcrição do conteúdo falado em texto.
     </p>
 
