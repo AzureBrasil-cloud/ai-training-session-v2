@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {ADM_CREDENTIALS} from '@/constants/admCredentials';
 import {validators} from '@/utils/validators';
-import {ref, watch,} from 'vue';
+import {ref} from 'vue';
 import {useRouter} from 'vue-router';
 import HelpButton from "@/components/common/HelpButton.vue";
 
@@ -21,6 +21,7 @@ const darkTheme = () => {
 
 const handleSubmit = async () => {
   try {
+    clearErrors();
     if (email.value === "") {
       emailError.value = "Email é um campo obrigatório.";
     }
@@ -67,6 +68,25 @@ const handleSubmit = async () => {
 const hasErrors = () => {
   return emailError.value || passwordError.value;
 };
+
+
+const handleChangePassword = () => {
+  if (passwordError && password.value.length >= 8) {
+    passwordError.value = "";
+  }
+};
+
+const handleChangeEmail = () => {
+  if (emailError && email.value.length >= 8) {
+    emailError.value = "";
+  }
+}
+
+const clearErrors = () => {
+  emailError.value = "";
+  passwordError.value = "";
+};
+
 const videoUrl = `${window.location.origin}/videos/login.mp4`;
 const logo = `${window.location.origin}/images/logo-acai.png`;
 const logoAzBr = `${window.location.origin}/images/logo-azbr.png`;
@@ -217,7 +237,8 @@ const logoAzBr = `${window.location.origin}/images/logo-azbr.png`;
               <label class="form-label" for="email">Email</label>
               <input v-model="email" type="email"
                      :class="['form-control', emailError ? 'is-invalid' : '']" id="email"
-                     placeholder="Seu email">
+                     placeholder="Seu email"
+                     @input="handleChangeEmail">
               <span v-if="emailError" class="mt-2 invalid-feedback">{{ emailError }}</span>
             </div>
             <div>
@@ -227,7 +248,8 @@ const logoAzBr = `${window.location.origin}/images/logo-azbr.png`;
               <input v-model="password" type="password"
                      :class="['form-control', passwordError ? 'is-invalid' : '']" id="password"
                      placeholder="Sua senha"
-                     autocomplete="current-password">
+                     autocomplete="current-password"
+                     @input="handleChangePassword">
               <span v-if="passwordError" class="mt-2 invalid-feedback">{{ passwordError }}</span>
             </div>
             <div>
