@@ -7,7 +7,7 @@ const emit = defineEmits(['close'])
     <div class="modal-dialog modal-xl modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Ajuda</h5>
+          <h5 class="modal-title"><i class="bi bi-person-raised-hand"></i>Ajuda</h5>
           <button type="button" class="btn-close" @click="emit('close')"></button>
         </div>
         <div class="modal-body">

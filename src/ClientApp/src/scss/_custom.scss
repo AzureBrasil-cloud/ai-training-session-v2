@@ -36,6 +36,10 @@ html[data-bs-theme="dark"] .custom-sidebar {
   background-color: blue !important;
 }
 
+html[data-bs-theme="dark"] .bck-h {
+  background: #232323 !important;
+}
+
 /* LIGHT */
 
 html[data-bs-theme="light"] .home-text-light {
@@ -168,4 +172,9 @@ th {
   border-color: #ffffff !important;
 }
 
+@media (min-width: 768px) {
+  .end-border{
+    border-right: 1px solid #3131311f;
+  }
+}
 

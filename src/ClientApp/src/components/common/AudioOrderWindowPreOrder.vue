@@ -51,9 +51,10 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
       <div class="col-md-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title fw-bold">Pedido solicitado</h5>
+            <h5 class="card-title fw-bold"><i class="bi bi-box-seam fs-md-1"></i> Pedido solicitado</h5>
             <p class="card-subtitle text-body-secondary text-sm mb-4">
               <span class="fw-bold">Informações do pedido:</span> <br />
+              <hr class="mt-3 mb-3 mb-0" />
               {{ preOrderAudioRef }}
             </p>
           </div>
@@ -178,7 +179,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
                 <label class="form-check-label" :for="extra">{{ capitalize(extra) }}</label>
               </div>
             </div>
-            <small :class="['form-text', isAdmin ? 'bg-gray-600 text-white' : 'bg-gray-100 text-black', 'rounded-2', 'p-2']">Selecione zero ou mais
+            <small :class="['form-text', isAdmin ? 'bg-body-secondary text-white' : 'bg-gray-100 text-black', 'rounded-2', 'p-2', 'px-4']">Selecione zero ou mais
               adicionais.</small>
           </div>
         </div>

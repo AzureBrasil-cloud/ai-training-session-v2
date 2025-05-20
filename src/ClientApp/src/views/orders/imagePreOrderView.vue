@@ -82,40 +82,44 @@ const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
       ></video>
     </div>
 
-    <h5 class="mb-3">Descritivo da Página de Pré-Pedidos por Imagem</h5>
+    <h2 class="mb-5 mt-8"><i class="bi bi-images px-2"></i> Descritivo da Página de Pré-Pedidos por Imagem</h2>
     <p>
       Esta página apresenta a <strong>lista de pré-pedidos realizados a partir de imagens enviadas
       pelos usuários</strong>. Cada entrada mostra dados como email do remetente, nome da imagem,
       extensão do arquivo e ações que podem ser realizadas pelo administrador.
     </p>
 
-    <h6 class="mt-4">Funcionalidades</h6>
-    <ul>
-      <li><strong>Listagem de pré-pedidos:</strong> Exibe todos os arquivos de imagem submetidos
-        para análise.
-      </li>
-      <li><strong>Campos exibidos:</strong>
-        <ul>
-          <li><strong>Email do usuário:</strong> Identifica o remetente da imagem.</li>
-          <li><strong>Nome da imagem:</strong> Nome do arquivo enviado.</li>
-          <li><strong>Extensão:</strong> Tipo da imagem (ex: <code>.png</code>, <code>.jpg</code>).
-          </li>
-        </ul>
-      </li>
-      <li><strong>Ações disponíveis:</strong>
-        <ul>
-          <li><strong>Ver:</strong> Permite ao administrador visualizar os dados extraídos da imagem
-            e montar um pedido manualmente.
-          </li>
-          <li><strong>Ver com AI:</strong> Ativa o processamento com inteligência artificial para
-            gerar o pedido automaticamente com base nas informações extraídas.
-          </li>
-        </ul>
-      </li>
-    </ul>
-
-    <h6 class="mt-4">Como Funciona o Pré-Pedido por Imagem</h6>
     <p>
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-list-task px-2"></i>
+        Funcionalidades</h5>
+      <ul>
+        <li><strong>Listagem de pré-pedidos:</strong> Exibe todos os arquivos de imagem submetidos
+          para análise.
+        </li>
+        <li><strong>Campos exibidos:</strong>
+          <ul>
+            <li><strong>Email do usuário:</strong> Identifica o remetente da imagem.</li>
+            <li><strong>Nome da imagem:</strong> Nome do arquivo enviado.</li>
+            <li><strong>Extensão:</strong> Tipo da imagem (ex: <code>.png</code>, <code>.jpg</code>).
+            </li>
+          </ul>
+        </li>
+        <li><strong>Ações disponíveis:</strong>
+          <ul>
+            <li><strong>Ver:</strong> Permite ao administrador visualizar os dados extraídos da
+              imagem
+              e montar um pedido manualmente.
+            </li>
+            <li><strong>Ver com AI:</strong> Ativa o processamento com inteligência artificial para
+              gerar o pedido automaticamente com base nas informações extraídas.
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-asterisk px-2"></i> Como Funciona o Pré-Pedido por Imagem</h5>
       O processo se inicia quando o usuário envia uma imagem por meio de um POST na Web API. A
       imagem é analisada utilizando o serviço <strong>Azure Document Intelligence</strong>, que
       realiza a extração automática e estruturada dos dados presentes no arquivo.
@@ -126,8 +130,8 @@ const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
       demonstração e testes.
     </p>
 
-    <h6 class="mt-4">Criação de Pedidos com AI</h6>
     <p>
+    <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-box-seam px-2"></i> Criação de Pedidos com AI</h5>
       O administrador pode optar por:
     </p>
     <ul>
@@ -139,14 +143,15 @@ const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
       </li>
     </ul>
 
-    <h6 class="mt-4">Objetivo</h6>
     <p>
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-bullseye px-2"></i> Objetivo</h5>
       Esta funcionalidade visa facilitar o registro de pedidos a partir de documentos físicos,
       imagens escaneadas ou fotos de anotações, automatizando a leitura e estruturação das
       informações com apoio da inteligência artificial.
     </p>
 
-    <h6 class="mt-4">Links Úteis</h6>
+    <p>
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-link-45deg px-2"></i> Links Úteis</h5>
     <ul>
       <li>
         <a href="https://azure.microsoft.com/pt-br/products/ai-services/ai-document-intelligence"
@@ -155,6 +160,7 @@ const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
         </a>
       </li>
     </ul>
+    </p>
   </HelpButton>
 
   <div class="row g-3 px-4 py-4 justify-content-between">

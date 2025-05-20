@@ -157,7 +157,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
                 <label class="form-check-label" :for="extra">{{ capitalize(extra) }}</label>
               </div>
             </div>
-            <small :class="['form-text', isAdmin ? 'bg-gray-600 text-white' : 'bg-gray-100 text-black', 'rounded-2', 'p-2']">Selecione zero ou mais
+            <small :class="['form-text', isAdmin ? 'bg-body-secondary text-white' : 'bg-gray-100 text-black', 'rounded-2', 'p-2', 'px-4']">Selecione zero ou mais
               adicionais.</small>
           </div>
         </div>

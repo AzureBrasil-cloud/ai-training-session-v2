@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { inject, onBeforeMount, onMounted, ref } from "vue";
+import {inject, onBeforeMount, onMounted, ref} from "vue";
 import axios from 'axios';
 import type {Order} from "@/models/order.ts";
 import HelpButton from "@/components/common/HelpButton.vue";
 import OrderWindow from "@/components/common/OrderWindow.vue";
-import { auth } from "@/utils/auth";
-import type { IOffcanvas } from "@/plugins/offcanvas";
+import {auth} from "@/utils/auth";
+import type {IOffcanvas} from "@/plugins/offcanvas";
 
 const $offcanvas = inject<IOffcanvas>('$offcanvas');
 const _data = ref<Order[]>();
@@ -34,10 +34,14 @@ const handleOpenOrderWindow = () => {
 
 function getSizeLabel(size: number): string {
   switch (size) {
-    case 1: return 'Pequeno'
-    case 2: return 'Médio'
-    case 3: return 'Grande'
-    default: return 'Desconhecido'
+    case 1:
+      return 'Pequeno'
+    case 2:
+      return 'Médio'
+    case 3:
+      return 'Grande'
+    default:
+      return 'Desconhecido'
   }
 }
 
@@ -71,37 +75,48 @@ const videoUrl = `${window.location.origin}/videos/list-create-order.mp4`;
   <HelpButton>
     <div class="d-flex justify-content-center my-4">
       <video
-          ref="player"
-          :src="videoUrl"
-          controls
-          loop
-          autoplay
-          muted
-          playsinline
-          style="width: 100%; height: auto;"
+        ref="player"
+        :src="videoUrl"
+        controls
+        loop
+        autoplay
+        muted
+        playsinline
+        style="width: 100%; height: auto;"
       ></video>
     </div>
 
-    <h5 class="mb-3">Descritivo da Página de Pedidos de Açaí</h5>
+    <h2 class="mb-5 mt-8"><i class="bi bi-chat-square-dots px-2"></i> Descritivo da Página de Pedidos de Açaí</h2>
     <p>
-      Esta página permite <strong>visualizar e criar pedidos de açaí</strong>, com funcionalidades diferentes para administradores e usuários comuns. A interface oferece uma tabela com os pedidos existentes e um formulário intuitivo para criar novos pedidos diretamente na aplicação.
+      Esta página permite <strong>visualizar e criar pedidos de açaí</strong>, com funcionalidades
+      diferentes para administradores e usuários comuns. A interface oferece uma tabela com os
+      pedidos existentes e um formulário intuitivo para criar novos pedidos diretamente na
+      aplicação.
     </p>
 
-    <h6 class="mt-4">Funcionalidades</h6>
+    <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-list-task px-2"></i> Funcionalidades</h5>
     <ul>
-      <li><strong>Listagem de pedidos:</strong> Exibe todos os pedidos registrados, com informações como data, usuário, valor, tamanho e adicionais escolhidos.</li>
+      <li><strong>Listagem de pedidos:</strong> Exibe todos os pedidos registrados, com informações
+        como data, usuário, valor, tamanho e adicionais escolhidos.
+      </li>
       <li><strong>Permissões por perfil:</strong>
         <ul>
-          <li><strong>Administradores:</strong> Conseguem visualizar todos os pedidos do sistema.</li>
-          <li><strong>Usuários:</strong> Visualizam apenas os pedidos feitos com seu próprio e-mail.</li>
+          <li><strong>Administradores:</strong> Conseguem visualizar todos os pedidos do sistema.
+          </li>
+          <li><strong>Usuários:</strong> Visualizam apenas os pedidos feitos com seu próprio e-mail.
+          </li>
         </ul>
       </li>
-      <li><strong>Criação de pedidos:</strong> Usuários logados podem clicar em <code>Criar</code> e realizar um novo pedido de forma guiada.</li>
+      <li><strong>Criação de pedidos:</strong> Usuários logados podem clicar em <code>Criar</code> e
+        realizar um novo pedido de forma guiada.
+      </li>
     </ul>
 
-    <h6 class="mt-4">Como funciona a Criação de Pedidos</h6>
     <p>
-      Ao iniciar um novo pedido, o usuário deve escolher o <strong>tamanho do açaí</strong> (Pequeno, Médio ou Grande) e pode selecionar <strong>opcionalmente adicionais</strong> como M&Ms, Leite ninho, Granola ou Paçoca.
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-asterisk px-2"></i> Como funciona a Criação de Pedidos</h5>
+      Ao iniciar um novo pedido, o usuário deve escolher o <strong>tamanho do açaí</strong>
+      (Pequeno, Médio ou Grande) e pode selecionar <strong>opcionalmente adicionais</strong> como
+      M&Ms, Leite ninho, Granola ou Paçoca.
     </p>
     <p>
       Os preços são calculados dinamicamente:
@@ -112,12 +127,15 @@ const videoUrl = `${window.location.origin}/videos/list-create-order.mp4`;
       <li><strong>Grande:</strong> R$10,00</li>
       <li><strong>Adicional:</strong> R$2,00 por item</li>
     </ul>
-    <p> O valor total é exibido em tempo real antes da confirmação. Após salvar, o pedido é enviado para a API e aparece na tabela.
+    <p> O valor total é exibido em tempo real antes da confirmação. Após salvar, o pedido é enviado
+      para a API e aparece na tabela.
     </p>
 
-    <h6 class="mt-4">Objetivo</h6>
     <p>
-      Esta funcionalidade oferece uma forma rápida, prática e visual de realizar pedidos, mantendo controle centralizado e visibilidade tanto para clientes quanto para administradores do sistema.
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-bullseye px-2"></i> Objetivo</h5>
+      Esta funcionalidade oferece uma forma rápida, prática e visual de realizar pedidos, mantendo
+      controle centralizado e visibilidade tanto para clientes quanto para administradores do
+      sistema.
     </p>
   </HelpButton>
 
@@ -136,7 +154,7 @@ const videoUrl = `${window.location.origin}/videos/list-create-order.mp4`;
     </div>
   </div>
 
-  <hr class="mt-6 mb-0" />
+  <hr class="mt-6 mb-0"/>
 
   <div class="table-responsive" style="overflow-x: auto;">
     <table class="table table-hover table-nowrap w-100">

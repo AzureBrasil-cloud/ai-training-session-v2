@@ -83,14 +83,15 @@ const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
       ></video>
     </div>
 
-    <h5 class="mb-3">Descritivo da Página de Pré-Pedidos por Áudio</h5>
+    <h2 class="mb-5 mt-8"><i class="bi bi-music-note-list px-2"></i> Descritivo da Página de Pré-Pedidos por Áudio</h2>
     <p>
       Esta página apresenta a <strong>lista de pré-pedidos realizados por usuários a partir de
       áudios enviados pelos usuários</strong>. Cada entrada representa um pedido potencial capturado
       por voz e transcrito automaticamente.
     </p>
 
-    <h6 class="mt-4">Funcionalidades</h6>
+    <p>
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-list-task px-2"></i> Funcionalidades</h5>
     <ul>
       <li><strong>Listagem dos pré-pedidos:</strong> Exibe os pré-pedidos enviados por áudio em
         formato de tabela.
@@ -113,15 +114,16 @@ const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
         </ul>
       </li>
     </ul>
+    </p>
 
-    <h6 class="mt-4">Processo de Geração do Pré-Pedido</h6>
+    <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-asterisk px-2"></i> Processo de Geração do Pré-Pedido</h5>
     <p>
       O pré-pedido é criado quando um usuário envia um <strong>arquivo de áudio (MP3)</strong> para
       a Web API. Esse áudio é processado pelo serviço <strong>Azure AI Speech</strong>, que realiza
       a transcrição do conteúdo falado em texto.
     </p>
 
-    <h6 class="mt-4">Criação de Pedido com Ajuda de IA</h6>
+    <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-box-seam px-2"></i> Criação de Pedido com Ajuda de IA</h5>
     <p>
       Quando o administrador clica em <strong>"Ver com AI"</strong>, o sistema utiliza o <strong>SDK
       da Azure OpenAI</strong> em conjunto com a funcionalidade de <strong>Structured
@@ -133,14 +135,15 @@ const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
       IA para os operadores do sistema.
     </p>
 
-    <h6 class="mt-4">Objetivo</h6>
     <p>
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-bullseye px-2"></i> Objetivo</h5>
       A funcionalidade permite capturar pedidos por voz e dar suporte aos administradores na
       transformação desses pedidos em ações concretas, seja por preenchimento manual ou automatizado
       com IA.
     </p>
 
-    <h6 class="mt-4">Links Úteis</h6>
+    <p>
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-link-45deg px-2"></i> Links Úteis</h5>
     <ul>
       <li>
         <a href="https://learn.microsoft.com/pt-br/azure/ai-services/speech-service/overview"
@@ -156,6 +159,7 @@ const handleOpenOrderWindow = async (id: string, aiTransformation: boolean) => {
         </a>
       </li>
     </ul>
+    </p>
   </HelpButton>
 
   <div class="row g-3 px-4 py-4 justify-content-between">

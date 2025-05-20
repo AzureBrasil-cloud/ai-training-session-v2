@@ -46,36 +46,42 @@ const videoUrl = `${window.location.origin}/videos/list-reviews.mp4`;
       ></video>
     </div>
 
-    <h5 class="mb-3">Descritivo da Página de Avaliações</h5>
+    <h2 class="mb-5 mt-8"><i class="bi bi-card-checklist px-2"></i> Descritivo da Página de Avaliações
+    </h2>
     <p>
       A página de <strong>Avaliações</strong> tem como objetivo listar e apresentar todas as
       avaliações feitas pelos usuários do sistema. Essas avaliações são coletadas com o intuito de
       fornecer feedback qualitativo e quantitativo sobre os serviços ou produtos oferecidos.
     </p>
 
-    <h6 class="mt-4">Funcionalidades</h6>
-    <ul>
-      <li><strong>Listagem das avaliações:</strong> Exibe todas as avaliações em formato de tabela.
-      </li>
-      <li>
-        <strong>Campos apresentados:</strong>
-        <ul>
-          <li><strong>Email do usuário:</strong> Identifica quem deixou a avaliação.</li>
-          <li><strong>Conteúdo da avaliação:</strong> Comentário escrito pelo usuário.</li>
-          <li><strong>Classificação numérica:</strong> Nota de 0 a 5 atribuída automaticamente com
-            base na análise do conteúdo.
-          </li>
-          <li><strong>Nome da classificação:</strong> Descrição textual da nota (ex: "Bom", "Ruim").
-          </li>
-          <li><strong>Data da avaliação:</strong> Indica quando a avaliação foi registrada.</li>
-        </ul>
-      </li>
-      <li><strong>Ajuda contextual:</strong> Um botão de ajuda (“?”) no canto superior direito abre
-        este conteúdo explicativo.
-      </li>
-    </ul>
+    <p>
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-list-task px-2"></i> Funcionalidades</h5>
+      <ul>
+        <li><strong>Listagem das avaliações:</strong> Exibe todas as avaliações em formato de
+          tabela.
+        </li>
+        <li>
+          <strong>Campos apresentados:</strong>
+          <ul>
+            <li><strong>Email do usuário:</strong> Identifica quem deixou a avaliação.</li>
+            <li><strong>Conteúdo da avaliação:</strong> Comentário escrito pelo usuário.</li>
+            <li><strong>Classificação numérica:</strong> Nota de 0 a 5 atribuída automaticamente com
+              base na análise do conteúdo.
+            </li>
+            <li><strong>Nome da classificação:</strong> Descrição textual da nota (ex: "Bom",
+              "Ruim").
+            </li>
+            <li><strong>Data da avaliação:</strong> Indica quando a avaliação foi registrada.</li>
+          </ul>
+        </li>
+        <li><strong>Ajuda contextual:</strong> Um botão de ajuda (“?”) no canto superior direito
+          abre
+          este conteúdo explicativo.
+        </li>
+      </ul>
+    </p>
 
-    <h6 class="mt-4">Classificação das Avaliações</h6>
+    <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-asterisk px-2"></i> Classificação das Avaliações</h5>
     <p>
       Quando o usuário envia uma avaliação via POST, o sistema utiliza o Azure OpenAI (via Chat
       Completions API) para interpretar o conteúdo da mensagem e classificá-la automaticamente em
@@ -87,7 +93,7 @@ const videoUrl = `${window.location.origin}/videos/list-reviews.mp4`;
       natural.
     </p>
 
-    <h6 class="mt-4">Processamento e Armazenamento</h6>
+    <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-database-fill-gear px-2"></i> Processamento e Armazenamento</h5>
     <p>
       Após a categorização, tanto o conteúdo da avaliação quanto a categoria atribuída são
       armazenados em um banco de dados em memória (<em>in-memory</em>), utilizado exclusivamente
@@ -99,7 +105,7 @@ const videoUrl = `${window.location.origin}/videos/list-reviews.mp4`;
       processadas no momento do envio da avaliação.
     </p>
 
-    <h6 class="mt-4">Tipos de Classificação</h6>
+    <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-hash px-2"></i> Tipos de Classificação</h5>
     <p>As classificações possíveis são:</p>
     <ul>
       <li><strong>1 – Muito Ruim</strong> (<em>VeryBad</em>): experiência extremamente negativa.
@@ -112,14 +118,15 @@ const videoUrl = `${window.location.origin}/videos/list-reviews.mp4`;
       </li>
     </ul>
 
-    <h6 class="mt-4">Objetivo</h6>
     <p>
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-bullseye px-2"></i> Objetivo</h5>
       A funcionalidade permite que administradores acompanhem a percepção dos usuários sobre o
       serviço, identifiquem oportunidades de melhoria e reconheçam pontos fortes, promovendo um
       ciclo contínuo de aperfeiçoamento baseado em feedback real.
     </p>
 
-    <h6 class="mt-4">Links Úteis</h6>
+    <p>
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-link-45deg px-2"></i> Links Úteis</h5>
     <ul>
       <li>
         <a href="https://learn.microsoft.com/pt-br/azure/ai-services/openai/overview"
@@ -135,6 +142,7 @@ const videoUrl = `${window.location.origin}/videos/list-reviews.mp4`;
         </a>
       </li>
     </ul>
+    </p>
   </HelpButton>
 
   <div class="row g-3 px-4 py-4 justify-content-between">

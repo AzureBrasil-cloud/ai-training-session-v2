@@ -1,24 +1,23 @@
 <script setup lang="ts">
-  import { ADM_CREDENTIALS } from '@/constants/admCredentials';
-  import { validators } from '@/utils/validators';
-  import { ref, watch,  } from 'vue';
-  import { useRouter } from 'vue-router';
-  import HelpButton from "@/components/common/HelpButton.vue";
+import {ADM_CREDENTIALS} from '@/constants/admCredentials';
+import {validators} from '@/utils/validators';
+import {ref, watch,} from 'vue';
+import {useRouter} from 'vue-router';
+import HelpButton from "@/components/common/HelpButton.vue";
 
-  const router = useRouter();
+const router = useRouter();
 
-  let email = ref("");
-  let password = ref("");
+let email = ref("");
+let password = ref("");
 
-  let emailError = ref("");
-  let passwordError = ref("");
+let emailError = ref("");
+let passwordError = ref("");
 
 
-
-  const darkTheme = () => {
-    document.documentElement.setAttribute('data-bs-theme', 'dark');
-    sessionStorage.setItem('theme', 'dark');
-  }
+const darkTheme = () => {
+  document.documentElement.setAttribute('data-bs-theme', 'dark');
+  sessionStorage.setItem('theme', 'dark');
+}
 
 const handleSubmit = async () => {
   try {
@@ -88,38 +87,43 @@ const logoAzBr = `${window.location.origin}/images/logo-azbr.png`;
       ></video>
     </div>
 
-    <h5 class="mb-3">Descritivo da Página de Login</h5>
+    <h2 class="mb-3"><i class="bi bi-person-check-fill px-2"></i> Descritivo da Página de Login</h2>
     <p>
       A página de <strong>Login</strong> permite que os usuários acessem o sistema informando suas
       credenciais (email e senha). Ela fornece autenticação simulada com base em regras definidas no
       frontend, sem conexão com backends reais ou bancos de dados persistentes.
     </p>
 
-    <h6 class="mt-4">Funcionalidades</h6>
-    <ul>
-      <li><strong>Autenticação de usuários comuns:</strong> Qualquer email válido e senha com no
-        mínimo 8 caracteres permite o login como <code>usuário comum</code>.
-      </li>
-      <li><strong>Autenticação de administrador:</strong> O acesso como <code>administrador</code> é
-        feito usando:
-        <ul>
-          <li><strong>Email:</strong> <code>adm@adm.com</code></li>
-          <li><strong>Senha:</strong> <code>adm</code></li>
-        </ul>
-      </li>
-      <li><strong>Validação de campos:</strong> O sistema realiza validações locais para garantir
-        que o email seja válido e a senha tenha o comprimento mínimo exigido.
-      </li>
-      <li><strong>Feedback imediato:</strong> Erros de validação são exibidos diretamente abaixo dos
-        campos de entrada.
-      </li>
-      <li><strong>Redirecionamento automático:</strong> Após um login bem-sucedido, o usuário é
-        redirecionado para a rota <code>home</code>.
-      </li>
-    </ul>
-
-    <h6 class="mt-4">Processo Técnico</h6>
     <p>
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded"><i class="bi bi-list-task px-2"></i>
+        Funcionalidades</h5>
+      <ul>
+        <li><strong>Autenticação de usuários comuns:</strong> Qualquer email válido e senha com no
+          mínimo 8 caracteres permite o login como <code>usuário comum</code>.
+        </li>
+        <li><strong>Autenticação de administrador:</strong> O acesso como <code>administrador</code>
+          é
+          feito usando:
+          <ul>
+            <li><strong>Email:</strong> <code>adm@adm.com</code></li>
+            <li><strong>Senha:</strong> <code>adm</code></li>
+          </ul>
+        </li>
+        <li><strong>Validação de campos:</strong> O sistema realiza validações locais para garantir
+          que o email seja válido e a senha tenha o comprimento mínimo exigido.
+        </li>
+        <li><strong>Feedback imediato:</strong> Erros de validação são exibidos diretamente abaixo
+          dos
+          campos de entrada.
+        </li>
+        <li><strong>Redirecionamento automático:</strong> Após um login bem-sucedido, o usuário é
+          redirecionado para a rota <code>home</code>.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-asterisk px-2"></i>Processo Técnico</h5>
       O sistema realiza a autenticação diretamente no frontend. As credenciais de administrador
       estão armazenadas como constante no código-fonte (em <code>ADM_CREDENTIALS</code>), enquanto
       as demais validações são feitas com funções auxiliares presentes no arquivo <code>validators.ts</code>.
@@ -131,7 +135,8 @@ const logoAzBr = `${window.location.origin}/images/logo-azbr.png`;
       sessão em outras páginas do sistema.
     </p>
 
-    <h6 class="mt-4">Regras de Validação</h6>
+    <p>
+    <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-check-circle px-2"></i> Regras de Validação</h5>
     <ul>
       <li><strong>Email:</strong> Deve ter um formato válido (ex: <code>usuario@email.com</code>).
       </li>
@@ -139,35 +144,42 @@ const logoAzBr = `${window.location.origin}/images/logo-azbr.png`;
         do administrador (<code>adm</code>).
       </li>
     </ul>
+    </p>
 
-    <h6 class="mt-4">Objetivo</h6>
     <p>
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-bullseye px-2"></i>
+        Objetivo</h5>
       Esta funcionalidade foi criada para simular o processo de login em um ambiente controlado,
       útil para protótipos, testes ou demonstrações sem dependência de autenticação real.
     </p>
 
-    <h6 class="mt-4">Links Úteis</h6>
-    <ul>
-      <li>
-        <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/Window/sessionStorage"
-           target="_blank" rel="noopener">
-          Documentação – sessionStorage
-        </a>
-      </li>
-      <li>
-        <a href="https://vuejs.org/guide/essentials/reactivity-fundamentals.html" target="_blank"
-           rel="noopener">
-          Vue 3 – Fundamentos de Reatividade
-        </a>
-      </li>
-    </ul>
+    <p>
+      <h5 class="mt-6 mb-3 bg-gray-100 p-2 rounded bck-h"><i class="bi bi-link-45deg px-2"></i>
+        Links
+        Úteis</h5>
+      <ul>
+        <li>
+          <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/Window/sessionStorage"
+             target="_blank" rel="noopener">
+            Documentação – sessionStorage
+          </a>
+        </li>
+        <li>
+          <a href="https://vuejs.org/guide/essentials/reactivity-fundamentals.html" target="_blank"
+             rel="noopener">
+            Vue 3 – Fundamentos de Reatividade
+          </a>
+        </li>
+      </ul>
+    </p>
   </HelpButton>
 
   <div
     class="position-relative d-flex justify-content-center px-5 py-5 p-lg-0 bg-body w-100 overflow-hidden"
     data-x-type="page">
     <div
-      class="col-lg-5 col-xl-5 p-12 p-xl-10 position-absolute start-0 top-0 min-vh-100 overflow-y-hidden d-none d-lg-flex flex-column border-end-lg" style="background-color: #6c2b6d">
+      class="col-lg-5 col-xl-5 p-12 p-xl-10 position-absolute start-0 top-0 min-vh-100 overflow-y-hidden d-none d-lg-flex flex-column border-end-lg"
+      style="background-color: #6c2b6d">
       <div class="d-flex justify-content-center align-items-center flex-grow-1">
         <a class="d-block" href="#">
           <img :src="logo" width="500" alt="..."/>
@@ -187,7 +199,8 @@ const logoAzBr = `${window.location.origin}/images/logo-azbr.png`;
         class="w-rem-56 h-rem-56 bg-white bg-opacity-10 rounded-circle position-absolute bottom-0 end-0 me-10 transform translate-y-50">
       </div>
     </div>
-    <div class="col-12 col-md-9 col-lg-7 offset-xl-7 offset-lg-5 vh-lg-100 d-flex flex-column justify-content-center py-lg-16 px-lg-20 position-relative">
+    <div
+      class="col-12 col-md-9 col-lg-7 offset-xl-7 offset-lg-5 vh-lg-100 d-flex flex-column justify-content-center py-lg-16 px-lg-20 position-relative">
       <div class="row">
         <div class="col-lg-10 col-md-9 col-xl-8 col-xxl-7 mx-auto ms-xl-0">
           <div class="mb-12">
