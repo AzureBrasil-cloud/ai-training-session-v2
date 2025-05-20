@@ -194,9 +194,6 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
             <div class="me-1 display-6">
               <span>${{ totalPrice.toFixed(2) }}</span>
             </div>
-            <div class="text-muted text-base fw-semibold">
-              <span class="text-white">/ reais</span>
-            </div>
           </div>
         </div>
       </div>
