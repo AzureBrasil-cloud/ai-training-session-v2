@@ -14,7 +14,7 @@ const model = defineModel<Order>();
 
 const isAdmin = auth.userIsAdmin();
 
-const selectedSize = ref(0);
+const selectedSize = ref(1);
 
 defineProps<{
   isEditMode: boolean;
@@ -32,10 +32,6 @@ const totalPrice = computed(() => {
 })
 
 async function save() {
-  if (selectedSize.value === 0) {
-    selectedSize.value = 1;
-    model!.value!.size = 1;
-  }
   await axios.post(`/api/orders`, model.value);
   await emit("fetchData");
   $offcanvas?.close();
@@ -157,7 +153,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
             <h5 class="card-title pb-2 item-purple"><i class="bi bi-arrows-vertical"></i>Tamanho
             </h5>
             <select @change="handleSelectChange" class="form-select form-select-sm" required>
-              <option disabled :selected="selectedSize === 0" hidden value="">Selecione o tamanho</option>
+              <option disabled hidden value="">Selecione o tamanho</option>
               <option :selected="selectedSize === 1" :value="1">Pequeno</option>
               <option :selected="selectedSize === 2" :value="2">Médio</option>
               <option :selected="selectedSize === 3" :value="3">Grande</option>

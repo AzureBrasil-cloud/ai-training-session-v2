@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { EXTRA_OPTIONS, SIZE_PRICES, TOPPING_PRICE } from '@/constants/order';
 import type { Order } from '@/models/order';
-import type { PreOrderAudio } from '@/models/preOrderAudio';
 import type { PreOrderImage } from '@/models/preOrderImage';
 import type { IOffcanvas } from '@/plugins/offcanvas';
 import { auth } from '@/utils/auth';
 import { capitalize } from '@/utils/capitalize';
 import { preOrder } from '@/utils/preOrder';
 import axios from 'axios';
-import { computed, inject, onBeforeMount, ref, watchEffect } from 'vue';
+import { computed, inject, ref, watchEffect } from 'vue';
 
 const preOrderImageRef = ref<string>("");
 
@@ -16,13 +15,7 @@ const $offcanvas = inject<IOffcanvas>('$offcanvas');
 
 const model = defineModel<Order>();
 
-const selectedSize = ref(0);
-
-onBeforeMount(() => {
-  if (model.value) {
-    selectedSize.value = model.value.size;
-  }
-});
+const selectedSize = ref(1);
 
 const isAdmin = auth.userIsAdmin();
 
@@ -43,15 +36,16 @@ const totalPrice = computed(() => {
 })
 
 async function save() {
-if (selectedSize.value === 0) {
-    selectedSize.value = 1;
-    model!.value!.size = 1;
-  }
-
   await axios.post(`/api/orders`, model.value);
   await emit("fetchData");
   $offcanvas?.close();
 }
+
+watchEffect(() => {
+  if (model.value) {
+    selectedSize.value = model.value.size;
+  }
+});
 
 watchEffect(() => {
   const preOrderValues = preOrder.transformPreOrderKeyValuePairs(props.preOrderImage?.keyValuePairs ?? [])
@@ -189,7 +183,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
           <div class="card-body">
             <h5 class="card-title pb-2 fw-bold"><i class="bi bi-arrows-vertical"></i>Tamanho</h5>
             <select @change="handleSelectChange" class="form-select form-select-sm" required>
-              <option disabled :selected="selectedSize === 0" hidden value="">Selecione o tamanho</option>
+              <option disabled hidden value="">Selecione o tamanho</option>
               <option :selected="selectedSize === 1" :value="1">Pequeno</option>
               <option :selected="selectedSize === 2" :value="2">Médio</option>
               <option :selected="selectedSize === 3" :value="3">Grande</option>
