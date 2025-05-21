@@ -6,7 +6,7 @@ import type { IOffcanvas } from '@/plugins/offcanvas';
 import { auth } from '@/utils/auth';
 import { capitalize } from '@/utils/capitalize';
 import axios from 'axios';
-import { computed, inject, ref, watchEffect } from 'vue';
+import { computed, inject, onBeforeMount, ref, watchEffect } from 'vue';
 
 const preOrderAudioRef = ref<string>("");
 
@@ -15,6 +15,14 @@ const $offcanvas = inject<IOffcanvas>('$offcanvas');
 const model = defineModel<Order>();
 
 const isAdmin = auth.userIsAdmin();
+
+const selectedSize = ref(0);
+
+onBeforeMount(() => {
+  if (model.value) {
+    selectedSize.value = model.value.size;
+  }
+});
 
 const props = defineProps<{
   isEditMode: boolean;
@@ -33,6 +41,11 @@ const totalPrice = computed(() => {
 })
 
 async function save() {
+  if (selectedSize.value === 0) {
+    selectedSize.value = 1;
+    model!.value!.size = 1;
+  }
+
   await axios.post(`/api/orders`, model.value);
   await emit("fetchData");
   $offcanvas?.close();
@@ -41,6 +54,23 @@ async function save() {
 watchEffect(() => {
   preOrderAudioRef.value = props.preOrderAudio?.content ?? "";
 })
+
+const handleSizeClick = (event: MouseEvent) => {
+  const target = event.currentTarget as HTMLElement;
+  const sizeValue = target.getAttribute('data-size-value');
+  if (sizeValue) {
+    selectedSize.value = parseInt(sizeValue);
+    model!.value!.size = selectedSize.value;
+  }
+};
+
+const handleSelectChange = (event: any) => {
+  const selectedValue = event.target.value;
+  if (selectedValue) {
+    selectedSize.value = parseInt(selectedValue);
+    model!.value!.size = selectedSize.value;
+  }
+}
 
 const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
 </script>
@@ -70,10 +100,10 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
               Escolha o tamanho e os adicionais
             </p>
             <div class="list-group list-group-borderless gap-2 list-group-flush">
-              <div class="list-group-item">
+              <div data-size-value="1" @click="handleSizeClick" class="list-group-item">
                 <div class="d-flex align-items-center">
                   <div class="me-4">
-                    <div class="icon icon-shape text-lg bg-body-secondary text-primary">
+                    <div :class="['icon icon-shape text-lg text-primary', selectedSize === 1 ? 'border-purple bg-body-custom' : 'bg-body-secondary']">
                       <img :src="sizeAcai" alt="" width="12">
                     </div>
                   </div>
@@ -88,10 +118,10 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
                   </div>
                 </div>
               </div>
-              <div class="list-group-item">
+              <div data-size-value="2" @click="handleSizeClick" class="list-group-item">
                 <div class="d-flex align-items-center">
                   <div class="me-4">
-                    <div class="icon icon-shape text-lg bg-body-secondary text-primary">
+                    <div :class="['icon icon-shape text-lg text-primary', selectedSize === 2 ? 'border-purple bg-body-custom' : 'bg-body-secondary']">
                       <img :src="sizeAcai" alt="" width="15">
                     </div>
                   </div>
@@ -106,10 +136,10 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
                   </div>
                 </div>
               </div>
-              <div class="list-group-item">
+              <div data-size-value="3" @click="handleSizeClick" class="list-group-item">
                 <div class="d-flex align-items-center">
                   <div class="me-4">
-                    <div class="icon icon-shape text-lg bg-body-secondary text-primary">
+                    <div :class="['icon icon-shape text-lg text-primary', selectedSize === 3 ? 'border-purple bg-body-custom' : 'bg-body-secondary']">
                       <img :src="sizeAcai" alt="" width="18">
                     </div>
                   </div>
@@ -124,6 +154,9 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
                   </div>
                 </div>
               </div>
+
+              <hr />
+
               <div class="list-group-item">
                 <div class="d-flex align-items-center">
                   <div class="me-4">
@@ -132,8 +165,8 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
                     </div>
                   </div>
                   <div class="flex-fill">
-                    <a href="#" class="d-block h6 fw-semibold mb-1 stretched-link">Cada
-                      adicional</a>
+                    <span class="d-block h6 fw-semibold mb-1 stretched-link">Cada
+                      adicional</span>
                   </div>
                   <div class="ms-auto text-end">
                     <span class="text-sm text-muted"><strong>$2.00</strong></span>
@@ -149,11 +182,11 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
         <div class="card">
           <div class="card-body">
             <h5 class="card-title pb-2 fw-bold"><i class="bi bi-arrows-vertical"></i>Tamanho</h5>
-            <select class="form-select form-select-sm" v-model.number="model!.size" required>
-              <option disabled value="">Selecione o tamanho</option>
-              <option :value="1">Pequeno</option>
-              <option :value="2">Médio</option>
-              <option :value="3">Grande</option>
+            <select @change="handleSelectChange" class="form-select form-select-sm" required>
+              <option disabled :selected="selectedSize === 0" hidden value="">Selecione o tamanho</option>
+              <option :selected="selectedSize === 1" :value="1">Pequeno</option>
+              <option :selected="selectedSize === 2" :value="2">Médio</option>
+              <option :selected="selectedSize === 3" :value="3">Grande</option>
             </select>
           </div>
         </div>

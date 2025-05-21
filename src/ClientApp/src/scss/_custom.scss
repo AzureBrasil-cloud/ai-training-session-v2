@@ -30,6 +30,10 @@ body {
   max-width: 100%;
 }
 
+.bg-body-custom {
+  background-color: #3F474E;
+}
+
 /* DARK */
 
 html[data-bs-theme="dark"] .custom-sidebar {
@@ -97,6 +101,10 @@ th {
   background: #5c265d;
   border: 1px solid #5c265d;
   color: white;
+}
+
+.border-purple{
+  border: 2px solid #441945;
 }
 
 .form-check-input:checked {
