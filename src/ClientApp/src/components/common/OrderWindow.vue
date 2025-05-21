@@ -5,7 +5,7 @@ import type { IOffcanvas } from '@/plugins/offcanvas';
 import { auth } from '@/utils/auth';
 import { capitalize } from '@/utils/capitalize';
 import axios from 'axios';
-import { ref } from 'vue';
+import { onUnmounted, ref } from 'vue';
 import { computed, inject } from 'vue';
 
 const $offcanvas = inject<IOffcanvas>('$offcanvas');
@@ -35,6 +35,7 @@ async function save() {
   await axios.post(`/api/orders`, model.value);
   await emit("fetchData");
   $offcanvas?.close();
+  selectedSize.value = 1;
 }
 
 const handleSizeClick = (event: MouseEvent) => {
@@ -52,6 +53,11 @@ const handleSelectChange = (event: any) => {
     selectedSize.value = parseInt(selectedValue);
     model!.value!.size = selectedSize.value;
   }
+}
+
+const handleCloseOffcanvas = () => {
+  $offcanvas?.close();
+  selectedSize.value = 1;
 }
 
 const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
@@ -203,7 +209,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai.svg`;
 
     <template #footer>
       <div class="d-flex align-items-center bg-body-secondary justify-content-between justify-content-end gap-2 py-4 px-8 border-top">
-        <button type="button" class="btn btn-sm btn-neutral" @click="$offcanvas?.close()">Cancelar
+        <button type="button" class="btn btn-sm btn-neutral" @click="handleCloseOffcanvas">Cancelar
         </button>
         <button type="button" class="btn btn-sm btn-purple" @click="save">
           Salvar
