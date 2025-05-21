@@ -38,6 +38,7 @@ async function save() {
   await axios.post(`/api/orders`, model.value);
   await emit("fetchData");
   $offcanvas?.close();
+  selectedSize.value = 1;
 }
 
 watchEffect(() => {
@@ -66,6 +67,11 @@ watchEffect(() => {
     selectedSize.value = model.value.size;
   }
 });
+
+const handleCloseOffcanvas = () => {
+  $offcanvas?.close();
+  selectedSize.value = 1;
+}
 
 const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
 </script>
@@ -230,7 +236,7 @@ const sizeAcai = `${window.location.origin}/images/size-acai-white.svg`;
 
     <template #footer>
       <div class="d-flex align-items-center bg-body-secondary justify-content-between justify-content-end gap-2 py-4 px-8 border-top">
-        <button type="button" class="btn btn-sm btn-neutral" @click="$offcanvas?.close()">Cancelar
+        <button type="button" class="btn btn-sm btn-neutral" @click="handleCloseOffcanvas">Cancelar
         </button>
         <button type="button" class="btn btn-sm btn-purple" @click="save">
           Salvar
