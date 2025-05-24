@@ -13,7 +13,7 @@ public partial class AiAgentService
 
         foreach (var fileId in fileIds)
         {
-            await client.CreateVectorStoreFileAsync(vectorStoreId, fileId);
+            await client.VectorStores.CreateVectorStoreFileAsync(vectorStoreId, fileId);
         }
     }
 }

@@ -1,5 +1,5 @@
 using System.Text.Json;
-using Azure.AI.Projects;
+using Azure.AI.Agents.Persistent;
 using ContosoAcai.Infrastructure.AIAgent.Models;
 using ContosoAcai.Infrastructure.Azure.Shared;
 
@@ -24,7 +24,7 @@ public partial class AiAgentService
             toolDefinitions,
             toolResources);
         
-        await client.UpdateAgentAsync(
+        await client.Administration.UpdateAgentAsync(
             agentId,
             tools: toolDefinitions,
             toolResources: toolResources);

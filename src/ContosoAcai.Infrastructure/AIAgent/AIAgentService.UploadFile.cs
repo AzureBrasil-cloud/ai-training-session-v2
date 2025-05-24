@@ -1,4 +1,4 @@
-using Azure.AI.Projects;
+using Azure.AI.Agents.Persistent;
 using ContosoAcai.Infrastructure.Azure.Shared;
 using File = ContosoAcai.Infrastructure.AIAgent.Models.File;
 
@@ -13,7 +13,7 @@ public partial class AiAgentService
     {
         var client = CreateAgentsClient(credentials);
 
-        var fileResponse = await client.UploadFileAsync(content, AgentFilePurpose.Agents, fileName);
+        var fileResponse = await client.Files.UploadFileAsync(content, PersistentAgentFilePurpose.Agents, fileName);
 
         return new File(fileResponse.Value.Id);
     }

@@ -13,7 +13,7 @@ public partial class AiAgentService
     {
         var client = CreateAgentsClient(credentials);
         
-        var agentResponse = await client.CreateAgentAsync(
+        var agentResponse = await client.Administration.CreateAgentAsync(
             model: aiModel,
             name: name,
             instructions: instructions);

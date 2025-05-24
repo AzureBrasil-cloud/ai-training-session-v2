@@ -1,5 +1,5 @@
 using System.Text.Json;
-using Azure.AI.Projects;
+using Azure.AI.Agents.Persistent;
 using Azure.Identity;
 using ContosoAcai.Infrastructure.AIAgent.Models;
 using ContosoAcai.Infrastructure.Azure.Shared;
@@ -9,14 +9,14 @@ namespace ContosoAcai.Infrastructure.AIAgent;
 
 public partial class AiAgentService(EmailService emailService)
 {
-    private AgentsClient CreateAgentsClient(Credentials credentials)
+    private PersistentAgentsClient CreateAgentsClient(Credentials credentials)
     {
         var credential = new ClientSecretCredential(
             credentials.TenantId, 
             credentials.ClientId, 
             credentials.ClientSecret);
         
-        return new AgentsClient(credentials.ProjectConnectionString, credential);
+        return new PersistentAgentsClient(credentials.ProjectConnectionString, credential);
     }
     
     private async Task<ToolOutput> GetResolvedToolOutputAsync(RequiredToolCall toolCall)

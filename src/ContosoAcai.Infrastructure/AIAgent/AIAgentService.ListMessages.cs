@@ -1,7 +1,9 @@
 using System.Text;
-using Azure.AI.Projects;
+using Azure;
+using Azure.AI.Agents.Persistent;
 using ContosoAcai.Infrastructure.AIAgent.Models;
 using ContosoAcai.Infrastructure.Azure.Shared;
+using MessageTextContent = Azure.AI.Agents.Persistent.MessageTextContent;
 
 namespace ContosoAcai.Infrastructure.AIAgent;
 
@@ -10,16 +12,20 @@ public partial class AiAgentService
     public virtual async Task<IEnumerable<Message>> ListMessageAsync(Credentials credentials, string threadId)
     {
         var client = CreateAgentsClient(credentials);
-        var messages = (await client.GetMessagesAsync(threadId, order: ListSortOrder.Ascending)).Value.Data;
+        AsyncPageable<PersistentThreadMessage> messages = client.Messages.GetMessagesAsync(threadId, order: ListSortOrder.Ascending);
 
-        return messages.Select(threadMessage =>
+        var result = new List<Message>();
+
+        await foreach (var threadMessage in messages)
         {
             var content = threadMessage.ContentItems
                 .OfType<MessageTextContent>()
                 .Aggregate(new StringBuilder(), (builder, item) => builder.AppendLine(item.Text))
                 .ToString();
 
-            return new Message(threadMessage.Id, MessageRole.User.ToString(), content);
-        }).ToList();
+            result.Add(new Message(threadMessage.Id, MessageRole.User.ToString(), content));
+        }
+
+        return result;
     }
 }

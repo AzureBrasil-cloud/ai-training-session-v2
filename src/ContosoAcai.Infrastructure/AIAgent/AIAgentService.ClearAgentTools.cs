@@ -1,4 +1,4 @@
-using Azure.AI.Projects;
+using Azure.AI.Agents.Persistent;
 using ContosoAcai.Infrastructure.Azure.Shared;
 
 namespace ContosoAcai.Infrastructure.AIAgent;
@@ -9,7 +9,7 @@ public partial class AiAgentService
     {
         var client = CreateAgentsClient(credentials);
 
-        await client.UpdateAgentAsync(
+        await client.Administration.UpdateAgentAsync(
             agentId,
             tools: new List<ToolDefinition>(),
             toolResources: new ToolResources());

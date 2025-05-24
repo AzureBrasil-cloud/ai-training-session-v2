@@ -9,7 +9,7 @@ public partial class AiAgentService
     {
         var client = CreateAgentsClient(credentials);
 
-        var threadResponse = await client.CreateThreadAsync();
+        var threadResponse = await client.Threads.CreateThreadAsync();
 
         return new Thread(threadResponse.Value.Id);
     }
