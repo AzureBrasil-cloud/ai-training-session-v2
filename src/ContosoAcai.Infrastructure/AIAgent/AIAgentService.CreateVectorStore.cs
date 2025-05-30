@@ -1,4 +1,4 @@
-using Azure.AI.Projects;
+using Azure.AI.Agents.Persistent;
 using ContosoAcai.Infrastructure.Azure.Shared;
 using VectorStore = ContosoAcai.Infrastructure.AIAgent.Models.VectorStore;
 
@@ -13,7 +13,7 @@ public partial class AiAgentService
     {
         var client = CreateAgentsClient(credentials);
 
-        var vectorStore = await client.CreateVectorStoreAsync(
+        var vectorStore = await client.VectorStores.CreateVectorStoreAsync(
             fileIds:  files,
             name: name,
             expiresAfter: new VectorStoreExpirationPolicy(VectorStoreExpirationPolicyAnchor.LastActiveAt, 2));

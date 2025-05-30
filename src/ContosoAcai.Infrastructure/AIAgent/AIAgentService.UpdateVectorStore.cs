@@ -10,6 +10,6 @@ public partial class AiAgentService
         string name)
     {
         var client = CreateAgentsClient(credentials);
-        await client.ModifyVectorStoreAsync(vectorStoreId, name);
+        await client.VectorStores.ModifyVectorStoreAsync(vectorStoreId, name);
     }
 }

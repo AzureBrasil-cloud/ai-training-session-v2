@@ -1,9 +1,12 @@
-using System.Diagnostics;
 using System.Text;
 using Azure;
-using Azure.AI.Projects;
+using Azure.AI.Agents.Persistent;
 using ContosoAcai.Infrastructure.AIAgent.Models;
 using ContosoAcai.Infrastructure.Azure.Shared;
+using MessageRole = Azure.AI.Agents.Persistent.MessageRole;
+using RunStatus = Azure.AI.Agents.Persistent.RunStatus;
+using ThreadRun = Azure.AI.Agents.Persistent.ThreadRun;
+using ToolOutput = Azure.AI.Agents.Persistent.ToolOutput;
 
 namespace ContosoAcai.Infrastructure.AIAgent;
 
@@ -19,12 +22,12 @@ public partial class AiAgentService
     {
         var client = CreateAgentsClient(credentials);
 
-        await client.CreateMessageAsync(
+        await client.Messages.CreateMessageAsync(
             threadId,
             MessageRole.User,
             userMessage);
         
-        Response<ThreadRun> runResponse = await client.CreateRunAsync(
+        Response<ThreadRun> runResponse = await client.Runs.CreateRunAsync(
             threadId,
             agentId,
             additionalInstructions: "");
@@ -32,7 +35,7 @@ public partial class AiAgentService
         do
         {
             await Task.Delay(TimeSpan.FromMilliseconds(500));
-            runResponse = await client.GetRunAsync(threadId, runResponse.Value.Id);
+            runResponse = await client.Runs.GetRunAsync(threadId, runResponse.Value.Id);
             
             if (runResponse.Value.Status == RunStatus.RequiresAction
                 && runResponse.Value.RequiredAction is SubmitToolOutputsAction submitToolOutputsAction)
@@ -42,7 +45,7 @@ public partial class AiAgentService
                 {
                     toolOutputs.Add(await GetResolvedToolOutputAsync(toolCall));
                 }
-                runResponse = await client.SubmitToolOutputsToRunAsync(runResponse.Value, toolOutputs);
+                runResponse = await client.Runs.SubmitToolOutputsToRunAsync(runResponse.Value, toolOutputs);
             }
             
         } while (runResponse.Value.Status == RunStatus.Queued || runResponse.Value.Status == RunStatus.InProgress);
@@ -54,14 +57,13 @@ public partial class AiAgentService
                 0);
         }
         
-        Response<PageableList<ThreadMessage>> afterRunMessagesResponse =
-            await client.GetMessagesAsync(
+        var afterRunMessagesResponse = client.Messages.GetMessagesAsync(
                 threadId, 
                 order: ListSortOrder.Descending, 
                 limit: 1);
-
-        var message = afterRunMessagesResponse.Value.Data.FirstOrDefault();
-
+        
+        var message = afterRunMessagesResponse.GetAsyncEnumerator().Current;
+        
         if (message is null)
         {
             throw new Exception("No messages found after run.");
